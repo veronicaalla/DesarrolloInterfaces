@@ -1,0 +1,8 @@
+
+radio buttons:
+Seleccionar todos y metodo CheckedChanged
+Obtener tag
+
+combox -> no se pueden escribir, solo lectura
+
+realizar validaciones y, comprobar que no haya campos vacios
