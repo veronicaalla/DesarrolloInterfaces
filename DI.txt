@@ -1,0 +1,51 @@
+
+PLANIFICACION
+---------------
+Examen winforms
+examen wpf
+
+proyecto:
+  -> 1º parte: bocetado (bloque usabilidad)
+  -> 2º parte: aplicación de gestión (bloque proyecto)
+  -> 3º parte: informes (bloque informes)
+  -> 4º parte: pruebas (bloque pruebas)
+
+
+---------------------------------------------------------------------
+FECHAS EXAMENES
+--------------
+
+
+
+
+
+-----------------------------------------------------------------------
+PROYECTO GESTION
+---------------
+3 tablas
+
+-PROYECCIONES -> sesionId, peliculaId (pk)
+		 Inicio, fin (null) 
+
+-SESIONES -> sesionId(pk)
+	     sala [enum], hora, DiaSemana[enum], precio [real], aforo[entero]
+
+-PELICULAS -> peliculaId (pk)
+	      Nombre, categoria [enum], genero [enum], sinopsis, duracion(min)
+
+
+
+EXCEPCIONES DE NEGOCIO (AplicattionException)
+----------------------
+Peliculas:
+  -Nombre unico
+  -Duracion >0 <300
+
+Sesiones:
+  -No misma sala, dia y hora
+  -Aforo >0
+  -Precio >=0
+ 
+Proyecciones:
+  -Para una sesionId no pisarse fechas 
+  -FechaIncio <=  fechaFin
