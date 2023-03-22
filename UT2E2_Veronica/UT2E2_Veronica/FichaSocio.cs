@@ -21,6 +21,7 @@ namespace UT2E2_Veronica
         {
             InitializeComponent();
             socio = new Socio();
+            txtAficciones.Enabled = false;
         }
 
         //Vaciamos todos los campos
@@ -28,9 +29,10 @@ namespace UT2E2_Veronica
         {
             txtNombre.Text = string.Empty;
             dtpNacimiento.Text = string.Empty; //Vuelve a la fecha por defecto
-            cmbSituacion.Text = string.Empty;
             txtAficciones.Text = string.Empty;
-
+            VaciarAficines();
+            ReiniciarSexo();
+            //Como hago para el comboBox
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -41,11 +43,18 @@ namespace UT2E2_Veronica
                 socio.FechaNacimiento = dtpNacimiento.Value;
                 socio.Sexo = sexo;
                 socio.Aficiones = aficiones;
-                socio.OtrasAficiones = otrasAficiones;
-                socio.Situación = txtAficciones.Text;
+                socio.OtrasAficiones = txtAficciones.Text;
+                socio.Situación = cmbSituacion.Text;
 
                 Resumen resumen = new Resumen(socio);
-                resumen.ShowDialog();
+                if (resumen.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Se han confirmado los datos", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("No se han confirmado los datos", "", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -71,5 +80,33 @@ namespace UT2E2_Veronica
            RadioButton rb = (RadioButton)sender;
             sexo = rb.Text;
         }
+
+        private void chkOtros_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkOtros.Checked)
+            {
+                txtAficciones.Enabled = true;
+            }
+            else
+            {
+                txtAficciones.Text = string.Empty;
+                txtAficciones.Enabled = false;
+            }
+        }
+
+        private void VaciarAficines()
+        {
+            chkDeportes.Checked = false;
+            chkMusica.Checked = false;
+            chkLectura.Checked = false;
+            chkOtros.Checked = false;
+        }
+        private void ReiniciarSexo()
+        {
+            rbHombre.Checked = true;
+            rbMujer.Checked = false;
+            rbOtros.Checked = false;
+        }
+
     }
 }

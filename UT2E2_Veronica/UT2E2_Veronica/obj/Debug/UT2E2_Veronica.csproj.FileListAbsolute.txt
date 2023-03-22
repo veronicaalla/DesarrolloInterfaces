@@ -10,3 +10,15 @@ C:\codigo\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.csproj.CoreComp
 C:\codigo\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.exe
 C:\codigo\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.pdb
 C:\codigo\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.Resumen.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\bin\Debug\UT2E2_Veronica.exe.config
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\bin\Debug\UT2E2_Veronica.exe
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\bin\Debug\UT2E2_Veronica.pdb
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.csproj.AssemblyReference.cache
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.FichaSocio.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.Properties.Resources.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.Resumen.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.csproj.GenerateResource.cache
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.csproj.CoreCompileInputs.cache
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.exe
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UT2E2_Veronica\UT2E2_Veronica\obj\Debug\UT2E2_Veronica.pdb

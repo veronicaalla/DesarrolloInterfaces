@@ -25,5 +25,10 @@ namespace UT2E2_Veronica
             txtOtrasAficiones.Text = socio.OtrasAficiones;
             lblSituación.Text = socio.Situación;
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -98,15 +98,18 @@
             // 
             // btnCerrar
             // 
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.Location = new System.Drawing.Point(158, 341);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(75, 23);
             this.btnCerrar.TabIndex = 11;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnConfirmar
             // 
+            this.btnConfirmar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnConfirmar.Location = new System.Drawing.Point(244, 341);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
@@ -120,10 +123,10 @@
             this.lblNombre.BackColor = System.Drawing.SystemColors.Window;
             this.lblNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblNombre.Location = new System.Drawing.Point(101, 39);
-            this.lblNombre.MinimumSize = new System.Drawing.Size(210, 0);
+            this.lblNombre.MinimumSize = new System.Drawing.Size(210, 2);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(210, 15);
-            this.lblNombre.TabIndex = 13;
+            this.lblNombre.TabIndex = 1;
             // 
             // lblNacimiento
             // 
@@ -131,10 +134,10 @@
             this.lblNacimiento.BackColor = System.Drawing.SystemColors.Window;
             this.lblNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblNacimiento.Location = new System.Drawing.Point(101, 69);
-            this.lblNacimiento.MinimumSize = new System.Drawing.Size(210, 0);
+            this.lblNacimiento.MinimumSize = new System.Drawing.Size(210, 2);
             this.lblNacimiento.Name = "lblNacimiento";
             this.lblNacimiento.Size = new System.Drawing.Size(210, 15);
-            this.lblNacimiento.TabIndex = 14;
+            this.lblNacimiento.TabIndex = 2;
             // 
             // lblSexo
             // 
@@ -142,7 +145,7 @@
             this.lblSexo.BackColor = System.Drawing.SystemColors.Window;
             this.lblSexo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSexo.Location = new System.Drawing.Point(101, 105);
-            this.lblSexo.MinimumSize = new System.Drawing.Size(210, 0);
+            this.lblSexo.MinimumSize = new System.Drawing.Size(210, 2);
             this.lblSexo.Name = "lblSexo";
             this.lblSexo.Size = new System.Drawing.Size(210, 15);
             this.lblSexo.TabIndex = 15;
@@ -153,7 +156,7 @@
             this.lblAficiones.BackColor = System.Drawing.SystemColors.Window;
             this.lblAficiones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAficiones.Location = new System.Drawing.Point(101, 140);
-            this.lblAficiones.MinimumSize = new System.Drawing.Size(210, 0);
+            this.lblAficiones.MinimumSize = new System.Drawing.Size(210, 2);
             this.lblAficiones.Name = "lblAficiones";
             this.lblAficiones.Size = new System.Drawing.Size(210, 15);
             this.lblAficiones.TabIndex = 16;
@@ -164,7 +167,7 @@
             this.lblSituación.BackColor = System.Drawing.SystemColors.Window;
             this.lblSituación.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSituación.Location = new System.Drawing.Point(101, 296);
-            this.lblSituación.MinimumSize = new System.Drawing.Size(210, 0);
+            this.lblSituación.MinimumSize = new System.Drawing.Size(210, 2);
             this.lblSituación.Name = "lblSituación";
             this.lblSituación.Size = new System.Drawing.Size(210, 15);
             this.lblSituación.TabIndex = 17;

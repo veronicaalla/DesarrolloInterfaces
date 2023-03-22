@@ -40,7 +40,7 @@
             this.txtAficciones = new System.Windows.Forms.TextBox();
             this.chkOtros = new System.Windows.Forms.CheckBox();
             this.chkLectura = new System.Windows.Forms.CheckBox();
-            this.cdhkMusica = new System.Windows.Forms.CheckBox();
+            this.chkMusica = new System.Windows.Forms.CheckBox();
             this.chkDeportes = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbSituacion = new System.Windows.Forms.ComboBox();
@@ -135,7 +135,7 @@
             this.grbAficiones.Controls.Add(this.txtAficciones);
             this.grbAficiones.Controls.Add(this.chkOtros);
             this.grbAficiones.Controls.Add(this.chkLectura);
-            this.grbAficiones.Controls.Add(this.cdhkMusica);
+            this.grbAficiones.Controls.Add(this.chkMusica);
             this.grbAficiones.Controls.Add(this.chkDeportes);
             this.grbAficiones.Location = new System.Drawing.Point(25, 157);
             this.grbAficiones.Name = "grbAficiones";
@@ -163,6 +163,7 @@
             this.chkOtros.Tag = "Otros";
             this.chkOtros.Text = "Otros";
             this.chkOtros.UseVisualStyleBackColor = true;
+            this.chkOtros.CheckedChanged += new System.EventHandler(this.chkOtros_CheckedChanged);
             // 
             // chkLectura
             // 
@@ -175,16 +176,16 @@
             this.chkLectura.Text = "Lectura";
             this.chkLectura.UseVisualStyleBackColor = true;
             // 
-            // cdhkMusica
+            // chkMusica
             // 
-            this.cdhkMusica.AutoSize = true;
-            this.cdhkMusica.Location = new System.Drawing.Point(102, 35);
-            this.cdhkMusica.Name = "cdhkMusica";
-            this.cdhkMusica.Size = new System.Drawing.Size(60, 17);
-            this.cdhkMusica.TabIndex = 1;
-            this.cdhkMusica.Tag = "Musica";
-            this.cdhkMusica.Text = "Musica";
-            this.cdhkMusica.UseVisualStyleBackColor = true;
+            this.chkMusica.AutoSize = true;
+            this.chkMusica.Location = new System.Drawing.Point(102, 35);
+            this.chkMusica.Name = "chkMusica";
+            this.chkMusica.Size = new System.Drawing.Size(60, 17);
+            this.chkMusica.TabIndex = 1;
+            this.chkMusica.Tag = "Musica";
+            this.chkMusica.Text = "Musica";
+            this.chkMusica.UseVisualStyleBackColor = true;
             // 
             // chkDeportes
             // 
@@ -282,7 +283,7 @@
         private System.Windows.Forms.TextBox txtAficciones;
         private System.Windows.Forms.CheckBox chkOtros;
         private System.Windows.Forms.CheckBox chkLectura;
-        private System.Windows.Forms.CheckBox cdhkMusica;
+        private System.Windows.Forms.CheckBox chkMusica;
         private System.Windows.Forms.CheckBox chkDeportes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbSituacion;
