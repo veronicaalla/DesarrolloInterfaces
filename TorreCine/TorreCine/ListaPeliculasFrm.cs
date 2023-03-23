@@ -59,7 +59,8 @@ namespace TorreCine
                 RefrescarLista();
             }
             */
-            
+            PeliculasFrm nuevaPelicula = new PeliculasFrm();
+            nuevaPelicula.ShowDialog();
         }
 
         //------------------- MENU CONTEXTUAL -----------------

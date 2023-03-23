@@ -11,3 +11,4 @@ C:\Users\Alumno\Desktop\DesarrolloInterfaces\TorreCine\TorreCine\bin\Debug\Torre
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\TorreCine\TorreCine\bin\Debug\TorreCine.pdb
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\TorreCine\TorreCine\obj\Debug\TorreCine.exe
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\TorreCine\TorreCine\obj\Debug\TorreCine.pdb
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\TorreCine\TorreCine\obj\Debug\TorreCine.PeliculasFrm.resources
