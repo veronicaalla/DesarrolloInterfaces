@@ -16,7 +16,7 @@ namespace UT2E3_Veronica
         //Almacena el tipo de operación
         private OperacionesEnun _operacion;
 
-        private float Memoria { get; set; }
+        public float Memoria { get; set; }
 
         //Propiedad de respaldo de  _operacion
         public OperacionesEnun Operacion

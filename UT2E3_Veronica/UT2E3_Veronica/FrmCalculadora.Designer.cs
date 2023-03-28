@@ -112,6 +112,7 @@
             this.btnMS.Tag = "";
             this.btnMS.Text = "MS";
             this.btnMS.UseVisualStyleBackColor = true;
+            this.btnMS.Click += new System.EventHandler(this.btnMS_Click);
             // 
             // btnMR
             // 
@@ -122,6 +123,7 @@
             this.btnMR.Tag = "";
             this.btnMR.Text = "MR";
             this.btnMR.UseVisualStyleBackColor = true;
+            this.btnMR.Click += new System.EventHandler(this.btnMR_Click);
             // 
             // btnMultiplicar
             // 

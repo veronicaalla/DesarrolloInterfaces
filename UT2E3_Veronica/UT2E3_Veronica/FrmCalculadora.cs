@@ -78,5 +78,17 @@ namespace UT2E3_Veronica
             _calculadora.Operacion = OperacionesEnun.SinOperacion;
             txtVisor.Text = _calculadora.Visor.ToString();
         }
+
+        //Memory Recovery -> Boton recuperar
+        private void btnMR_Click(object sender, EventArgs e)
+        {
+          txtVisor.Text = _calculadora.Memoria.ToString();
+        }
+
+        //Memory Storage
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+             _calculadora.Memoria = float.Parse(txtVisor.Text);
+        }
     }
 }
