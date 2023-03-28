@@ -1,0 +1,22 @@
+Solo admite letras
+-------------------
+if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+ {
+             e.Handled = true;
+ }
+
+Solo admite numeros 
+------------------
+if (char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar) )
+ {
+             e.Handled = true;
+ }
+
+
+Solo 1 punto decimal
+---------------------
+if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+  {
+     e.Handled = true;
+  }
+

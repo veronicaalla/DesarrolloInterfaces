@@ -298,7 +298,7 @@
             this.KeyPreview = true;
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
-            this.Click += new System.EventHandler(this.BtnNumeros_Click);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCalculadora_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

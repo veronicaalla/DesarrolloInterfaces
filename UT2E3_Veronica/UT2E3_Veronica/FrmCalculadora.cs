@@ -25,7 +25,7 @@ namespace UT2E3_Veronica
         private void btnC_Click(object sender, EventArgs e)
         {
             _calculadora.Borrar();
-            txtVisor.Text = String.Empty;
+            txtVisor.Text = string.Empty;
         }
 
         private void btnPunto_Click(object sender, EventArgs e)
@@ -53,6 +53,52 @@ namespace UT2E3_Veronica
         private void btnOperaciones_Click(object sender, EventArgs e)
         {
             string operacion = ((Button)sender).Tag.ToString();
+            Operaciones(operacion);
+            txtVisor.Text = string.Empty;
+        }
+
+        private void btnIgual_Click(object sender, EventArgs e)
+        {
+            _calculadora.Calcular();
+            _calculadora.Operacion = OperacionesEnun.SinOperacion;
+            txtVisor.Text = _calculadora.Visor.ToString();
+        }
+
+        //Memory Recovery -> Boton recuperar
+        private void btnMR_Click(object sender, EventArgs e)
+        {
+            txtVisor.Text = _calculadora.Memoria.ToString();
+        }
+
+        //Memory Storage
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+            _calculadora.Memoria = float.Parse(txtVisor.Text);
+        }
+
+        private void FrmCalculadora_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtVisor.Text += e.KeyChar.ToString();
+
+            //Cuando pulsemos una tecla nos realice el codigo del boton correspondiente
+            if (txtVisor.Text == "0")
+            {
+                txtVisor.Text = string.Empty;
+                _calculadora.Visor = float.Parse(txtVisor.Text);
+                return;
+            }
+
+            _calculadora.Visor = float.Parse(txtVisor.Text);
+
+            /*if ((e.KeyChar == '/') || (e.KeyChar == '*')|| (e.KeyChar == '+')|| (e.KeyChar == '-'))
+            {
+                Operaciones(txtVisor.Text);
+                txtVisor.Text = string.Empty;
+            }*/
+        }
+
+        private void Operaciones(string operacion)
+        {
             switch (operacion)
             {
                 case "+":
@@ -68,27 +114,6 @@ namespace UT2E3_Veronica
                     _calculadora.Operacion = OperacionesEnun.Disvision;
                     break;
             }
-
-            txtVisor.Text = String.Empty;
-        }
-
-        private void btnIgual_Click(object sender, EventArgs e)
-        {
-            _calculadora.Calcular();
-            _calculadora.Operacion = OperacionesEnun.SinOperacion;
-            txtVisor.Text = _calculadora.Visor.ToString();
-        }
-
-        //Memory Recovery -> Boton recuperar
-        private void btnMR_Click(object sender, EventArgs e)
-        {
-          txtVisor.Text = _calculadora.Memoria.ToString();
-        }
-
-        //Memory Storage
-        private void btnMS_Click(object sender, EventArgs e)
-        {
-             _calculadora.Memoria = float.Parse(txtVisor.Text);
         }
     }
 }
