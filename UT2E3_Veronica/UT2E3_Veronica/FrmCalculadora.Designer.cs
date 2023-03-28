@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtVisor = new System.Windows.Forms.TextBox();
             this.btn7 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
             this.btn9 = new System.Windows.Forms.Button();
@@ -50,12 +50,14 @@
             this.btn0 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtVisor
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(251, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtVisor.Location = new System.Drawing.Point(23, 23);
+            this.txtVisor.Name = "txtVisor";
+            this.txtVisor.ReadOnly = true;
+            this.txtVisor.Size = new System.Drawing.Size(251, 20);
+            this.txtVisor.TabIndex = 0;
+            this.txtVisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn7
             // 
@@ -66,6 +68,7 @@
             this.btn7.Tag = "7";
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
+            this.btn7.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn8
             // 
@@ -76,6 +79,7 @@
             this.btn8.Tag = "8";
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = true;
+            this.btn8.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn9
             // 
@@ -86,6 +90,7 @@
             this.btn9.Tag = "9";
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = true;
+            this.btn9.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btnDividir
             // 
@@ -96,6 +101,7 @@
             this.btnDividir.Tag = "/";
             this.btnDividir.Text = "/";
             this.btnDividir.UseVisualStyleBackColor = true;
+            this.btnDividir.Click += new System.EventHandler(this.btnOperaciones_Click);
             // 
             // btnMS
             // 
@@ -126,6 +132,7 @@
             this.btnMultiplicar.Tag = "*";
             this.btnMultiplicar.Text = "*";
             this.btnMultiplicar.UseVisualStyleBackColor = true;
+            this.btnMultiplicar.Click += new System.EventHandler(this.btnOperaciones_Click);
             // 
             // btn6
             // 
@@ -136,6 +143,7 @@
             this.btn6.Tag = "6";
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = true;
+            this.btn6.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn5
             // 
@@ -146,6 +154,7 @@
             this.btn5.Tag = "5";
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = true;
+            this.btn5.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn4
             // 
@@ -156,6 +165,7 @@
             this.btn4.Tag = "4";
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = true;
+            this.btn4.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btnC
             // 
@@ -166,6 +176,7 @@
             this.btnC.Tag = "";
             this.btnC.Text = "C";
             this.btnC.UseVisualStyleBackColor = true;
+            this.btnC.Click += new System.EventHandler(this.btnC_Click);
             // 
             // btnRestar
             // 
@@ -176,6 +187,7 @@
             this.btnRestar.Tag = "-";
             this.btnRestar.Text = "--";
             this.btnRestar.UseVisualStyleBackColor = true;
+            this.btnRestar.Click += new System.EventHandler(this.btnOperaciones_Click);
             // 
             // btn3
             // 
@@ -186,6 +198,7 @@
             this.btn3.Tag = "3";
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = true;
+            this.btn3.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn2
             // 
@@ -196,6 +209,7 @@
             this.btn2.Tag = "2";
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btn1
             // 
@@ -206,6 +220,7 @@
             this.btn1.Tag = "1";
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // btnIgual
             // 
@@ -216,6 +231,7 @@
             this.btnIgual.Tag = "=";
             this.btnIgual.Text = "=";
             this.btnIgual.UseVisualStyleBackColor = true;
+            this.btnIgual.Click += new System.EventHandler(this.btnIgual_Click);
             // 
             // btnSumar
             // 
@@ -226,6 +242,7 @@
             this.btnSumar.Tag = "+";
             this.btnSumar.Text = "+";
             this.btnSumar.UseVisualStyleBackColor = true;
+            this.btnSumar.Click += new System.EventHandler(this.btnOperaciones_Click);
             // 
             // btnPunto
             // 
@@ -236,6 +253,7 @@
             this.btnPunto.Tag = ".";
             this.btnPunto.Text = ".";
             this.btnPunto.UseVisualStyleBackColor = true;
+            this.btnPunto.Click += new System.EventHandler(this.btnPunto_Click);
             // 
             // btn0
             // 
@@ -246,9 +264,11 @@
             this.btn0.Tag = "0";
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = true;
+            this.btn0.Click += new System.EventHandler(this.BtnNumeros_Click);
             // 
             // FrmCalculadora
             // 
+            this.AcceptButton = this.btnIgual;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 204);
@@ -271,9 +291,12 @@
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
             this.Controls.Add(this.btn7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtVisor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
+            this.Click += new System.EventHandler(this.BtnNumeros_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +304,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtVisor;
         private System.Windows.Forms.Button btn7;
         private System.Windows.Forms.Button btn8;
         private System.Windows.Forms.Button btn9;

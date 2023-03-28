@@ -13,12 +13,70 @@ namespace UT2E3_Veronica
 {
     public partial class FrmCalculadora : Form
     {
+        //Instanciamos la clase calculadora para poder obtener los metodos de dicha clase
+
+        public Calculadora _calculadora;
         public FrmCalculadora()
         {
             InitializeComponent();
+            _calculadora = new Calculadora();
         }
 
-        
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            _calculadora.Borrar();
+            txtVisor.Text = String.Empty;
+        }
 
+        private void btnPunto_Click(object sender, EventArgs e)
+        {
+            if (!txtVisor.Text.Contains(","))
+            {
+                txtVisor.Text += ",";
+            }
+        }
+
+        private void BtnNumeros_Click(object sender, EventArgs e)
+        {
+            if (txtVisor.Text == "0")
+            {
+                txtVisor.Text = string.Empty;
+                txtVisor.Text = ((Button)sender).Tag.ToString();
+                _calculadora.Visor = float.Parse(txtVisor.Text);
+                return;
+            }
+
+            txtVisor.Text += ((Button)sender).Tag.ToString();
+            _calculadora.Visor = float.Parse(txtVisor.Text);
+        }
+
+        private void btnOperaciones_Click(object sender, EventArgs e)
+        {
+            string operacion = ((Button)sender).Tag.ToString();
+            switch (operacion)
+            {
+                case "+":
+                    _calculadora.Operacion = OperacionesEnun.Suma;
+                    break;
+                case "-":
+                    _calculadora.Operacion = OperacionesEnun.Resta;
+                    break;
+                case "*":
+                    _calculadora.Operacion = OperacionesEnun.Multiplicacion;
+                    break;
+                case "/":
+                    _calculadora.Operacion = OperacionesEnun.Disvision;
+                    break;
+            }
+
+            txtVisor.Text = String.Empty;
+        }
+
+        private void btnIgual_Click(object sender, EventArgs e)
+        {
+            _calculadora.Calcular();
+            _calculadora.Operacion = OperacionesEnun.SinOperacion;
+            txtVisor.Text = _calculadora.Visor.ToString();
+        }
     }
 }

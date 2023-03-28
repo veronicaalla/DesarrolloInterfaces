@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace UT2E3_Veronica
 {
-    internal class Calculadora
+    public class Calculadora
     {
         //Almacena el primer operador
         private float _cache;
@@ -41,7 +41,7 @@ namespace UT2E3_Veronica
         }
 
         //Método que no devuelve nada
-        private void Calcular()
+        public void Calcular()
         {
             switch (Operacion)
             {
@@ -76,7 +76,7 @@ namespace UT2E3_Veronica
             _operacion = OperacionesEnun.SinOperacion;
         }
 
-        private void Borrar()
+        public void Borrar()
         {
             _cache = 0;
             _operacion = OperacionesEnun.SinOperacion;
