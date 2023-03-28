@@ -18,14 +18,7 @@ namespace UT2E3_Veronica
             InitializeComponent();
         }
 
-        //Almacena el primer operador
-        private float _cache;
-        //Almacena el segundo operador
-        private float _visor;
-        //Almacena el tipo de operación
-        private OperacionesEnun _operacion;
-
-        private float Memoria { get; set; }
+        
 
     }
 }
