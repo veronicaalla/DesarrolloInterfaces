@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Modelo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModeloBd" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Peliculas" EntityType="Modelo.Pelicula" />
+    <EntitySet Name="Libros" EntityType="Modelo.Libro" />
+  </EntityContainer>
+  <EntityType Name="Pelicula">
+    <Key>
+      <PropertyRef Name="PeliculaId" />
+    </Key>
+    <Property Name="PeliculaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" />
+    <Property Name="Anno" Type="Int32" Nullable="false" />
+    <Property Name="Genero" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="LibroId" />
+    </Key>
+    <Property Name="LibroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" />
+    <Property Name="Anno" Type="Int32" Nullable="false" />
+    <Property Name="Autor" Type="String" Nullable="false" />
+  </EntityType>
+</Schema>
