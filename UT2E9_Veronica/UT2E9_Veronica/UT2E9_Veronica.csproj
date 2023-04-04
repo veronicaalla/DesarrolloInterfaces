@@ -63,7 +63,6 @@
     </Compile>
     <Compile Include="Libro.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="LibroFrm.cs">
       <SubType>Form</SubType>
