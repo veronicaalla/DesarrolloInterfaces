@@ -66,7 +66,7 @@
             // 
             this.tsmiCrearPelicula.Image = global::UT2E9_Veronica.Properties.Resources.añadir;
             this.tsmiCrearPelicula.Name = "tsmiCrearPelicula";
-            this.tsmiCrearPelicula.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCrearPelicula.Size = new System.Drawing.Size(102, 22);
             this.tsmiCrearPelicula.Text = "Crear";
             this.tsmiCrearPelicula.Click += new System.EventHandler(this.tsmiCrearPelicula_Click);
             // 
@@ -76,7 +76,10 @@
             this.chTitulo,
             this.chAnno,
             this.chGenero});
+            this.lvPeliculas.ContextMenuStrip = this.cmsPeliculas;
             this.lvPeliculas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvPeliculas.FullRowSelect = true;
+            this.lvPeliculas.GridLines = true;
             this.lvPeliculas.HideSelection = false;
             this.lvPeliculas.Location = new System.Drawing.Point(0, 24);
             this.lvPeliculas.MultiSelect = false;
@@ -85,6 +88,7 @@
             this.lvPeliculas.TabIndex = 1;
             this.lvPeliculas.UseCompatibleStateImageBehavior = false;
             this.lvPeliculas.View = System.Windows.Forms.View.Details;
+            this.lvPeliculas.DoubleClick += new System.EventHandler(this.lvPeliculas_DoubleClick);
             // 
             // chTitulo
             // 
@@ -115,7 +119,7 @@
             // 
             this.cmsCrearPelicula.Image = global::UT2E9_Veronica.Properties.Resources.añadir;
             this.cmsCrearPelicula.Name = "cmsCrearPelicula";
-            this.cmsCrearPelicula.Size = new System.Drawing.Size(180, 22);
+            this.cmsCrearPelicula.Size = new System.Drawing.Size(117, 22);
             this.cmsCrearPelicula.Text = "Crear";
             this.cmsCrearPelicula.Click += new System.EventHandler(this.cmsCrearPelicula_Click);
             // 
@@ -123,7 +127,7 @@
             // 
             this.cmsVerPelicula.Image = global::UT2E9_Veronica.Properties.Resources.ver;
             this.cmsVerPelicula.Name = "cmsVerPelicula";
-            this.cmsVerPelicula.Size = new System.Drawing.Size(180, 22);
+            this.cmsVerPelicula.Size = new System.Drawing.Size(117, 22);
             this.cmsVerPelicula.Text = "Ver";
             this.cmsVerPelicula.Click += new System.EventHandler(this.cmsVerPelicula_Click);
             // 
@@ -131,7 +135,7 @@
             // 
             this.cmsEliminarPelicula.Image = global::UT2E9_Veronica.Properties.Resources.borrar;
             this.cmsEliminarPelicula.Name = "cmsEliminarPelicula";
-            this.cmsEliminarPelicula.Size = new System.Drawing.Size(180, 22);
+            this.cmsEliminarPelicula.Size = new System.Drawing.Size(117, 22);
             this.cmsEliminarPelicula.Text = "Eliminar";
             this.cmsEliminarPelicula.Click += new System.EventHandler(this.cmsEliminarPelicula_Click);
             // 

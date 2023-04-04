@@ -77,14 +77,14 @@
             this.txtAutor.Location = new System.Drawing.Point(54, 85);
             this.txtAutor.Name = "txtAutor";
             this.txtAutor.Size = new System.Drawing.Size(367, 20);
-            this.txtAutor.TabIndex = 4;
+            this.txtAutor.TabIndex = 5;
             // 
             // txtAnno
             // 
             this.txtAnno.Location = new System.Drawing.Point(54, 48);
             this.txtAnno.Name = "txtAnno";
             this.txtAnno.Size = new System.Drawing.Size(136, 20);
-            this.txtAnno.TabIndex = 5;
+            this.txtAnno.TabIndex = 4;
             // 
             // btnAceptar
             // 
@@ -99,7 +99,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Enabled = false;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(235, 111);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);

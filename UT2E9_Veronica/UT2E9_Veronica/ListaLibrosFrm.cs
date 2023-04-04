@@ -17,6 +17,7 @@ namespace UT2E9_Veronica
         {
             InitializeComponent();
             negocio = new Negocio();
+            RefrescarLista();
         }
 
         // MENÚ LIBRO
@@ -44,31 +45,29 @@ namespace UT2E9_Veronica
 
         private void cmsVerLibro_Click(object sender, EventArgs e)
         {
-            //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
-            //Por lo tanto no nos hace falta hacer un foreach
-
-            //Parsear no es lo mismo que castear, ahora estamos casteando
-            int idLibro = (int)this.lvLibro.SelectedItems[0].Tag;
-            Libro libroSeleccionado = negocio.BuscarLibro(idLibro);
-            LibroFrm infoPelicula = new LibroFrm(libroSeleccionado);
-
-            if (infoPelicula.ShowDialog() == DialogResult.OK)
-            {
-                negocio.ModificarLibro(libroSeleccionado);
-                RefrescarLista();
-            }
+            verLibro();
         }
+
+
 
         private void cmsBorrarLibro_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                this.negocio.BorrarLibro((int)this.lvLibro.SelectedItems[0].Tag);
+                int idLibro = (int)this.lvLibro.SelectedItems[0].Tag;
+                this.negocio.BorrarLibro(idLibro);
             }
             this.RefrescarLista();
         }
 
+        private void lvLibro_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvLibro.SelectedItems.Count == 1)
+            {
+                verLibro();
+            }
+        }
         // MÉTODOS AUXILIARES
         public void RefrescarLista()
         {
@@ -106,5 +105,24 @@ namespace UT2E9_Veronica
             }
 
         }
-                    }
+
+        private void verLibro()
+        {
+            //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
+            //Por lo tanto no nos hace falta hacer un foreach
+
+            //Parsear no es lo mismo que castear, ahora estamos casteando
+            int idLibro = (int)this.lvLibro.SelectedItems[0].Tag;
+            Libro libroSeleccionado = negocio.BuscarLibro(idLibro);
+            LibroFrm infoPelicula = new LibroFrm(libroSeleccionado);
+
+            if (infoPelicula.ShowDialog() == DialogResult.OK)
+            {
+                negocio.ModificarLibro(libroSeleccionado);
+                RefrescarLista();
+            }
+        }
+
+        
+    }
 }

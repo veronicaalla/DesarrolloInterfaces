@@ -77,14 +77,14 @@
             this.txtGenero.Location = new System.Drawing.Point(68, 83);
             this.txtGenero.Name = "txtGenero";
             this.txtGenero.Size = new System.Drawing.Size(249, 20);
-            this.txtGenero.TabIndex = 4;
+            this.txtGenero.TabIndex = 5;
             // 
             // txtAño
             // 
             this.txtAño.Location = new System.Drawing.Point(68, 53);
             this.txtAño.Name = "txtAño";
             this.txtAño.Size = new System.Drawing.Size(115, 20);
-            this.txtAño.TabIndex = 5;
+            this.txtAño.TabIndex = 4;
             // 
             // btnAceptar
             // 

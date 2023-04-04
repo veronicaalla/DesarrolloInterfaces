@@ -66,7 +66,7 @@
             // 
             this.tsmiCrearLibro.Image = global::UT2E9_Veronica.Properties.Resources.añadir;
             this.tsmiCrearLibro.Name = "tsmiCrearLibro";
-            this.tsmiCrearLibro.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCrearLibro.Size = new System.Drawing.Size(102, 22);
             this.tsmiCrearLibro.Text = "Crear";
             this.tsmiCrearLibro.Click += new System.EventHandler(this.tsmiCrearLibro_Click);
             // 
@@ -76,7 +76,10 @@
             this.chTitulo,
             this.chAño,
             this.chAutor});
+            this.lvLibro.ContextMenuStrip = this.cmsLibros;
             this.lvLibro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvLibro.FullRowSelect = true;
+            this.lvLibro.GridLines = true;
             this.lvLibro.HideSelection = false;
             this.lvLibro.Location = new System.Drawing.Point(0, 24);
             this.lvLibro.MultiSelect = false;
@@ -85,6 +88,7 @@
             this.lvLibro.TabIndex = 1;
             this.lvLibro.UseCompatibleStateImageBehavior = false;
             this.lvLibro.View = System.Windows.Forms.View.Details;
+            this.lvLibro.DoubleClick += new System.EventHandler(this.lvLibro_DoubleClick);
             // 
             // chTitulo
             // 
@@ -115,7 +119,7 @@
             // 
             this.cmsCrearLibro.Image = global::UT2E9_Veronica.Properties.Resources.añadir;
             this.cmsCrearLibro.Name = "cmsCrearLibro";
-            this.cmsCrearLibro.Size = new System.Drawing.Size(180, 22);
+            this.cmsCrearLibro.Size = new System.Drawing.Size(106, 22);
             this.cmsCrearLibro.Text = "Crear";
             this.cmsCrearLibro.Click += new System.EventHandler(this.cmsCrearLibro_Click);
             // 
@@ -123,7 +127,7 @@
             // 
             this.cmsVerLibro.Image = global::UT2E9_Veronica.Properties.Resources.ver;
             this.cmsVerLibro.Name = "cmsVerLibro";
-            this.cmsVerLibro.Size = new System.Drawing.Size(180, 22);
+            this.cmsVerLibro.Size = new System.Drawing.Size(106, 22);
             this.cmsVerLibro.Text = "Ver";
             this.cmsVerLibro.Click += new System.EventHandler(this.cmsVerLibro_Click);
             // 
@@ -131,7 +135,7 @@
             // 
             this.cmsBorrarLibro.Image = global::UT2E9_Veronica.Properties.Resources.borrar;
             this.cmsBorrarLibro.Name = "cmsBorrarLibro";
-            this.cmsBorrarLibro.Size = new System.Drawing.Size(180, 22);
+            this.cmsBorrarLibro.Size = new System.Drawing.Size(106, 22);
             this.cmsBorrarLibro.Text = "Borrar";
             this.cmsBorrarLibro.Click += new System.EventHandler(this.cmsBorrarLibro_Click);
             // 

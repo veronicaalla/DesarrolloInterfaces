@@ -35,6 +35,7 @@ namespace UT2E9_Veronica
         public void BorrarLibro(int id)
         {
             db.Libros.Remove(BuscarLibro(id));
+            db.SaveChanges();
         }
 
         public void ModificarLibro(Libro libroModificado)
@@ -76,6 +77,7 @@ namespace UT2E9_Veronica
         public void BorrarPelicula(int id)
         {
             db.Peliculas.Remove(BuscarPelicula(id));
+            db.SaveChanges();
         }
 
         public void ModificarPelicula(Pelicula pelicula)

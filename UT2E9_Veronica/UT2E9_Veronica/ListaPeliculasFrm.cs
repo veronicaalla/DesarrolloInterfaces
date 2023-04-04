@@ -17,6 +17,7 @@ namespace UT2E9_Veronica
         {
             InitializeComponent();
             negocio = new Negocio();
+            RefrescarLista();
         }
 
 
@@ -30,7 +31,7 @@ namespace UT2E9_Veronica
         // METODOS DEL MENÚ CONTEXTUAL
         private void cmsPeliculas_Opening(object sender, CancelEventArgs e)
         {
-
+            this.cmsCrearPelicula.Enabled = true;
             this.cmsVerPelicula.Enabled = false;
             this.cmsEliminarPelicula.Enabled = false;
             if (lvPeliculas.SelectedItems.Count == 1)
@@ -47,29 +48,25 @@ namespace UT2E9_Veronica
 
         private void cmsVerPelicula_Click(object sender, EventArgs e)
         {
-            //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
-            //Por lo tanto no nos hace falta hacer un foreach
-
-            //Parsear no es lo mismo que castear, ahora estamos casteando
-            int idPelicula = (int)this.lvPeliculas.SelectedItems[0].Tag;
-            Pelicula peliculaSeleccionada = negocio.BuscarPelicula(idPelicula);
-            PeliculaFrm infoPelicula = new PeliculaFrm(peliculaSeleccionada);
-
-            if (infoPelicula.ShowDialog() == DialogResult.OK)
-            {
-                negocio.ModificarPelicula(peliculaSeleccionada);
-                RefrescarLista();
-            }
+            verPelicula();
         }
 
         private void cmsEliminarPelicula_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 this.negocio.BorrarPelicula((int)this.lvPeliculas.SelectedItems[0].Tag);
             }
             this.RefrescarLista();
+        }
+
+        private void lvPeliculas_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvPeliculas.SelectedItems.Count == 1)
+            {
+                verPelicula();
+            }
         }
 
         //MÉTODOS AUXILIARES
@@ -109,5 +106,23 @@ namespace UT2E9_Veronica
             }
 
         }
+
+        private void verPelicula()
+        {
+            //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
+            //Por lo tanto no nos hace falta hacer un foreach
+
+            //Parsear no es lo mismo que castear, ahora estamos casteando
+            int idPelicula = (int)this.lvPeliculas.SelectedItems[0].Tag;
+            Pelicula peliculaSeleccionada = negocio.BuscarPelicula(idPelicula);
+            PeliculaFrm infoPelicula = new PeliculaFrm(peliculaSeleccionada);
+
+            if (infoPelicula.ShowDialog() == DialogResult.OK)
+            {
+                negocio.ModificarPelicula(peliculaSeleccionada);
+                RefrescarLista();
+            }
+        }
+       
     }
 }

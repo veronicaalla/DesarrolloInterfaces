@@ -33,7 +33,7 @@ namespace UT2E9_Veronica
 
         private void tsmiLibros_Click(object sender, EventArgs e)
         {
-            ListaPeliculasFrm listaLibros = new ListaPeliculasFrm();
+            ListaLibrosFrm listaLibros = new ListaLibrosFrm();
             listaLibros.MdiParent = this;
             listaLibros.Show();
         }
