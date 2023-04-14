@@ -9,9 +9,11 @@ namespace UniCine_Veronica
     internal class Negocio
     {//Instanciamos la clase con la conexion para tener acceso a la bbdd
 
-        private static UniCineContext db = new UniCineContext();
+        //private static UniCineContext db = new UniCineContext();
+         static UniCineContext db = new UniCineContext();
 
-        public Negocio() { }
+        public Negocio() {
+        }
 
         // MÉTODOS PARA LAS PELICULAS
         public Pelicula[] obtenerPeliculas()

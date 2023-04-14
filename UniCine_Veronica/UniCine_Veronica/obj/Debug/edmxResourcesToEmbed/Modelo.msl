@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniCineModelStoreContainer" CdmEntityContainer="UniCineContext">
+    <EntitySetMapping Name="Peliculas">
+      <EntityTypeMapping TypeName="UniCineModel.Pelicula">
+        <MappingFragment StoreEntitySet="Peliculas">
+          <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+          <ScalarProperty Name="Anno" ColumnName="Anno" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Sinopsis" ColumnName="Sinopsis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyecciones">
+      <EntityTypeMapping TypeName="UniCineModel.Proyeccion">
+        <MappingFragment StoreEntitySet="Proyecciones">
+          <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
+          <ScalarProperty Name="SesionId" ColumnName="SesionId" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sesiones">
+      <EntityTypeMapping TypeName="UniCineModel.Sesion">
+        <MappingFragment StoreEntitySet="Sesiones">
+          <ScalarProperty Name="SesionId" ColumnName="SesionId" />
+          <ScalarProperty Name="Sala" ColumnName="Sala" />
+          <ScalarProperty Name="DiaSemana" ColumnName="DiaSemana" />
+          <ScalarProperty Name="Comienzo" ColumnName="Comienzo" />
+          <ScalarProperty Name="FinMax" ColumnName="FinMax" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Aforo" ColumnName="Aforo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

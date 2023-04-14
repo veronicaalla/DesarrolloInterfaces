@@ -16,8 +16,9 @@ namespace UniCine_Veronica
         public ListadoSesionesFrm()
         {
             InitializeComponent();
-            RefrescarLista();
             negocio = new Negocio();
+            RefrescarLista();
+
         }
 
 
@@ -29,20 +30,47 @@ namespace UniCine_Veronica
 
 
         // MENÚ CONTEXTUAL DEL LISTADO
-        private void tsmiCrear_Click(object sender, EventArgs e)
+        private void cmsSesiones_Opening(object sender, CancelEventArgs e)
+        {
+            this.cmsCrear.Enabled = true;
+            this.cmsVer.Enabled = false;
+            this.cmsBorrar.Enabled = false;
+            if (lvSesiones.SelectedItems.Count == 1)
+            {
+                this.cmsVer.Enabled = true;
+                this.cmsBorrar.Enabled = true;
+            }
+        }
+
+        private void cmsCrear_Click(object sender, EventArgs e)
         {
             NuevaSesion();
         }
 
-        private void tsmiVer_Click(object sender, EventArgs e)
+        private void cmsVer_Click(object sender, EventArgs e)
         {
             VerSesion();
         }
 
-        private void tsmiBorrar_Click(object sender, EventArgs e)
+        private void cmsBorrar_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
+                this.negocio.BorrarPelicula(idSesion);
+            }
+            this.RefrescarLista();
         }
+
+        private void lvSesiones_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvSesiones.SelectedItems.Count == 1)
+            {
+                VerSesion();
+            }
+        }
+
         // MÉTODOS AUXILIARES
         private void RefrescarLista()
         {
@@ -53,22 +81,19 @@ namespace UniCine_Veronica
             //Recorremos el array y lo mostramos
             foreach (Sesion sesion in this.negocio.obtenerSesiones())
             {
-                //String esCuidador = "No";
-                //if (sesion.Responsable) { esCuidador = "Si"; };
-
                 ListViewItem item = new ListViewItem(
-                    new string[]
-                    {
+                new string[]
+                {
                         sesion.Sala,
                         sesion.DiaSemana,
-                        sesion.Comienzo.ToString(),
-                        sesion.FinMax.ToString(),
-                        sesion.Precio.ToString(),
+                        sesion.Comienzo.Hour+":"+sesion.Comienzo.Minute,
+                        sesion.FinMax.Hour+":"+sesion.FinMax.Minute,
+                        sesion.Precio + " €",
                         sesion.Aforo.ToString(),
 
-                    }
+                }
                 );
-                item.Tag = sesion.SesionId; ;
+                item.Tag = sesion.SesionId;
                 this.lvSesiones.Items.Add(item);
             }
         }
@@ -76,7 +101,7 @@ namespace UniCine_Veronica
         private void NuevaSesion()
         {
             Sesion nuevo = new Sesion();
-            SesionesFrm ventanaSesion = new SesionesFrm(nuevo);
+            SesionFrm ventanaSesion = new SesionFrm(nuevo);
             //ventanaCuidador.Show();
             if (ventanaSesion.ShowDialog() == DialogResult.OK)
             {
@@ -93,7 +118,7 @@ namespace UniCine_Veronica
             //Parsear no es lo mismo que castear, ahora estamos casteando
             int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
             Sesion sesionSeleccionada = negocio.BuscarSesion(idSesion);
-            SesionesFrm infoPelicula = new SesionesFrm(sesionSeleccionada);
+            SesionFrm infoPelicula = new SesionFrm(sesionSeleccionada);
 
             if (infoPelicula.ShowDialog() == DialogResult.OK)
             {
@@ -102,6 +127,6 @@ namespace UniCine_Veronica
             }
         }
 
-       
+
     }
 }

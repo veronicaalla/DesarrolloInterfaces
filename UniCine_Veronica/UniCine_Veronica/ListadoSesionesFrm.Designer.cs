@@ -40,9 +40,9 @@
             this.chPrecio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chAforo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsSesiones = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiCrear = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBorrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCrear = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsBorrar = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuListado.SuspendLayout();
             this.cmsSesiones.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             // tsmiNuevaSesion
             // 
             this.tsmiNuevaSesion.Name = "tsmiNuevaSesion";
-            this.tsmiNuevaSesion.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNuevaSesion.Size = new System.Drawing.Size(108, 22);
             this.tsmiNuevaSesion.Text = "Nueva";
             this.tsmiNuevaSesion.Click += new System.EventHandler(this.tsmiNuevaSesion_Click);
             // 
@@ -92,6 +92,7 @@
             this.lvSesiones.TabIndex = 1;
             this.lvSesiones.UseCompatibleStateImageBehavior = false;
             this.lvSesiones.View = System.Windows.Forms.View.Details;
+            this.lvSesiones.DoubleClick += new System.EventHandler(this.lvSesiones_DoubleClick);
             // 
             // chSala
             // 
@@ -126,32 +127,33 @@
             // cmsSesiones
             // 
             this.cmsSesiones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCrear,
-            this.tsmiVer,
-            this.tsmiBorrar});
+            this.cmsCrear,
+            this.cmsVer,
+            this.cmsBorrar});
             this.cmsSesiones.Name = "cmsSesiones";
-            this.cmsSesiones.Size = new System.Drawing.Size(181, 92);
+            this.cmsSesiones.Size = new System.Drawing.Size(107, 70);
+            this.cmsSesiones.Opening += new System.ComponentModel.CancelEventHandler(this.cmsSesiones_Opening);
             // 
-            // tsmiCrear
+            // cmsCrear
             // 
-            this.tsmiCrear.Name = "tsmiCrear";
-            this.tsmiCrear.Size = new System.Drawing.Size(180, 22);
-            this.tsmiCrear.Text = "Crear";
-            this.tsmiCrear.Click += new System.EventHandler(this.tsmiCrear_Click);
+            this.cmsCrear.Name = "cmsCrear";
+            this.cmsCrear.Size = new System.Drawing.Size(180, 22);
+            this.cmsCrear.Text = "Crear";
+            this.cmsCrear.Click += new System.EventHandler(this.cmsCrear_Click);
             // 
-            // tsmiVer
+            // cmsVer
             // 
-            this.tsmiVer.Name = "tsmiVer";
-            this.tsmiVer.Size = new System.Drawing.Size(180, 22);
-            this.tsmiVer.Text = "Ver";
-            this.tsmiVer.Click += new System.EventHandler(this.tsmiVer_Click);
+            this.cmsVer.Name = "cmsVer";
+            this.cmsVer.Size = new System.Drawing.Size(180, 22);
+            this.cmsVer.Text = "Ver";
+            this.cmsVer.Click += new System.EventHandler(this.cmsVer_Click);
             // 
-            // tsmiBorrar
+            // cmsBorrar
             // 
-            this.tsmiBorrar.Name = "tsmiBorrar";
-            this.tsmiBorrar.Size = new System.Drawing.Size(180, 22);
-            this.tsmiBorrar.Text = "Borrar";
-            this.tsmiBorrar.Click += new System.EventHandler(this.tsmiBorrar_Click);
+            this.cmsBorrar.Name = "cmsBorrar";
+            this.cmsBorrar.Size = new System.Drawing.Size(180, 22);
+            this.cmsBorrar.Text = "Borrar";
+            this.cmsBorrar.Click += new System.EventHandler(this.cmsBorrar_Click);
             // 
             // ListadoSesionesFrm
             // 
@@ -184,8 +186,8 @@
         private System.Windows.Forms.ColumnHeader chPrecio;
         private System.Windows.Forms.ColumnHeader chAforo;
         private System.Windows.Forms.ContextMenuStrip cmsSesiones;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCrear;
-        private System.Windows.Forms.ToolStripMenuItem tsmiVer;
-        private System.Windows.Forms.ToolStripMenuItem tsmiBorrar;
+        private System.Windows.Forms.ToolStripMenuItem cmsCrear;
+        private System.Windows.Forms.ToolStripMenuItem cmsVer;
+        private System.Windows.Forms.ToolStripMenuItem cmsBorrar;
     }
 }

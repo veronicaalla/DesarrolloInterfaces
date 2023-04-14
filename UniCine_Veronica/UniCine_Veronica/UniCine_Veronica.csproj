@@ -127,11 +127,11 @@
     <Compile Include="Sesion.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="SesionesFrm.cs">
+    <Compile Include="SesionFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SesionesFrm.Designer.cs">
-      <DependentUpon>SesionesFrm.cs</DependentUpon>
+    <Compile Include="SesionFrm.Designer.cs">
+      <DependentUpon>SesionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="VeronicaException.cs" />
     <EmbeddedResource Include="Contenedor.resx">
@@ -146,6 +146,9 @@
     <EmbeddedResource Include="ListadoSesionesFrm.resx">
       <DependentUpon>ListadoSesionesFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PeliculaFrm.resx">
+      <DependentUpon>PeliculaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -155,6 +158,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ProyeccionesFrm.resx">
+      <DependentUpon>ProyeccionesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SesionFrm.resx">
+      <DependentUpon>SesionFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
