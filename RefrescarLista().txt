@@ -1,0 +1,24 @@
+private void RefrescarLista()
+        {
+            //Primero limpiamos el ListView
+            lvPeliculas.Items.Clear();
+            this.negocio.obtenerPeliculas().ToList();
+
+            //Recorremos el array y lo mostramos
+            foreach (Pelicula pelicula in this.negocio.obtenerPeliculas())
+            {
+                ListViewItem item = new ListViewItem(
+                new string[]
+                {
+                        pelicula.Nombre,
+                        pelicula.Duracion+ " min",
+                        pelicula.Anno.ToString(),
+                        pelicula.Categoria,
+                        pelicula.Genero
+
+                }
+                );
+                item.Tag = pelicula.PeliculaId;
+                this.lvPeliculas.Items.Add(item);
+            }
+        }

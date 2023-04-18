@@ -1,0 +1,42 @@
+//Los menus pricipales de cualquier bbdd para obtener la informacion
+
+es una clase de tipo -> internal class
+Creamos una variable que tiene el acceso de conexion a la bbdd
+
+------------- CON UNA SOLA PRIMARYKEY -------------------
+public Pelicula[] obtenerPeliculas()
+{
+   return db.Peliculas.ToArray();
+}
+
+
+public void CrearPelicula(Pelicula pelicula)
+{
+   db.Peliculas.Add(pelicula);
+   db.SaveChanges();
+}
+
+public Pelicula BuscarPelicula(int id)
+{
+  return db.Peliculas.FirstOrDefault(x => x.PeliculaId == id);
+}
+
+public void BorrarPelicula(int id)
+{
+   db.Peliculas.Remove(BuscarPelicula(id));
+   db.SaveChanges();
+}
+
+public void ModificarPelicula(Pelicula pelicula)
+{
+   Pelicula peliculaBD = db.Peliculas.FirstOrDefault(x => x.PeliculaId == pelicula.PeliculaId);
+     if (peliculaBD != null)
+     {
+         db.Entry(peliculaBD).CurrentValues.SetValues(pelicula);
+         db.SaveChanges();
+      }
+}
+
+
+
+ --------------- CON VARIAS PRIMARYKEYS  ----------

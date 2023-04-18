@@ -1,0 +1,8 @@
+public class ClaseException: ApplicationException
+    {
+        public ClaseException():base() { }
+
+        public ClaseException(string message) : base(message) { }
+        
+        public ClaseException(string ExceptionMensaje, Exception inner) : base(ExceptionMensaje, inner) { }
+    }

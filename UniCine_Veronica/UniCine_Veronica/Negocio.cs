@@ -98,19 +98,20 @@ namespace UniCine_Veronica
             db.Proyecciones.Add(proyeccion);
             db.SaveChanges();
         }
-
-       /* public Proyeccion BuscarProyeccion(int idSesion, int idPelicula)
+        
+        public Proyeccion BuscarProyeccion(int idPelicula, int idSesion, DateTime fecha)
         {
-            return db.Proyecciones.FirstOrDefault(x => x. == );
+            return db.Proyecciones.FirstOrDefault(x => x.PeliculaId ==idPelicula && x.SesionId==idSesion && x.Inicio == fecha );
         }
 
-        public void BorrarSesion(int id)
+        /*
+        public void BorrarProyeccion(int id)
         {
             db.Sesiones.Remove(BuscarSesion(id));
             db.SaveChanges();
         }
 
-        public void ModificarSesion(Sesion sesionModificado)
+        public void ModificarProyeccion(Sesion sesionModificado)
         {
             //db.Entry(db.Libros.FirstOrDefault(x => x.LibroId == libroModificado.LibroId)).CurrentValues.SetValues(libroModificado);
 

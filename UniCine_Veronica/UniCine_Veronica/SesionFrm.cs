@@ -34,5 +34,27 @@ namespace UniCine_Veronica
             this.txtPrecio.Text = sesion.Precio + " €";
             this.txtAforo.Text = sesion.Aforo.ToString();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (ValidadDatos())
+            {
+                //Igualamos los datos actuales a los de la sesion inicial
+
+                DialogResult = DialogResult.OK;
+            }
+            //this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public bool ValidadDatos()
+        {
+            return true;
+        }
+
     }
 }

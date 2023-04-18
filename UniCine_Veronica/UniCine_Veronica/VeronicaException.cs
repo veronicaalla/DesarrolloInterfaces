@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace UniCine_Veronica
 {
-    internal class VeronicaException
+    public class VeronicaException : ApplicationException
     {
+        public VeronicaException():base() { }
+
+        public VeronicaException(string message) : base(message) { }
+        
+        public VeronicaException(string ExceptionMensaje, Exception inner) : base(ExceptionMensaje, inner) { }
     }
 }
