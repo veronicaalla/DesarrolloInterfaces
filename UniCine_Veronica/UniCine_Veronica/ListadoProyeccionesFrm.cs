@@ -14,10 +14,12 @@ namespace UniCine_Veronica
     public partial class ListadoProyeccionesFrm : Form
     {
         private Negocio negocio;
+        //Dictionary<string, string> clavesProyecciones;
         public ListadoProyeccionesFrm()
         {
             InitializeComponent();
             negocio = new Negocio();
+            //clavesProyecciones = new Dictionary<string, string>();
             RefrescarLista();
         }
 
@@ -83,7 +85,9 @@ namespace UniCine_Veronica
             //Recorremos el array y lo mostramos
             foreach (Proyeccion proyeccion in this.negocio.obtenerProyecciones())
             {
+                //clavesProyecciones = new  Dictionary<string, string>();
                 ListViewItem item = new ListViewItem(
+                   
                 new string[]
                 {
                     ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre ,
@@ -91,45 +95,60 @@ namespace UniCine_Veronica
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).DiaSemana,
                     proyeccion.Inicio.ToShortDateString(),    
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Comienzo.ToShortTimeString(),
-                    //proyeccion.Fin.Value.ToShortDateString() ?? "  "
-                    //proyeccion.Fin.GetValueOrDefault().ToString(),
+                    //para controlar si la fecha es nula
                     proyeccion.Fin.HasValue?proyeccion.Fin.Value.ToShortDateString() :" ",
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).FinMax.ToShortTimeString(),
 
                 }
                 );
-                item.Tag = proyeccion.PeliculaId + " " + proyeccion.SesionId + " " + proyeccion.Inicio;
+                //item.Tag = proyeccion.PeliculaId + " " + proyeccion.SesionId + " " + proyeccion.Inicio;
+                
+                clavesProyecciones.Add("Pelicula", proyeccion.PeliculaId.ToString());
+                clavesProyecciones.Add("Sesion", proyeccion.SesionId.ToString());
+                clavesProyecciones.Add("Fecha", proyeccion.Inicio.ToString());
                 this.lvProyecciones.Items.Add(item);
             }
         }
 
 
         private void NuevaProyeccion()
-        {/*
+        {
             Proyeccion nuevo = new Proyeccion();
             ProyeccionesFrm ventanaProyeccion = new ProyeccionesFrm(nuevo);
             if (ventanaProyeccion.ShowDialog() == DialogResult.OK)
             {
                 negocio.CrearProyeccion(nuevo);
                 RefrescarLista();
-            }*/
+            }
         }
 
         private void VerProyeccion()
-        {/*
+        {
             //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
-            //Por lo tanto no nos hace falta hacer un foreach
+            //Por lo tanto no nos hace falta hacer un foreach;
 
-            //Parsear no es lo mismo que castear, ahora estamos casteando
-            int idPelicula = (int)this.lvProyecciones.SelectedItems[0].Tag;
-            Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(idPelicula, idSesion, fecha);
+            //string[] claves = ((string)this.lvProyecciones.SelectedItems[0].Tag).Split(' ');
+
+            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(claves[0]), Int32.Parse(claves[1]), DateTime.Parse(claves[2]));
+            Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(clavesProyecciones["Pelicula"]), Int32.Parse(clavesProyecciones["Sesion"]), DateTime.Parse(clavesProyecciones["Fecha"]));
             ProyeccionesFrm infoProyeccion = new ProyeccionesFrm(proyeccionSeleccionada);
 
             if (infoProyeccion.ShowDialog() == DialogResult.OK)
             {
                 //negocio.ModificarProyeccion(proyeccionSeleccionada);
                 RefrescarLista();
-            }*/
+            }
+
+            /*Probar hacerlo mediante Dictionary
+             * //inicialización y crear a valores
+              Dictionary<string, string> comunidadesCapitales = new Dictionary<string, string>()
+              {
+                    {"Aragon", "Zaragoza"},
+                    {"Navarra", "Pamplona"}
+                };
+            comunidadesCapitales.Add("Castilla la mancha", "Toledo");
+            Console.WriteLine(comunidadesCapitales["Aragon"]); //devuelve Zaragoza
+            */
         }
     }
 }

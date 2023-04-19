@@ -31,10 +31,10 @@ namespace UniCine_Veronica
                 return;
             }
 
-            txtPelicula.Text = ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre;
-            txtSala.Text = ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Sala;
-            txtInicio.Text = proyeccion.Inicio.ToShortDateString();
-            txtFin.Text = proyeccion.Fin.Value.ToShortDateString()??" ";
+            txtPelicula.Text = ((Pelicula)negocio.BuscarPelicula(this.proyeccion.PeliculaId)).Nombre;
+            txtSala.Text = ((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala;
+            txtInicio.Text = this.proyeccion.Inicio.ToShortDateString();
+            txtFin.Text = this.proyeccion.Fin.HasValue?this.proyeccion.Fin.Value.ToShortDateString():" ";
         }
 
     }
