@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace UniCine_Veronica
 {
@@ -85,13 +86,19 @@ namespace UniCine_Veronica
                 ListViewItem item = new ListViewItem(
                 new string[]
                 {
-                        ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre,
-                        ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Sala,
-                        proyeccion.Inicio.ToShortDateString(),
-                        proyeccion.Fin.Value.ToShortDateString() ?? "  "
-                }                                                   
-                ) ;
-                item.Tag = proyeccion.PeliculaId+ " " +proyeccion.SesionId + " "+ proyeccion.Inicio;
+                    ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre ,
+                    ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Sala ,
+                    ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).DiaSemana,
+                    proyeccion.Inicio.ToShortDateString(),    
+                    ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Comienzo.ToShortTimeString(),
+                    //proyeccion.Fin.Value.ToShortDateString() ?? "  "
+                    //proyeccion.Fin.GetValueOrDefault().ToString(),
+                    proyeccion.Fin.HasValue?proyeccion.Fin.Value.ToShortDateString() :" ",
+                    ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).FinMax.ToShortTimeString(),
+
+                }
+                );
+                item.Tag = proyeccion.PeliculaId + " " + proyeccion.SesionId + " " + proyeccion.Inicio;
                 this.lvProyecciones.Items.Add(item);
             }
         }

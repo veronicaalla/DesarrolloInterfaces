@@ -41,6 +41,9 @@
             this.ChSesion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chInicio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHoraInicio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHoraFin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chDiaSemana = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.cmsProyecciones.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +54,7 @@
             this.proyeccionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(903, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,8 +109,11 @@
             this.lvProyecciones.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chPelicula,
             this.ChSesion,
+            this.chDiaSemana,
             this.chInicio,
-            this.chFin});
+            this.chHoraInicio,
+            this.chFin,
+            this.chHoraFin});
             this.lvProyecciones.ContextMenuStrip = this.cmsProyecciones;
             this.lvProyecciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvProyecciones.FullRowSelect = true;
@@ -116,7 +122,7 @@
             this.lvProyecciones.Location = new System.Drawing.Point(0, 24);
             this.lvProyecciones.MultiSelect = false;
             this.lvProyecciones.Name = "lvProyecciones";
-            this.lvProyecciones.Size = new System.Drawing.Size(800, 426);
+            this.lvProyecciones.Size = new System.Drawing.Size(903, 428);
             this.lvProyecciones.TabIndex = 1;
             this.lvProyecciones.UseCompatibleStateImageBehavior = false;
             this.lvProyecciones.View = System.Windows.Forms.View.Details;
@@ -125,28 +131,43 @@
             // chPelicula
             // 
             this.chPelicula.Text = "Pelicula";
-            this.chPelicula.Width = 268;
+            this.chPelicula.Width = 170;
             // 
             // ChSesion
             // 
             this.ChSesion.Text = "Sesion";
-            this.ChSesion.Width = 189;
+            this.ChSesion.Width = 124;
             // 
             // chInicio
             // 
             this.chInicio.Text = "Inicio";
-            this.chInicio.Width = 140;
+            this.chInicio.Width = 106;
             // 
             // chFin
             // 
             this.chFin.Text = "Fin";
-            this.chFin.Width = 154;
+            this.chFin.Width = 119;
+            // 
+            // chHoraInicio
+            // 
+            this.chHoraInicio.Text = "Hora Inicio";
+            this.chHoraInicio.Width = 109;
+            // 
+            // chHoraFin
+            // 
+            this.chHoraFin.Text = "Hora Fin";
+            this.chHoraFin.Width = 112;
+            // 
+            // chDiaSemana
+            // 
+            this.chDiaSemana.Text = "Dia Semana";
+            this.chDiaSemana.Width = 122;
             // 
             // ListadoProyeccionesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(903, 452);
             this.Controls.Add(this.lvProyecciones);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -174,5 +195,8 @@
         private System.Windows.Forms.ColumnHeader ChSesion;
         private System.Windows.Forms.ColumnHeader chInicio;
         private System.Windows.Forms.ColumnHeader chFin;
+        private System.Windows.Forms.ColumnHeader chHoraInicio;
+        private System.Windows.Forms.ColumnHeader chHoraFin;
+        private System.Windows.Forms.ColumnHeader chDiaSemana;
     }
 }

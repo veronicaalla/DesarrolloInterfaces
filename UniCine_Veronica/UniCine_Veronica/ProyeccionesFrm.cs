@@ -34,7 +34,7 @@ namespace UniCine_Veronica
             txtPelicula.Text = ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre;
             txtSala.Text = ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Sala;
             txtInicio.Text = proyeccion.Inicio.ToShortDateString();
-            txtFin.Text = proyeccion.Fin.Value.ToShortDateString();
+            txtFin.Text = proyeccion.Fin.Value.ToShortDateString()??" ";
         }
 
     }
