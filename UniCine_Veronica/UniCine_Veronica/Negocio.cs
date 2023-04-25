@@ -10,9 +10,10 @@ namespace UniCine_Veronica
     {//Instanciamos la clase con la conexion para tener acceso a la bbdd
 
         //private static UniCineContext db = new UniCineContext();
-         static UniCineContext db = new UniCineContext();
+        static UniCineContext db = new UniCineContext();
 
-        public Negocio() {
+        public Negocio()
+        {
         }
 
         // MÉTODOS PARA LAS PELICULAS
@@ -31,6 +32,12 @@ namespace UniCine_Veronica
         public Pelicula BuscarPelicula(int id)
         {
             return db.Peliculas.FirstOrDefault(x => x.PeliculaId == id);
+        }
+
+
+        public Pelicula buscarPeliculaPorNombre(string nombre)
+        {
+            return db.Peliculas.FirstOrDefault (x=> x.Nombre.Equals(nombre));
         }
 
         public void BorrarPelicula(int id)
@@ -78,7 +85,7 @@ namespace UniCine_Veronica
         {
             //db.Entry(db.Libros.FirstOrDefault(x => x.LibroId == libroModificado.LibroId)).CurrentValues.SetValues(libroModificado);
 
-             Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
+            Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
             if (libroBD != null)
             {
                 db.Entry(libroBD).CurrentValues.SetValues(sesionModificado);
@@ -87,8 +94,10 @@ namespace UniCine_Veronica
 
         }
 
+
+
         // METODOS PARA LAS PROYECCIONES
-       public Proyeccion[] obtenerProyecciones()
+        public Proyeccion[] obtenerProyecciones()
         {
             return db.Proyecciones.ToArray();
         }
@@ -98,33 +107,36 @@ namespace UniCine_Veronica
             db.Proyecciones.Add(proyeccion);
             db.SaveChanges();
         }
-        
+
         public Proyeccion BuscarProyeccion(int idPelicula, int idSesion, DateTime fecha)
         {
-            return db.Proyecciones.FirstOrDefault(x => x.PeliculaId ==idPelicula && x.SesionId==idSesion && x.Inicio == fecha );
+            return db.Proyecciones.FirstOrDefault(x => x.PeliculaId == idPelicula && x.SesionId == idSesion && x.Inicio == fecha);
         }
 
-        /*
-        public void BorrarProyeccion(int id)
+
+        public void BorrarProyeccion(int idPelicula, int idSesion, DateTime fecha)
         {
-            db.Sesiones.Remove(BuscarSesion(id));
+            db.Proyecciones.Remove(BuscarProyeccion(idPelicula, idSesion, fecha));
             db.SaveChanges();
         }
 
-        public void ModificarProyeccion(Sesion sesionModificado)
+
+
+        public void ModificarProyeccion(Proyeccion proyeccionModificada)
         {
             //db.Entry(db.Libros.FirstOrDefault(x => x.LibroId == libroModificado.LibroId)).CurrentValues.SetValues(libroModificado);
 
-            Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
-            if (libroBD != null)
+            Proyeccion proyeccionDB = db.Proyecciones.FirstOrDefault(x => x.PeliculaId == proyeccionModificada.SesionId
+                                                        && x.SesionId == proyeccionModificada.SesionId
+                                                        && x.Inicio == proyeccionModificada.Inicio);
+
+            if (proyeccionDB != null)
             {
-                db.Entry(libroBD).CurrentValues.SetValues(sesionModificado);
+                db.Entry(proyeccionDB).CurrentValues.SetValues(proyeccionModificada);
                 db.SaveChanges();
             }
-
-        }*/
-
-
+        }
+        
 
     }
 }

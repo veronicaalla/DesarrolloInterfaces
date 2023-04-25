@@ -96,6 +96,8 @@
             this.txtInicio.Name = "txtInicio";
             this.txtInicio.Size = new System.Drawing.Size(192, 20);
             this.txtInicio.TabIndex = 6;
+            this.txtInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInicio_KeyPress);
+            this.txtInicio.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtInicio_PreviewKeyDown);
             // 
             // txtFin
             // 
@@ -115,6 +117,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(294, 123);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
@@ -124,8 +127,10 @@
             // 
             // ProyeccionesFrm
             // 
+            this.AcceptButton = this.btnAcpetar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(571, 158);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAcpetar);

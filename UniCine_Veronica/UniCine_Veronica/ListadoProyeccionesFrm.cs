@@ -87,13 +87,13 @@ namespace UniCine_Veronica
             {
                 //clavesProyecciones = new  Dictionary<string, string>();
                 ListViewItem item = new ListViewItem(
-                   
+
                 new string[]
                 {
                     ((Pelicula)negocio.BuscarPelicula(proyeccion.PeliculaId)).Nombre ,
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Sala ,
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).DiaSemana,
-                    proyeccion.Inicio.ToShortDateString(),    
+                    proyeccion.Inicio.ToShortDateString(),
                     ((Sesion)negocio.BuscarSesion(proyeccion.SesionId)).Comienzo.ToShortTimeString(),
                     //para controlar si la fecha es nula
                     proyeccion.Fin.HasValue?proyeccion.Fin.Value.ToShortDateString() :" ",
@@ -101,11 +101,17 @@ namespace UniCine_Veronica
 
                 }
                 );
-                //item.Tag = proyeccion.PeliculaId + " " + proyeccion.SesionId + " " + proyeccion.Inicio;
-                
+                #region Prueba dictionary
+                /*
+                Dictionary<string, string> clavesProyecciones;
+                item.Tag = (clavesProyecciones = new Dictionary<string, string>());
                 clavesProyecciones.Add("Pelicula", proyeccion.PeliculaId.ToString());
                 clavesProyecciones.Add("Sesion", proyeccion.SesionId.ToString());
                 clavesProyecciones.Add("Fecha", proyeccion.Inicio.ToString());
+                */
+                #endregion
+
+                item.Tag = proyeccion.PeliculaId + " " + proyeccion.SesionId + " " + proyeccion.Inicio;
                 this.lvProyecciones.Items.Add(item);
             }
         }
@@ -124,21 +130,27 @@ namespace UniCine_Veronica
 
         private void VerProyeccion()
         {
+
             //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
             //Por lo tanto no nos hace falta hacer un foreach;
 
-            //string[] claves = ((string)this.lvProyecciones.SelectedItems[0].Tag).Split(' ');
+            string[] claves = ((string)this.lvProyecciones.SelectedItems[0].Tag).Split(' ');
 
-            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(claves[0]), Int32.Parse(claves[1]), DateTime.Parse(claves[2]));
-            Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(clavesProyecciones["Pelicula"]), Int32.Parse(clavesProyecciones["Sesion"]), DateTime.Parse(clavesProyecciones["Fecha"]));
+            Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(claves[0]), Int32.Parse(claves[1]), DateTime.Parse(claves[2]));
+
+            #region prueba de dictionary
+            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(clavesProyecciones["Pelicula"]), Int32.Parse(clavesProyecciones["Sesion"]), DateTime.Parse(clavesProyecciones["Fecha"]));
+            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Tag.)
+            #endregion
             ProyeccionesFrm infoProyeccion = new ProyeccionesFrm(proyeccionSeleccionada);
 
             if (infoProyeccion.ShowDialog() == DialogResult.OK)
             {
-                //negocio.ModificarProyeccion(proyeccionSeleccionada);
+                negocio.ModificarProyeccion(proyeccionSeleccionada);
                 RefrescarLista();
             }
 
+            #region Dictionary
             /*Probar hacerlo mediante Dictionary
              * //inicialización y crear a valores
               Dictionary<string, string> comunidadesCapitales = new Dictionary<string, string>()
@@ -149,6 +161,7 @@ namespace UniCine_Veronica
             comunidadesCapitales.Add("Castilla la mancha", "Toledo");
             Console.WriteLine(comunidadesCapitales["Aragon"]); //devuelve Zaragoza
             */
+            #endregion
         }
     }
 }
