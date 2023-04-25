@@ -33,11 +33,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPelicula = new System.Windows.Forms.TextBox();
-            this.txtSala = new System.Windows.Forms.TextBox();
-            this.txtInicio = new System.Windows.Forms.TextBox();
             this.txtFin = new System.Windows.Forms.TextBox();
             this.btnAcpetar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.txtInicio = new System.Windows.Forms.TextBox();
+            this.cmbSala = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,39 +83,27 @@
             this.txtPelicula.Location = new System.Drawing.Point(67, 26);
             this.txtPelicula.Name = "txtPelicula";
             this.txtPelicula.Size = new System.Drawing.Size(192, 20);
-            this.txtPelicula.TabIndex = 4;
-            // 
-            // txtSala
-            // 
-            this.txtSala.Location = new System.Drawing.Point(328, 23);
-            this.txtSala.Name = "txtSala";
-            this.txtSala.Size = new System.Drawing.Size(192, 20);
-            this.txtSala.TabIndex = 5;
-            // 
-            // txtInicio
-            // 
-            this.txtInicio.Location = new System.Drawing.Point(67, 68);
-            this.txtInicio.Name = "txtInicio";
-            this.txtInicio.Size = new System.Drawing.Size(192, 20);
-            this.txtInicio.TabIndex = 6;
-            this.txtInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInicio_KeyPress);
-            this.txtInicio.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtInicio_PreviewKeyDown);
+            this.txtPelicula.TabIndex = 1;
             // 
             // txtFin
             // 
             this.txtFin.Location = new System.Drawing.Point(328, 68);
             this.txtFin.Name = "txtFin";
             this.txtFin.Size = new System.Drawing.Size(192, 20);
-            this.txtFin.TabIndex = 7;
+            this.txtFin.TabIndex = 4;
+            this.txtFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFin_KeyPress);
+            this.txtFin.Leave += new System.EventHandler(this.txtFin_Leave);
+            this.txtFin.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtFin_PreviewKeyDown);
             // 
             // btnAcpetar
             // 
             this.btnAcpetar.Location = new System.Drawing.Point(199, 123);
             this.btnAcpetar.Name = "btnAcpetar";
             this.btnAcpetar.Size = new System.Drawing.Size(75, 23);
-            this.btnAcpetar.TabIndex = 8;
+            this.btnAcpetar.TabIndex = 5;
             this.btnAcpetar.Text = "Aceptar";
             this.btnAcpetar.UseVisualStyleBackColor = true;
+            this.btnAcpetar.Click += new System.EventHandler(this.btnAcpetar_Click);
             // 
             // btnCancelar
             // 
@@ -121,9 +111,53 @@
             this.btnCancelar.Location = new System.Drawing.Point(294, 123);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // dtpInicio
+            // 
+            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInicio.Location = new System.Drawing.Point(67, 105);
+            this.dtpInicio.Name = "dtpInicio";
+            this.dtpInicio.Size = new System.Drawing.Size(127, 20);
+            this.dtpInicio.TabIndex = 10;
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFin.Location = new System.Drawing.Point(328, 94);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(97, 20);
+            this.dtpFin.TabIndex = 11;
+            // 
+            // txtInicio
+            // 
+            this.txtInicio.Location = new System.Drawing.Point(67, 72);
+            this.txtInicio.Name = "txtInicio";
+            this.txtInicio.Size = new System.Drawing.Size(192, 20);
+            this.txtInicio.TabIndex = 3;
+            this.txtInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInicio_KeyPress);
+            this.txtInicio.Leave += new System.EventHandler(this.txtInicio_Leave);
+            this.txtInicio.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtInicio_PreviewKeyDown);
+            // 
+            // cmbSala
+            // 
+            this.cmbSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSala.FormattingEnabled = true;
+            this.cmbSala.Items.AddRange(new object[] {
+            "SALA 1",
+            "SALA 2",
+            "SALA 3",
+            "SALA 4",
+            "SALA 5",
+            "SALA 6",
+            "SALA 7"});
+            this.cmbSala.Location = new System.Drawing.Point(328, 26);
+            this.cmbSala.Name = "cmbSala";
+            this.cmbSala.Size = new System.Drawing.Size(192, 21);
+            this.cmbSala.TabIndex = 12;
             // 
             // ProyeccionesFrm
             // 
@@ -132,11 +166,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(571, 158);
+            this.Controls.Add(this.cmbSala);
+            this.Controls.Add(this.txtInicio);
+            this.Controls.Add(this.dtpFin);
+            this.Controls.Add(this.dtpInicio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAcpetar);
             this.Controls.Add(this.txtFin);
-            this.Controls.Add(this.txtInicio);
-            this.Controls.Add(this.txtSala);
             this.Controls.Add(this.txtPelicula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -157,10 +193,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPelicula;
-        private System.Windows.Forms.TextBox txtSala;
-        private System.Windows.Forms.TextBox txtInicio;
         private System.Windows.Forms.TextBox txtFin;
         private System.Windows.Forms.Button btnAcpetar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DateTimePicker dtpInicio;
+        private System.Windows.Forms.DateTimePicker dtpFin;
+        private System.Windows.Forms.TextBox txtInicio;
+        private System.Windows.Forms.ComboBox cmbSala;
     }
 }

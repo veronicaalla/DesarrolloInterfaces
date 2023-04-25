@@ -29,21 +29,40 @@ namespace UniCine_Veronica
             //Con que uno de ellos lo sea, nos sirve
             if (proyeccion.PeliculaId == 0)
             {
+                #region fecha con TextBox
+                //---fecha inicio----
                 txtInicio.Text = "dd/mm/yyyy";
                 txtInicio.ForeColor = Color.Gray;
+                //---fecha fin----
+                txtFin.Text = "dd/mm/yyyy";
+                txtFin.ForeColor = Color.Gray;
+                #endregion
+
+                //Si Inicio es DateTimePiker
+                dtpInicio.Value = DateTime.Now;
                 return;
 
             }
 
             txtPelicula.Text = ((Pelicula)negocio.BuscarPelicula(this.proyeccion.PeliculaId)).Nombre;
-            txtSala.Text = ((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala;
+            //string sala = ((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala;
+            cmbSala.SelectedIndex = cmbSala.FindString(((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala);
+            dtpInicio.Value = this.proyeccion.Inicio;
             txtInicio.Text = this.proyeccion.Inicio.ToShortDateString();
-            txtFin.Text = this.proyeccion.Fin.HasValue?this.proyeccion.Fin.Value.ToShortDateString():" ";
+            //dtpFin.Value = (DateTime)(proyeccion.Fin.HasValue?this.proyeccion.Fin:null);
+            txtFin.Text = this.proyeccion.Fin.HasValue?this.proyeccion.Fin.Value.ToShortDateString(): "dd/mm/yyyy";
+            if (txtFin.Text== "dd/mm/yyyy")
+            {
+                txtFin.ForeColor = Color.Gray;
+            }
 
             
         }
 
-        #region pijada
+        #region FechaInicio en TextBox
+        #region pijada -> Fechas en TextBox
+        //------Fecha inicio-----
+        //Método para cuandoe el TextBox está seleccionado
         private void txtInicio_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (txtInicio.Text.Equals("dd/mm/yyyy"))
@@ -52,17 +71,80 @@ namespace UniCine_Veronica
                 txtInicio.ForeColor = Color.Black;
             }
         }
+        //Método para cuando el textBox se acaba de desseleccionar
+        private void txtInicio_Leave(object sender, EventArgs e)
+        {
+            if (txtInicio.Text == string.Empty)
+            {
+                txtInicio.Text = "dd/mm/yyyy";
+                txtInicio.ForeColor = Color.Gray;
+            }
+        }
+
+        //-----Fecha Fin -----
+        private void txtFin_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (txtFin.Text.Equals("dd/mm/yyyy"))
+            {
+                txtFin.Text = string.Empty;
+                txtFin.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFin_Leave(object sender, EventArgs e)
+        {
+            if (txtFin.Text == string.Empty)
+            {
+                txtFin.Text = "dd/mm/yyyy";
+                txtFin.ForeColor = Color.Gray;
+            }
+        }
         #endregion
 
+        //¿COMO FORMATEAR TEXTBOX PARA QUE SALGA CON FORMATO DE FECHA?
         private void txtInicio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '/'))
+                (e.KeyChar != '/') )
             {
                 e.Handled = true;
             }
         }
 
+        private void txtFin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '/'))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+
+        private void btnAcpetar_Click(object sender, EventArgs e)
+        {
+            if (ValidaDatos())
+            {
+                this.proyeccion.PeliculaId = negocio.buscarPeliculaPorNombre(txtPelicula.Text).PeliculaId;
+                //Como hago lo de sala?
+
+                this.proyeccion.Inicio = DateTime.Parse(txtInicio.Text);
+                if (txtFin.Text != "dd/mm/yyyy")
+                {
+                    this.proyeccion.Fin = DateTime.Parse(txtFin.Text) ;
+                }
+                
+
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         public bool ValidaDatos()
         {
             if (string.IsNullOrEmpty(txtPelicula.Text))
@@ -81,24 +163,8 @@ namespace UniCine_Veronica
                 return false;
             }
 
-            if (string.IsNullOrEmpty(txtSala.Text))
-            {
-                txtSala.Focus();
-                MessageBox.Show("La sala no puede estar vacia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            #region Si Inicio seria TextBox
             
-            /*foreach (Sesion s in negocio.obtenerSesiones())
-            {
-                if (s.Sala == txtSala.Text)
-                {
-                    break; 
-                }
-
-                MessageBox.Show("La sala indicada no existe", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }*/
-
             if (string.IsNullOrEmpty(txtInicio.Text))
             {
                 txtInicio.Focus();
@@ -113,10 +179,13 @@ namespace UniCine_Veronica
                 MessageBox.Show("El formato de la fecha es incorrecto \"dd/mm/yyyy\"", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            #endregion
 
             return true;
         }
 
+        
 
+        
     }
 }
