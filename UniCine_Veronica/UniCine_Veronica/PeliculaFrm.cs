@@ -24,15 +24,35 @@ namespace UniCine_Veronica
             this.pelicula = peliculaB;
             if (pelicula.PeliculaId == 0)
             {
+                //Le damos un valor por defecto
+                cmbCategoria.SelectedIndex = 0;
+                cmbGenero.SelectedIndex = 0;
                 return;
             }
 
             txtNombre.Text = pelicula.Nombre;
             txtDuracion.Text = pelicula.Duracion.ToString();
             txtAnno.Text = pelicula.Anno.ToString();
-            cmbCategoria.Text = pelicula.Categoria;
-            cmbGenero.Text = pelicula.Genero;
+            cmbCategoria.SelectedIndex = cmbCategoria.FindString(pelicula.Categoria);
+            cmbGenero.SelectedIndex = cmbGenero.FindString(pelicula.Genero);
             txtSinopsis.Text = pelicula.Sinopsis;
+        }
+
+        //Para que en los campos numericos solo admita numeros
+        private void txtDuracion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAnno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -58,7 +78,35 @@ namespace UniCine_Veronica
 
         public bool ValidadDatos()
         {
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                txtNombre.Focus();
+                MessageBox.Show("El campo nombre no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtDuracion.Text))
+            {
+                txtDuracion.Focus();
+                MessageBox.Show("El campo duracion no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtAnno.Text))
+            {
+                txtAnno.Focus();
+                MessageBox.Show("El campo año no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtSinopsis.Text))
+            {
+                txtSinopsis.Focus();
+                MessageBox.Show("La sipnopsis de la pelicula no puede estar vacia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
+
+        //FALTA AÑADIR EXCEPCIONES DE NEGOCIO
     }
 }
+ 

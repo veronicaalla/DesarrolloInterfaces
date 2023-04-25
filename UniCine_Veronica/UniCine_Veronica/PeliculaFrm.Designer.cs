@@ -110,51 +110,66 @@
             this.txtSinopsis.Multiline = true;
             this.txtSinopsis.Name = "txtSinopsis";
             this.txtSinopsis.Size = new System.Drawing.Size(449, 127);
-            this.txtSinopsis.TabIndex = 11;
+            this.txtSinopsis.TabIndex = 6;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(72, 33);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(243, 20);
-            this.txtNombre.TabIndex = 6;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtDuracion
             // 
             this.txtDuracion.Location = new System.Drawing.Point(72, 69);
             this.txtDuracion.Name = "txtDuracion";
             this.txtDuracion.Size = new System.Drawing.Size(137, 20);
-            this.txtDuracion.TabIndex = 7;
+            this.txtDuracion.TabIndex = 2;
+            this.txtDuracion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDuracion_KeyPress);
             // 
             // txtAnno
             // 
             this.txtAnno.Location = new System.Drawing.Point(72, 111);
             this.txtAnno.Name = "txtAnno";
             this.txtAnno.Size = new System.Drawing.Size(243, 20);
-            this.txtAnno.TabIndex = 8;
+            this.txtAnno.TabIndex = 3;
+            this.txtAnno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnno_KeyPress);
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Todos",
+            ">12",
+            ">16",
+            ">18"});
             this.cmbCategoria.Location = new System.Drawing.Point(383, 30);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(140, 21);
-            this.cmbCategoria.TabIndex = 9;
+            this.cmbCategoria.TabIndex = 4;
             // 
             // cmbGenero
             // 
+            this.cmbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenero.FormattingEnabled = true;
+            this.cmbGenero.Items.AddRange(new object[] {
+            "Acción",
+            "Aventura",
+            "Terror",
+            "Comedia",
+            "Romance"});
             this.cmbGenero.Location = new System.Drawing.Point(383, 69);
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(140, 21);
-            this.cmbGenero.TabIndex = 10;
+            this.cmbGenero.TabIndex = 5;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(193, 357);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 11;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -165,7 +180,7 @@
             this.brnCancelar.Location = new System.Drawing.Point(274, 357);
             this.brnCancelar.Name = "brnCancelar";
             this.brnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.brnCancelar.TabIndex = 12;
+            this.brnCancelar.TabIndex = 8;
             this.brnCancelar.Text = "Cancelar";
             this.brnCancelar.UseVisualStyleBackColor = true;
             this.brnCancelar.Click += new System.EventHandler(this.brnCancelar_Click);

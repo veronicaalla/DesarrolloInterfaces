@@ -58,7 +58,7 @@ namespace UniCine_Veronica
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
-                this.negocio.BorrarPelicula(idSesion);
+                this.negocio.BorrarSesion(idSesion);
             }
             this.RefrescarLista();
         }
@@ -86,11 +86,10 @@ namespace UniCine_Veronica
                 {
                         sesion.Sala,
                         sesion.DiaSemana,
-                        sesion.Comienzo.Hour+":"+sesion.Comienzo.Minute,
-                        sesion.FinMax.Hour+":"+sesion.FinMax.Minute,
+                        sesion.Comienzo.ToShortTimeString(),
+                        sesion.FinMax.ToShortTimeString(),
                         sesion.Precio + " €",
                         sesion.Aforo.ToString(),
-
                 }
                 );
                 item.Tag = sesion.SesionId;

@@ -87,6 +87,7 @@
             this.lvSesiones.GridLines = true;
             this.lvSesiones.HideSelection = false;
             this.lvSesiones.Location = new System.Drawing.Point(0, 24);
+            this.lvSesiones.MultiSelect = false;
             this.lvSesiones.Name = "lvSesiones";
             this.lvSesiones.Size = new System.Drawing.Size(800, 426);
             this.lvSesiones.TabIndex = 1;
@@ -137,21 +138,21 @@
             // cmsCrear
             // 
             this.cmsCrear.Name = "cmsCrear";
-            this.cmsCrear.Size = new System.Drawing.Size(180, 22);
+            this.cmsCrear.Size = new System.Drawing.Size(106, 22);
             this.cmsCrear.Text = "Crear";
             this.cmsCrear.Click += new System.EventHandler(this.cmsCrear_Click);
             // 
             // cmsVer
             // 
             this.cmsVer.Name = "cmsVer";
-            this.cmsVer.Size = new System.Drawing.Size(180, 22);
+            this.cmsVer.Size = new System.Drawing.Size(106, 22);
             this.cmsVer.Text = "Ver";
             this.cmsVer.Click += new System.EventHandler(this.cmsVer_Click);
             // 
             // cmsBorrar
             // 
             this.cmsBorrar.Name = "cmsBorrar";
-            this.cmsBorrar.Size = new System.Drawing.Size(180, 22);
+            this.cmsBorrar.Size = new System.Drawing.Size(106, 22);
             this.cmsBorrar.Text = "Borrar";
             this.cmsBorrar.Click += new System.EventHandler(this.cmsBorrar_Click);
             // 

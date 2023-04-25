@@ -43,7 +43,7 @@ namespace UniCine_Veronica
             
         }
 
-        //Pijada
+        #region pijada
         private void txtInicio_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (txtInicio.Text.Equals("dd/mm/yyyy"))
@@ -52,6 +52,7 @@ namespace UniCine_Veronica
                 txtInicio.ForeColor = Color.Black;
             }
         }
+        #endregion
 
         private void txtInicio_KeyPress(object sender, KeyPressEventArgs e)
         {
