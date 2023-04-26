@@ -88,6 +88,12 @@
     <Compile Include="ListadoSesionesFrm.Designer.cs">
       <DependentUpon>ListadoSesionesFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LupaPeliculaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LupaPeliculaFrm.Designer.cs">
+      <DependentUpon>LupaPeliculaFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +152,9 @@
     <EmbeddedResource Include="ListadoSesionesFrm.resx">
       <DependentUpon>ListadoSesionesFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LupaPeliculaFrm.resx">
+      <DependentUpon>LupaPeliculaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PeliculaFrm.resx">
       <DependentUpon>PeliculaFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +166,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ProyeccionesFrm.resx">
       <DependentUpon>ProyeccionesFrm.cs</DependentUpon>
@@ -196,6 +206,7 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\lupa.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

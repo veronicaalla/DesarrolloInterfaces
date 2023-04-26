@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,10 +14,12 @@ namespace UniCine_Veronica
     public partial class ListadoSesionesFrm : Form
     {
         private Negocio negocio;
+        public Sesion sesion;
         public ListadoSesionesFrm()
         {
             InitializeComponent();
             negocio = new Negocio();
+            sesion = new Sesion();
             RefrescarLista();
 
         }
@@ -65,10 +68,24 @@ namespace UniCine_Veronica
 
         private void lvSesiones_DoubleClick(object sender, EventArgs e)
         {
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(ProyeccionesFrm))
+                {
+                    int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
+                    this.sesion = negocio.BuscarSesion(idSesion);
+                    DialogResult = DialogResult.OK;
+                    return;
+                    
+                }
+            }
+
             if (lvSesiones.SelectedItems.Count == 1)
             {
                 VerSesion();
             }
+
+
         }
 
         // MÉTODOS AUXILIARES

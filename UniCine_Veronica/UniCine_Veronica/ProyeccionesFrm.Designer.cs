@@ -36,10 +36,12 @@
             this.txtFin = new System.Windows.Forms.TextBox();
             this.btnAcpetar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
-            this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.txtInicio = new System.Windows.Forms.TextBox();
-            this.cmbSala = new System.Windows.Forms.ComboBox();
+            this.lupa = new System.Windows.Forms.PictureBox();
+            this.txtSesion = new System.Windows.Forms.TextBox();
+            this.lupaSala = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.lupa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupaSala)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,12 +84,13 @@
             // 
             this.txtPelicula.Location = new System.Drawing.Point(67, 26);
             this.txtPelicula.Name = "txtPelicula";
-            this.txtPelicula.Size = new System.Drawing.Size(192, 20);
+            this.txtPelicula.Size = new System.Drawing.Size(164, 20);
             this.txtPelicula.TabIndex = 1;
             // 
             // txtFin
             // 
-            this.txtFin.Location = new System.Drawing.Point(328, 68);
+            this.txtFin.Location = new System.Drawing.Point(328, 72);
+            this.txtFin.MaxLength = 10;
             this.txtFin.Name = "txtFin";
             this.txtFin.Size = new System.Drawing.Size(192, 20);
             this.txtFin.TabIndex = 4;
@@ -116,25 +119,10 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // dtpInicio
-            // 
-            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicio.Location = new System.Drawing.Point(67, 105);
-            this.dtpInicio.Name = "dtpInicio";
-            this.dtpInicio.Size = new System.Drawing.Size(127, 20);
-            this.dtpInicio.TabIndex = 10;
-            // 
-            // dtpFin
-            // 
-            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFin.Location = new System.Drawing.Point(328, 94);
-            this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(97, 20);
-            this.dtpFin.TabIndex = 11;
-            // 
             // txtInicio
             // 
             this.txtInicio.Location = new System.Drawing.Point(67, 72);
+            this.txtInicio.MaxLength = 10;
             this.txtInicio.Name = "txtInicio";
             this.txtInicio.Size = new System.Drawing.Size(192, 20);
             this.txtInicio.TabIndex = 3;
@@ -142,22 +130,35 @@
             this.txtInicio.Leave += new System.EventHandler(this.txtInicio_Leave);
             this.txtInicio.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtInicio_PreviewKeyDown);
             // 
-            // cmbSala
+            // lupa
             // 
-            this.cmbSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSala.FormattingEnabled = true;
-            this.cmbSala.Items.AddRange(new object[] {
-            "SALA 1",
-            "SALA 2",
-            "SALA 3",
-            "SALA 4",
-            "SALA 5",
-            "SALA 6",
-            "SALA 7"});
-            this.cmbSala.Location = new System.Drawing.Point(328, 26);
-            this.cmbSala.Name = "cmbSala";
-            this.cmbSala.Size = new System.Drawing.Size(192, 21);
-            this.cmbSala.TabIndex = 12;
+            this.lupa.Image = global::UniCine_Veronica.Properties.Resources.lupa;
+            this.lupa.Location = new System.Drawing.Point(237, 20);
+            this.lupa.Name = "lupa";
+            this.lupa.Size = new System.Drawing.Size(22, 26);
+            this.lupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lupa.TabIndex = 13;
+            this.lupa.TabStop = false;
+            this.lupa.Click += new System.EventHandler(this.lupa_Click);
+            // 
+            // txtSesion
+            // 
+            this.txtSesion.Location = new System.Drawing.Point(328, 22);
+            this.txtSesion.Multiline = true;
+            this.txtSesion.Name = "txtSesion";
+            this.txtSesion.Size = new System.Drawing.Size(192, 40);
+            this.txtSesion.TabIndex = 14;
+            // 
+            // lupaSala
+            // 
+            this.lupaSala.Image = global::UniCine_Veronica.Properties.Resources.lupa;
+            this.lupaSala.Location = new System.Drawing.Point(536, 26);
+            this.lupaSala.Name = "lupaSala";
+            this.lupaSala.Size = new System.Drawing.Size(32, 33);
+            this.lupaSala.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lupaSala.TabIndex = 15;
+            this.lupaSala.TabStop = false;
+            this.lupaSala.Click += new System.EventHandler(this.lupaSala_Click);
             // 
             // ProyeccionesFrm
             // 
@@ -165,11 +166,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(571, 158);
-            this.Controls.Add(this.cmbSala);
+            this.ClientSize = new System.Drawing.Size(636, 158);
+            this.Controls.Add(this.lupaSala);
+            this.Controls.Add(this.txtSesion);
+            this.Controls.Add(this.lupa);
             this.Controls.Add(this.txtInicio);
-            this.Controls.Add(this.dtpFin);
-            this.Controls.Add(this.dtpInicio);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAcpetar);
             this.Controls.Add(this.txtFin);
@@ -181,6 +182,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ProyeccionesFrm";
             this.Text = "Proyeccion";
+            ((System.ComponentModel.ISupportInitialize)(this.lupa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupaSala)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,9 +199,9 @@
         private System.Windows.Forms.TextBox txtFin;
         private System.Windows.Forms.Button btnAcpetar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DateTimePicker dtpInicio;
-        private System.Windows.Forms.DateTimePicker dtpFin;
         private System.Windows.Forms.TextBox txtInicio;
-        private System.Windows.Forms.ComboBox cmbSala;
+        private System.Windows.Forms.PictureBox lupa;
+        private System.Windows.Forms.TextBox txtSesion;
+        private System.Windows.Forms.PictureBox lupaSala;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UniCine_Veronica
 {
@@ -38,16 +39,17 @@ namespace UniCine_Veronica
                 txtFin.ForeColor = Color.Gray;
                 #endregion
 
-                //Si Inicio es DateTimePiker
-                dtpInicio.Value = DateTime.Now;
+        
                 return;
 
             }
 
             txtPelicula.Text = ((Pelicula)negocio.BuscarPelicula(this.proyeccion.PeliculaId)).Nombre;
             //string sala = ((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala;
-            cmbSala.SelectedIndex = cmbSala.FindString(((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala);
-            dtpInicio.Value = this.proyeccion.Inicio;
+            //cmbSala.SelectedIndex = cmbSala.FindString(((Sesion)negocio.BuscarSesion(this.proyeccion.SesionId)).Sala);
+            Sesion sesion = negocio.BuscarSesion(this.proyeccion.SesionId);
+            txtSesion.Text = sesion.Sala + "\t" + sesion.DiaSemana + 
+                "\r\nInicio:" + sesion.Comienzo.ToShortTimeString() + "\tFin" + sesion.FinMax.ToShortTimeString();
             txtInicio.Text = this.proyeccion.Inicio.ToShortDateString();
             //dtpFin.Value = (DateTime)(proyeccion.Fin.HasValue?this.proyeccion.Fin:null);
             txtFin.Text = this.proyeccion.Fin.HasValue?this.proyeccion.Fin.Value.ToShortDateString(): "dd/mm/yyyy";
@@ -105,19 +107,54 @@ namespace UniCine_Veronica
         private void txtInicio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '/') )
+               (e.KeyChar != '/'))
             {
                 e.Handled = true;
             }
+            // Si el carácter presionado es una barra, verificamos la posición actual del cursor en el TextBox
+            else if (e.KeyChar != '/')
+            {
+                // Obtenemos la posición actual del cursor en el TextBox
+                int pos = txtInicio.SelectionStart;
+
+                // Verificamos si la posición actual del cursor es la adecuada para agregar una barra
+                if (pos == 2 || pos == 5)
+                {
+                    // Agregamos la barra al texto del TextBox y movemos el cursor a la posición siguiente
+                    txtInicio.Text = txtInicio.Text.Insert(pos, "/");
+                    txtInicio.SelectionStart = pos + 1;
+                }
+            }
+
+
         }
 
         private void txtFin_KeyPress(object sender, KeyPressEventArgs e)
         {
+         
+
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
                (e.KeyChar != '/'))
             {
                 e.Handled = true;
             }
+            // Si el carácter presionado es una barra, verificamos la posición actual del cursor en el TextBox
+            else if (e.KeyChar != '/')
+            {
+                // Obtenemos la posición actual del cursor en el TextBox
+                int pos = txtFin.SelectionStart;
+
+                // Verificamos si la posición actual del cursor es la adecuada para agregar una barra
+                if (pos == 2 || pos == 5)
+                {
+                    // Agregamos la barra al texto del TextBox y movemos el cursor a la posición siguiente
+                    txtFin.Text = txtFin.Text.Insert(pos, "/");
+                    txtFin.SelectionStart = pos + 1;
+                }
+            }
+           
+            
+            
         }
         #endregion
 
@@ -184,8 +221,25 @@ namespace UniCine_Veronica
             return true;
         }
 
-        
+        private void lupa_Click(object sender, EventArgs e)
+        {
+            LupaPeliculaFrm buscarPelicula = new LupaPeliculaFrm();
+            
+            if (buscarPelicula.ShowDialog() ==DialogResult.OK)
+            {
+                txtPelicula.Text = buscarPelicula.nombrePelicula;
+            }
+        }
 
-        
+        private void lupaSala_Click(object sender, EventArgs e)
+        {
+            ListadoSesionesFrm listadoSesiones = new ListadoSesionesFrm();
+            if (listadoSesiones.ShowDialog() == DialogResult.OK)
+            {
+                Sesion sesionElegida = listadoSesiones.sesion;
+                txtSesion.Text = sesionElegida.Sala + "\t" + sesionElegida.DiaSemana +
+                    "\r\nInicio:" + sesionElegida.Comienzo.ToShortTimeString() + "\tFin" + sesionElegida.FinMax.ToShortTimeString();
+            }
+        }
     }
 }
