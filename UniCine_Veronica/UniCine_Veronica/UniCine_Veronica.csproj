@@ -70,6 +70,7 @@
     <Compile Include="DatosDesarrolladorFrm.Designer.cs">
       <DependentUpon>DatosDesarrolladorFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Herramientas.cs" />
     <Compile Include="ListadoPeliculasFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +89,17 @@
     <Compile Include="ListadoSesionesFrm.Designer.cs">
       <DependentUpon>ListadoSesionesFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LupaPeliculaFrm.cs">
+    <Compile Include="LupaListadoSesionesFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LupaPeliculaFrm.Designer.cs">
-      <DependentUpon>LupaPeliculaFrm.cs</DependentUpon>
+    <Compile Include="LupaListadoSesionesFrm.Designer.cs">
+      <DependentUpon>LupaListadoSesionesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LupaListadoPeliculaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LupaListadoPeliculaFrm.Designer.cs">
+      <DependentUpon>LupaListadoPeliculaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo.Context.cs">
       <AutoGen>True</AutoGen>
@@ -152,8 +159,11 @@
     <EmbeddedResource Include="ListadoSesionesFrm.resx">
       <DependentUpon>ListadoSesionesFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LupaPeliculaFrm.resx">
-      <DependentUpon>LupaPeliculaFrm.cs</DependentUpon>
+    <EmbeddedResource Include="LupaListadoSesionesFrm.resx">
+      <DependentUpon>LupaListadoSesionesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LupaListadoPeliculaFrm.resx">
+      <DependentUpon>LupaListadoPeliculaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PeliculaFrm.resx">
       <DependentUpon>PeliculaFrm.cs</DependentUpon>

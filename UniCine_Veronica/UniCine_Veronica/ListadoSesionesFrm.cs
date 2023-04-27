@@ -68,24 +68,10 @@ namespace UniCine_Veronica
 
         private void lvSesiones_DoubleClick(object sender, EventArgs e)
         {
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(ProyeccionesFrm))
-                {
-                    int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
-                    this.sesion = negocio.BuscarSesion(idSesion);
-                    DialogResult = DialogResult.OK;
-                    return;
-                    
-                }
-            }
-
             if (lvSesiones.SelectedItems.Count == 1)
             {
                 VerSesion();
             }
-
-
         }
 
         // MÉTODOS AUXILIARES

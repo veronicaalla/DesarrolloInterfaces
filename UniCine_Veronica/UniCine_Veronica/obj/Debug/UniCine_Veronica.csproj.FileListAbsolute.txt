@@ -20,4 +20,5 @@ C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\o
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.csproj.CopyComplete
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.exe
 C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.pdb
-C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.LupaPeliculaFrm.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.LupaListadoSesionesFrm.resources
+C:\Users\Alumno\Desktop\DesarrolloInterfaces\UniCine_Veronica\UniCine_Veronica\obj\Debug\UniCine_Veronica.LupaListadoPeliculaFrm.resources

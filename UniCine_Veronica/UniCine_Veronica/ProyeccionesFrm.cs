@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +15,11 @@ namespace UniCine_Veronica
     public partial class ProyeccionesFrm : Form
     {
         Proyeccion proyeccion;
+        Pelicula pelicula;
         Negocio negocio;
         DateTime fechaInicio;
+        DateTime fechaFin;
+        static string formato = "dd/mm/yyyy";
         private ProyeccionesFrm()
         {
             InitializeComponent();
@@ -32,10 +36,10 @@ namespace UniCine_Veronica
             {
                 #region fecha con TextBox
                 //---fecha inicio----
-                txtInicio.Text = "dd/mm/yyyy";
+                txtInicio.Text = formato;
                 txtInicio.ForeColor = Color.Gray;
                 //---fecha fin----
-                txtFin.Text = "dd/mm/yyyy";
+                txtFin.Text = formato;
                 txtFin.ForeColor = Color.Gray;
                 #endregion
 
@@ -53,7 +57,7 @@ namespace UniCine_Veronica
             txtInicio.Text = this.proyeccion.Inicio.ToShortDateString();
             //dtpFin.Value = (DateTime)(proyeccion.Fin.HasValue?this.proyeccion.Fin:null);
             txtFin.Text = this.proyeccion.Fin.HasValue?this.proyeccion.Fin.Value.ToShortDateString(): "dd/mm/yyyy";
-            if (txtFin.Text== "dd/mm/yyyy")
+            if (txtFin.Text== formato)
             {
                 txtFin.ForeColor = Color.Gray;
             }
@@ -167,7 +171,7 @@ namespace UniCine_Veronica
                 //Como hago lo de sala?
 
                 this.proyeccion.Inicio = DateTime.Parse(txtInicio.Text);
-                if (txtFin.Text != "dd/mm/yyyy")
+                if (txtFin.Text != formato)
                 {
                     this.proyeccion.Fin = DateTime.Parse(txtFin.Text) ;
                 }
@@ -202,7 +206,7 @@ namespace UniCine_Veronica
 
             #region Si Inicio seria TextBox
             
-            if (string.IsNullOrEmpty(txtInicio.Text))
+            if (txtInicio.Text.Equals(formato))
             {
                 txtInicio.Focus();
                 MessageBox.Show("La fecha de inicio no puede estar vacia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -216,6 +220,16 @@ namespace UniCine_Veronica
                 MessageBox.Show("El formato de la fecha es incorrecto \"dd/mm/yyyy\"", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+          if (txtFin.Text != formato)
+            {
+                if (!DateTime.TryParse(txtInicio.Text, out fechaFin))
+                {
+                    txtInicio.Focus();
+                    MessageBox.Show("El formato de la fecha es incorrecto \"dd/mm/yyyy\"", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
             #endregion
 
             return true;
@@ -223,22 +237,25 @@ namespace UniCine_Veronica
 
         private void lupa_Click(object sender, EventArgs e)
         {
-            LupaPeliculaFrm buscarPelicula = new LupaPeliculaFrm();
+            LupaListadoPeliculaFrm buscarPelicula = new LupaListadoPeliculaFrm();
             
             if (buscarPelicula.ShowDialog() ==DialogResult.OK)
             {
-                txtPelicula.Text = buscarPelicula.nombrePelicula;
+                //Almacenamos la pelicula en una variable, debido a que vamos a
+                //necesitar mas información de ella.
+                this.pelicula = buscarPelicula.pelicula;
+                txtPelicula.Text = pelicula.Nombre;
             }
         }
 
         private void lupaSala_Click(object sender, EventArgs e)
         {
-            ListadoSesionesFrm listadoSesiones = new ListadoSesionesFrm();
+            LupaListadoSesionesFrm listadoSesiones = new LupaListadoSesionesFrm();
             if (listadoSesiones.ShowDialog() == DialogResult.OK)
             {
                 Sesion sesionElegida = listadoSesiones.sesion;
                 txtSesion.Text = sesionElegida.Sala + "\t" + sesionElegida.DiaSemana +
-                    "\r\nInicio:" + sesionElegida.Comienzo.ToShortTimeString() + "\tFin" + sesionElegida.FinMax.ToShortTimeString();
+                    "\r\nInicio: " + sesionElegida.Comienzo.ToShortTimeString() + "\tFin: " + sesionElegida.FinMax.ToShortTimeString();
             }
         }
     }
