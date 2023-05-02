@@ -43,6 +43,7 @@
             this.cmsCrear = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsVer = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBorrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCuadricula = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuListado.SuspendLayout();
             this.cmsSesiones.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,8 @@
             // tsmiSesiones
             // 
             this.tsmiSesiones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNuevaSesion});
+            this.tsmiNuevaSesion,
+            this.tsmiCuadricula});
             this.tsmiSesiones.Name = "tsmiSesiones";
             this.tsmiSesiones.Size = new System.Drawing.Size(53, 20);
             this.tsmiSesiones.Text = "Sesion";
@@ -68,7 +70,7 @@
             // tsmiNuevaSesion
             // 
             this.tsmiNuevaSesion.Name = "tsmiNuevaSesion";
-            this.tsmiNuevaSesion.Size = new System.Drawing.Size(108, 22);
+            this.tsmiNuevaSesion.Size = new System.Drawing.Size(180, 22);
             this.tsmiNuevaSesion.Text = "Nueva";
             this.tsmiNuevaSesion.Click += new System.EventHandler(this.tsmiNuevaSesion_Click);
             // 
@@ -156,6 +158,13 @@
             this.cmsBorrar.Text = "Borrar";
             this.cmsBorrar.Click += new System.EventHandler(this.cmsBorrar_Click);
             // 
+            // tsmiCuadricula
+            // 
+            this.tsmiCuadricula.Name = "tsmiCuadricula";
+            this.tsmiCuadricula.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCuadricula.Text = "Cuadricula";
+            this.tsmiCuadricula.Click += new System.EventHandler(this.tsmiCuadricula_Click);
+            // 
             // ListadoSesionesFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem cmsCrear;
         private System.Windows.Forms.ToolStripMenuItem cmsVer;
         private System.Windows.Forms.ToolStripMenuItem cmsBorrar;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCuadricula;
     }
 }

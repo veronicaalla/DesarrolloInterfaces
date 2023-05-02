@@ -42,6 +42,24 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -58,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboGeneroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComboGeneroFrm.Designer.cs">
+      <DependentUpon>ComboGeneroFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contenedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +93,12 @@
     </Compile>
     <Compile Include="DatosDesarrolladorFrm.Designer.cs">
       <DependentUpon>DatosDesarrolladorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FechaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FechaFrm.Designer.cs">
+      <DependentUpon>FechaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Herramientas.cs" />
     <Compile Include="ListadoPeliculasFrm.cs">
@@ -137,6 +167,12 @@
     <Compile Include="ProyeccionesFrm.Designer.cs">
       <DependentUpon>ProyeccionesFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Generador.cs" />
+    <Compile Include="Reports\InformeCarteleraWr.cs" />
+    <Compile Include="Reports\InformeCatalogoPeliculasWr.cs" />
+    <Compile Include="Reports\InformeCuadriculaSesionesWr.cs" />
+    <Compile Include="Reports\InformeFichaPelicula_PeliculaWr.cs" />
+    <Compile Include="Reports\InformeFichaPelicula_SesionWr.cs" />
     <Compile Include="Sesion.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -146,9 +182,22 @@
     <Compile Include="SesionFrm.Designer.cs">
       <DependentUpon>SesionFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VeronicaException.cs" />
+    <Compile Include="VisorInforme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisorInforme.Designer.cs">
+      <DependentUpon>VisorInforme.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ComboGeneroFrm.resx">
+      <DependentUpon>ComboGeneroFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contenedor.resx">
       <DependentUpon>Contenedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FechaFrm.resx">
+      <DependentUpon>FechaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoPeliculasFrm.resx">
       <DependentUpon>ListadoPeliculasFrm.cs</DependentUpon>
@@ -181,8 +230,15 @@
     <EmbeddedResource Include="ProyeccionesFrm.resx">
       <DependentUpon>ProyeccionesFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInformeCartelera.rdlc" />
+    <EmbeddedResource Include="Reports\rptInformeCatalogoPeliculas.rdlc" />
+    <EmbeddedResource Include="Reports\rptInformeCuadriculaSesiones.rdlc" />
+    <EmbeddedResource Include="Reports\rptInformeFichaPelicula.rdlc" />
     <EmbeddedResource Include="SesionFrm.resx">
       <DependentUpon>SesionFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisorInforme.resx">
+      <DependentUpon>VisorInforme.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -192,6 +248,10 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\UniCine_Veronica.Reports.InformeCatalogoPeliculasWr.datasource" />
+    <None Include="Properties\DataSources\UniCine_Veronica.Reports.InformeCuadriculaSesionesWr.datasource" />
+    <None Include="Properties\DataSources\UniCine_Veronica.Reports.InformeFichaPeliculaWr.datasource" />
+    <None Include="Properties\DataSources\UniCine_Veronica.Reports.InformeFichaPelicula_SesionWr.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -216,11 +276,25 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\lupa.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

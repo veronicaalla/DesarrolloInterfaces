@@ -129,6 +129,9 @@ namespace UniCine_Veronica
             }
         }
 
-
+        private void tsmiCuadricula_Click(object sender, EventArgs e)
+        {
+            Reports.Generador.InformeCuadriculaSesiones();
+        }
     }
 }

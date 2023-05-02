@@ -61,7 +61,7 @@ namespace UniCine_Veronica
             this.RefrescarLista();
         }
 
-        
+
 
         private void lvPeliculas_DoubleClick(object sender, EventArgs e)
         {
@@ -98,7 +98,8 @@ namespace UniCine_Veronica
             }
         }
 
-        public void NuevaPelicula() {
+        public void NuevaPelicula()
+        {
             Pelicula nuevo = new Pelicula();
             PeliculaFrm ventanaPelicula = new PeliculaFrm(nuevo);
             //ventanaCuidador.Show();
@@ -108,7 +109,8 @@ namespace UniCine_Veronica
                 RefrescarLista();
             }
         }
-        public void VerPelicula() {
+        public void VerPelicula()
+        {
             //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
             //Por lo tanto no nos hace falta hacer un foreach
 
@@ -124,5 +126,37 @@ namespace UniCine_Veronica
             }
         }
 
+        private void cmsFicha_Click(object sender, EventArgs e)
+        {
+            if (lvPeliculas.SelectedItems.Count == 1)
+            {
+                int idPelicula = (int)this.lvPeliculas.SelectedItems[0].Tag;
+                Reports.Generador.InformeFichaPelicula(idPelicula);
+            }
+
+
+        }
+
+        private void tsmiCartelera_Click(object sender, EventArgs e)
+        {
+            FechaFrm fecha = new FechaFrm();
+
+            if (fecha.ShowDialog() == DialogResult.OK)
+            {
+                Reports.Generador.InformeCartelera(fecha.fecha);
+                this.Close();
+            }
+
+        }
+
+        private void tsmiCatalogo_Click(object sender, EventArgs e)
+        {
+            ComboGeneroFrm seleccinador = new ComboGeneroFrm();
+            if (seleccinador.ShowDialog() == DialogResult.OK)
+            {
+                Reports.Generador.InformeCatalogoPeliculas(seleccinador.genero);
+                this.Close();
+            }
+        }
     }
 }

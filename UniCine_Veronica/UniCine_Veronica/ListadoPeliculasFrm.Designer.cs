@@ -42,6 +42,10 @@
             this.cmsNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsVer = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBorrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsFicha = new System.Windows.Forms.ToolStripMenuItem();
+            this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCartelera = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCatalogo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.cmsPeliculas.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +53,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.peliculaToolStripMenuItem});
+            this.peliculaToolStripMenuItem,
+            this.informesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -67,7 +72,7 @@
             // tsmiNuevaPelicula
             // 
             this.tsmiNuevaPelicula.Name = "tsmiNuevaPelicula";
-            this.tsmiNuevaPelicula.Size = new System.Drawing.Size(180, 22);
+            this.tsmiNuevaPelicula.Size = new System.Drawing.Size(108, 22);
             this.tsmiNuevaPelicula.Text = "Nueva";
             this.tsmiNuevaPelicula.Click += new System.EventHandler(this.tsmiNuevaPelicula_Click);
             // 
@@ -123,31 +128,62 @@
             this.cmsPeliculas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsNuevo,
             this.cmsVer,
-            this.cmsBorrar});
+            this.cmsBorrar,
+            this.cmsFicha});
             this.cmsPeliculas.Name = "cmsPeliculas";
-            this.cmsPeliculas.Size = new System.Drawing.Size(110, 70);
+            this.cmsPeliculas.Size = new System.Drawing.Size(110, 92);
             this.cmsPeliculas.Opening += new System.ComponentModel.CancelEventHandler(this.cmsPeliculas_Opening);
             // 
             // cmsNuevo
             // 
             this.cmsNuevo.Name = "cmsNuevo";
-            this.cmsNuevo.Size = new System.Drawing.Size(180, 22);
+            this.cmsNuevo.Size = new System.Drawing.Size(109, 22);
             this.cmsNuevo.Text = "Nuevo";
             this.cmsNuevo.Click += new System.EventHandler(this.cmsNuevo_Click);
             // 
             // cmsVer
             // 
             this.cmsVer.Name = "cmsVer";
-            this.cmsVer.Size = new System.Drawing.Size(180, 22);
+            this.cmsVer.Size = new System.Drawing.Size(109, 22);
             this.cmsVer.Text = "Ver";
             this.cmsVer.Click += new System.EventHandler(this.cmsVer_Click);
             // 
             // cmsBorrar
             // 
             this.cmsBorrar.Name = "cmsBorrar";
-            this.cmsBorrar.Size = new System.Drawing.Size(180, 22);
+            this.cmsBorrar.Size = new System.Drawing.Size(109, 22);
             this.cmsBorrar.Text = "Borrar";
             this.cmsBorrar.Click += new System.EventHandler(this.cmsBorrar_Click);
+            // 
+            // cmsFicha
+            // 
+            this.cmsFicha.Name = "cmsFicha";
+            this.cmsFicha.Size = new System.Drawing.Size(109, 22);
+            this.cmsFicha.Text = "Ficha";
+            this.cmsFicha.Click += new System.EventHandler(this.cmsFicha_Click);
+            // 
+            // informesToolStripMenuItem
+            // 
+            this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCartelera,
+            this.tsmiCatalogo});
+            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.informesToolStripMenuItem.Text = "Informes";
+            // 
+            // tsmiCartelera
+            // 
+            this.tsmiCartelera.Name = "tsmiCartelera";
+            this.tsmiCartelera.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCartelera.Text = "Cartelera";
+            this.tsmiCartelera.Click += new System.EventHandler(this.tsmiCartelera_Click);
+            // 
+            // tsmiCatalogo
+            // 
+            this.tsmiCatalogo.Name = "tsmiCatalogo";
+            this.tsmiCatalogo.Size = new System.Drawing.Size(180, 22);
+            this.tsmiCatalogo.Text = "Catalogo";
+            this.tsmiCatalogo.Click += new System.EventHandler(this.tsmiCatalogo_Click);
             // 
             // ListadoPeliculasFrm
             // 
@@ -182,5 +218,9 @@
         private System.Windows.Forms.ToolStripMenuItem cmsNuevo;
         private System.Windows.Forms.ToolStripMenuItem cmsVer;
         private System.Windows.Forms.ToolStripMenuItem cmsBorrar;
+        private System.Windows.Forms.ToolStripMenuItem cmsFicha;
+        private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCartelera;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCatalogo;
     }
 }
