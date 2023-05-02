@@ -1,0 +1,29 @@
+
+Las excepciones de negocio, se "programan" en NEGOCIO
+
+Las excepciones se lanzan en un unico try-catch, se recoge en el formulario
+
+try{
+  llamamos negocio 
+}catch (ex){
+ MessageBox.show(ex.Message)
+}
+   
+
+
+No se puede lanzar un menssageBox en Negocio, puesto que no tiene interfez grafica, solo hay datos y acceso a datos
+
+
+
+ActualizasCosa(Cosa) usa ValidarNegocio(Cosa)
+CrearCosa(cosa) usa ValidarNegocio(cosa)
+
+como ValidarNegocio, solo lo usa negocio, método privado (-)
+
+private void ValidarNegocioCosa(Cosa){
+	bd = IbtenerBD();
+	if (bd.TablaCosa.Any(x => consulta)){
+		throw .....
+	}
+}
+v

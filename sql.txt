@@ -1,0 +1,5 @@
+First ( x=>   )
+FirstOrDefaultl ( x=>   )
+Where ( x=>   )
+Any ( x=>   )
+

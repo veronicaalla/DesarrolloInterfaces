@@ -9,7 +9,6 @@ namespace UniCine_Veronica
     internal class Negocio
     {//Instanciamos la clase con la conexion para tener acceso a la bbdd
 
-        //private static UniCineContext db = new UniCineContext();
         static UniCineContext db = new UniCineContext();
 
         public Negocio()
@@ -37,7 +36,7 @@ namespace UniCine_Veronica
 
         public Pelicula buscarPeliculaPorNombre(string nombre)
         {
-            return db.Peliculas.FirstOrDefault (x=> x.Nombre.Equals(nombre));
+            return db.Peliculas.FirstOrDefault(x => x.Nombre.Equals(nombre));
         }
 
         public void BorrarPelicula(int id)
@@ -136,7 +135,68 @@ namespace UniCine_Veronica
                 db.SaveChanges();
             }
         }
-        
 
+
+
+        //-------------------------EXCEPCIONES DE NEGOCIO------------------
+
+        //Reglas negocio Peliculas
+        public void ExcepcionPeliculasAsociadas(int peliculaId)
+        {
+            UniCineContext db = new UniCineContext();
+            //Si devuelve true, significa que la pelicula tiene proyecciones asociadas
+            if (db.Proyecciones.Any(p => p.PeliculaId == peliculaId))
+            {
+                throw new VeronicaException ("No se puede eliminar la pelicula debido a que tiene proyecciones asociadas")
+            }
+        }
+
+        public void ExcepcionDuracionNecesaria()
+        {
+
+        }
+
+        public void ExcepcionRangoTiempo()
+        {
+
+        }
+
+        //Reglas negocio Sesiones
+        public void ExcepcionTiempoSesionMayorPeli()
+        {
+
+        }
+
+        public void ExcepcionAforo(int aforo)
+        {
+            if (aforo < 0)
+            {
+                throw new VeronicaException("El aforo de una sala debe de ser superior a 0");
+            }
+        }
+
+        public void ExcepcionPrecio(float precio)
+        {
+            if (precio <= 0)
+            {
+                throw new VeronicaException("El precio debe ser superior a 0");
+            }
+        }
+
+        //Reglas negocio Proyecciones
+        public void ExcepcionDuracionPeliMenorSesion()
+        {
+
+        }
+
+        public void ExcepcionNoProyeccionSolapada()
+        {
+
+        }
+
+        public void ExcepcionFechasCorrectas()
+        {
+
+        }
     }
 }

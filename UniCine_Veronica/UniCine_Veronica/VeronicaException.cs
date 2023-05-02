@@ -10,7 +10,7 @@ namespace UniCine_Veronica
     {
         public VeronicaException():base() { }
 
-        public VeronicaException(string message) : base(message) { }
+        public  VeronicaException(string message) : base(message) { }
         
         public VeronicaException(string ExceptionMensaje, Exception inner) : base(ExceptionMensaje, inner) { }
     }
