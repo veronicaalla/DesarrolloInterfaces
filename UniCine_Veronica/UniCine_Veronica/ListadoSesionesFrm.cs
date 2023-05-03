@@ -57,11 +57,18 @@ namespace UniCine_Veronica
 
         private void cmsBorrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            try
             {
-                int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
-                this.negocio.BorrarSesion(idSesion);
+                if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    int idSesion = (int)this.lvSesiones.SelectedItems[0].Tag;
+                    this.negocio.BorrarSesion(idSesion);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.RefrescarLista();
         }
@@ -122,10 +129,17 @@ namespace UniCine_Veronica
             Sesion sesionSeleccionada = negocio.BuscarSesion(idSesion);
             SesionFrm infoPelicula = new SesionFrm(sesionSeleccionada);
 
-            if (infoPelicula.ShowDialog() == DialogResult.OK)
+            try
             {
-                negocio.ModificarSesion(sesionSeleccionada);
-                RefrescarLista();
+                if (infoPelicula.ShowDialog() == DialogResult.OK)
+                {
+                    negocio.ModificarSesion(sesionSeleccionada);
+                    RefrescarLista();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

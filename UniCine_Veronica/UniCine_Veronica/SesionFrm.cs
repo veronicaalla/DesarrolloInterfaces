@@ -92,13 +92,26 @@ namespace UniCine_Veronica
                 MessageBox.Show("El campo precio no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            int precio = Int32.Parse(txtPrecio.Text);
+            if (precio <= 0)
+            {
+                txtPrecio.Focus();
+                MessageBox.Show("El precio debe ser mayor de 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (string.IsNullOrEmpty(txtAforo.Text))
             {
                 txtAforo.Focus();
                 MessageBox.Show("El campo aforo no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            
+            int aforo = Int32.Parse(txtAforo.Text);
+            if (aforo <= 0)
+            {
+                txtAforo.Focus();
+                MessageBox.Show("El aforo debe ser mayor de 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
 

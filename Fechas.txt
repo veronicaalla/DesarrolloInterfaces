@@ -1,0 +1,5 @@
+DateTime d1, d2
+int a, b
+a + b
+d2-d1 = TimeSpan /.Minutes	.Hour	....
+

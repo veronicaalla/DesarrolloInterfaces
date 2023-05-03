@@ -13,10 +13,12 @@ namespace UniCine_Veronica
     public partial class PeliculaFrm : Form
     {
         Pelicula pelicula;
+        Negocio negocio;
         private PeliculaFrm()
         {
             InitializeComponent();
             pelicula = new Pelicula();
+            negocio = new Negocio();
         }
 
         public PeliculaFrm(Pelicula peliculaB) : this()
@@ -90,6 +92,14 @@ namespace UniCine_Veronica
                 MessageBox.Show("El campo duracion no puede estar vacio", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            int duracion = Int32.Parse(txtDuracion.Text);
+            if (duracion <= 0 || duracion > 300)
+            {
+                txtDuracion.Focus();
+                MessageBox.Show("La duracion es erronea", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (string.IsNullOrEmpty(txtAnno.Text))
             {
                 txtAnno.Focus();
@@ -105,8 +115,7 @@ namespace UniCine_Veronica
 
             return true;
         }
-
-        //FALTA AÑADIR EXCEPCIONES DE NEGOCIO
     }
 }
- 
+
+

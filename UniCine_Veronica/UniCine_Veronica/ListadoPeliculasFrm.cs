@@ -52,11 +52,20 @@ namespace UniCine_Veronica
 
         private void cmsBorrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
-               MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //Para controlar la posible excepcion de negocio
+            try
             {
-                int idPelicula = (int)this.lvPeliculas.SelectedItems[0].Tag;
-                this.negocio.BorrarPelicula(idPelicula);
+                if (MessageBox.Show("¿Seguro que desea eliminar el elemento?", "IMPORTANTE",
+                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    int idPelicula = (int)this.lvPeliculas.SelectedItems[0].Tag;
+                    //Lazamos excepción de negocio desde Negocio en el metodo BorrarPelicula
+                    this.negocio.BorrarPelicula(idPelicula);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.RefrescarLista();
         }
@@ -119,10 +128,17 @@ namespace UniCine_Veronica
             Pelicula peliculaSeleccionada = negocio.BuscarPelicula(idPelicula);
             PeliculaFrm infoPelicula = new PeliculaFrm(peliculaSeleccionada);
 
-            if (infoPelicula.ShowDialog() == DialogResult.OK)
+            try
             {
-                negocio.ModificarPelicula(peliculaSeleccionada);
-                RefrescarLista();
+                if (infoPelicula.ShowDialog() == DialogResult.OK)
+                {
+                    negocio.ModificarPelicula(peliculaSeleccionada);
+                    RefrescarLista();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
