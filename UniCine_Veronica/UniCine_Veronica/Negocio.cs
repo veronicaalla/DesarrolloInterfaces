@@ -110,6 +110,9 @@ namespace UniCine_Veronica
 
         public void CrearProyeccion(Proyeccion proyeccion)
         {
+            ExcepcionDuracionPeliMenorSesion(proyeccion);
+            ExcepcionProyeccionSolapada(proyeccion);
+            ExcepcionFechasIncorrectas(proyeccion);
             db.Proyecciones.Add(proyeccion);
             db.SaveChanges();
         }
@@ -130,8 +133,8 @@ namespace UniCine_Veronica
 
         public void ModificarProyeccion(Proyeccion proyeccionModificada)
         {
-            //db.Entry(db.Libros.FirstOrDefault(x => x.LibroId == libroModificado.LibroId)).CurrentValues.SetValues(libroModificado);
-
+            ExcepcionDuracionPeliMenorSesion(proyeccionModificada);
+            ExcepcionFechasIncorrectas(proyeccionModificada);
             Proyeccion proyeccionDB = db.Proyecciones.FirstOrDefault(x => x.PeliculaId == proyeccionModificada.SesionId
                                                         && x.SesionId == proyeccionModificada.SesionId
                                                         && x.Inicio == proyeccionModificada.Inicio);
@@ -144,8 +147,8 @@ namespace UniCine_Veronica
         }
 
 
+        #region EXCEPCIONES DE NEGOCIO
 
-        //-------------------------EXCEPCIONES DE NEGOCIO------------------
 
         //Reglas negocio Peliculas
         public void ExcepcionPeliculaProyeccionAsociadas(int peliculaId)
@@ -161,7 +164,7 @@ namespace UniCine_Veronica
         public void ExcepcionDuracionNecesaria(Pelicula pelicula)
         {
             List<Sesion> listaSesionesAsociadas = Herramientas.SesionesAsociadasAPelicula(pelicula);
-           // List<string> salas = new List<string>();
+            // List<string> salas = new List<string>();
             int num = 0;
             listaSesionesAsociadas.ForEach(s =>
             {
@@ -199,6 +202,7 @@ namespace UniCine_Veronica
                 throw new VeronicaException("No se puede eliminar la sesión debido a que tiene proyecciones asociadas");
             }
         }
+
         public void ExcepcionTiempoSesionMayorPeli(Sesion sesion)
         {
             List<Pelicula> listaPeliculasAsociadas = Herramientas.PeliculasAsociadasASesion(sesion);
@@ -218,19 +222,32 @@ namespace UniCine_Veronica
 
 
         //Reglas negocio Proyecciones
-        public void ExcepcionDuracionPeliMenorSesion()
+        public void ExcepcionDuracionPeliMenorSesion(Proyeccion proyeccion)
         {
+            Sesion sesion = BuscarSesion(proyeccion.SesionId);
+            Pelicula pelicula = BuscarPelicula(proyeccion.PeliculaId);
 
+            if ((sesion.FinMax.Subtract(sesion.Comienzo).TotalMinutes) < pelicula.Duracion)
+            {
+                throw new VeronicaException($"La duracion de la pelicula es mayor a la duracion de la sala");
+            }
         }
 
-        public void ExcepcionNoProyeccionSolapada()
+        public void ExcepcionProyeccionSolapada(Proyeccion proyeccion)
         {
-
+            if (db.Proyecciones.Any(p => p.SesionId == proyeccion.SesionId && p.Inicio == proyeccion.Inicio))
+            {
+                throw new VeronicaException($"Ya existe una proyeccion son la misma sesion y fecha");
+            }
         }
 
-        public void ExcepcionFechasCorrectas()
+        public void ExcepcionFechasIncorrectas(Proyeccion proyeccion)
         {
-
+            if (proyeccion.Inicio > proyeccion.Fin)
+            {
+                throw new VeronicaException($"La fecha de fin debe ser posterior a la fecha de inicio");
+            }
         }
+        #endregion
     }
 }

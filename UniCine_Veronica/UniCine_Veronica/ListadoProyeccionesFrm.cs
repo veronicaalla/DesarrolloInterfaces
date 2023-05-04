@@ -119,6 +119,7 @@ namespace UniCine_Veronica
 
         private void NuevaProyeccion()
         {
+            try { 
             Proyeccion nuevo = new Proyeccion();
             ProyeccionesFrm ventanaProyeccion = new ProyeccionesFrm(nuevo);
             if (ventanaProyeccion.ShowDialog() == DialogResult.OK)
@@ -126,30 +127,38 @@ namespace UniCine_Veronica
                 negocio.CrearProyeccion(nuevo);
                 RefrescarLista();
             }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void VerProyeccion()
         {
-
-            //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
-            //Por lo tanto no nos hace falta hacer un foreach;
-
-            string[] claves = ((string)this.lvProyecciones.SelectedItems[0].Tag).Split(' ');
-
-            Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(claves[0]), Int32.Parse(claves[1]), DateTime.Parse(claves[2]));
-
-            #region prueba de dictionary
-            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(clavesProyecciones["Pelicula"]), Int32.Parse(clavesProyecciones["Sesion"]), DateTime.Parse(clavesProyecciones["Fecha"]));
-            //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Tag.)
-            #endregion
-            ProyeccionesFrm infoProyeccion = new ProyeccionesFrm(proyeccionSeleccionada);
-
-            if (infoProyeccion.ShowDialog() == DialogResult.OK)
+            try
             {
-                negocio.ModificarProyeccion(proyeccionSeleccionada);
-                RefrescarLista();
-            }
+                //En el opening nos hemos asegurado de que solo haya un elemento seleccionado
+                //Por lo tanto no nos hace falta hacer un foreach;
 
+                string[] claves = ((string)this.lvProyecciones.SelectedItems[0].Tag).Split(' ');
+
+                Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(claves[0]), Int32.Parse(claves[1]), DateTime.Parse(claves[2]));
+
+                #region prueba de dictionary
+                //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Int32.Parse(clavesProyecciones["Pelicula"]), Int32.Parse(clavesProyecciones["Sesion"]), DateTime.Parse(clavesProyecciones["Fecha"]));
+                //Proyeccion proyeccionSeleccionada = negocio.BuscarProyeccion(Tag.)
+                #endregion
+                ProyeccionesFrm infoProyeccion = new ProyeccionesFrm(proyeccionSeleccionada);
+
+                if (infoProyeccion.ShowDialog() == DialogResult.OK)
+                {
+                    negocio.ModificarProyeccion(proyeccionSeleccionada);
+                    RefrescarLista();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             #region Dictionary
             /*Probar hacerlo mediante Dictionary
              * //inicialización y crear a valores
