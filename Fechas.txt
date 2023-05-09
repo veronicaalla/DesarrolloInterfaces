@@ -3,3 +3,8 @@ int a, b
 a + b
 d2-d1 = TimeSpan /.Minutes	.Hour	....
 
+
+
+
+//------------- TEXTBOX CON FECHA FORMATEADA ----------------
+
