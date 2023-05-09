@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace UniCine_Veronica
 {
-    internal class Herramientas
+    public class Herramientas
     {
-         UniCineContext db = new UniCineContext();
+        UniCineContext db = new UniCineContext();
         static Negocio negocio = new Negocio();
 
         public Herramientas(UniCineContext db)
         {
             this.db = db;
         }
+
         public static string[] ObtenerSalas()
         {
+            UniCineContext db = new UniCineContext();
             var query = from s in db.Sesiones
                         orderby s.Sala
                         select s.Sala;
@@ -32,7 +34,7 @@ namespace UniCine_Veronica
 
             List<Sesion> sesionesAsociadas = new List<Sesion>();
             proyeccionesAsociadas.ForEach(p => { sesionesAsociadas.Add(negocio.BuscarSesion(p.SesionId)); });
-            
+
             return sesionesAsociadas;
         }
 
@@ -43,7 +45,7 @@ namespace UniCine_Veronica
 
             List<Pelicula> peliculasAsociadas = new List<Pelicula>();
             proyeccionesAsociadas.ForEach(p => peliculasAsociadas.Add(negocio.BuscarPelicula(p.PeliculaId)));
-            
+
             return peliculasAsociadas;
         }
 
