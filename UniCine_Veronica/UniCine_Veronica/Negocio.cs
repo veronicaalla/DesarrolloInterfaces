@@ -11,38 +11,45 @@ namespace UniCine_Veronica
     internal class Negocio
     {//Instanciamos la clase con la conexion para tener acceso a la bbdd
 
-        static UniCineContext db = new UniCineContext();
+         //UniCineContext db = new UniCineContext();
 
         public Negocio()
         {
         }
 
+        
+
         // MÉTODOS PARA LAS PELICULAS
         public Pelicula[] obtenerPeliculas()
         {
+            UniCineContext db = new UniCineContext();
             return db.Peliculas.ToArray();
         }
 
 
         public void CrearPelicula(Pelicula pelicula)
         {
+            UniCineContext db = new UniCineContext();
             db.Peliculas.Add(pelicula);
             db.SaveChanges();
         }
 
         public Pelicula BuscarPelicula(int id)
         {
+            UniCineContext db = new UniCineContext();
             return db.Peliculas.FirstOrDefault(x => x.PeliculaId == id);
         }
 
 
         public Pelicula buscarPeliculaPorNombre(string nombre)
         {
+            UniCineContext db = new UniCineContext();
             return db.Peliculas.FirstOrDefault(x => x.Nombre.Equals(nombre));
         }
 
         public void BorrarPelicula(int id)
         {
+            UniCineContext db = new UniCineContext();
             //Lanzamos la excepcion de negocio
             ExcepcionPeliculaProyeccionAsociadas(id);
 
@@ -52,6 +59,7 @@ namespace UniCine_Veronica
 
         public void ModificarPelicula(Pelicula pelicula)
         {
+            UniCineContext db = new UniCineContext();
             ExcepcionDuracionNecesaria(pelicula);
             // db.Entry(db.Peliculas.FirstOrDefault(x => x.PeliculaId == pelicula.PeliculaId)).CurrentValues.SetValues(pelicula);
             Pelicula peliculaBD = db.Peliculas.FirstOrDefault(x => x.PeliculaId == pelicula.PeliculaId);
@@ -66,22 +74,26 @@ namespace UniCine_Veronica
         // METODOS PARA LAS SESIONES
         public Sesion[] obtenerSesiones()
         {
+            UniCineContext db = new UniCineContext();
             return db.Sesiones.ToArray();
         }
 
         public void CrearSesion(Sesion sesion)
         {
+            UniCineContext db = new UniCineContext();
             db.Sesiones.Add(sesion);
             db.SaveChanges();
         }
 
         public Sesion BuscarSesion(int id)
         {
+            UniCineContext db = new UniCineContext();
             return db.Sesiones.FirstOrDefault(x => x.SesionId == id);
         }
 
         public void BorrarSesion(int id)
         {
+            UniCineContext db = new UniCineContext();
             ExcepcionSesionProyeccionesAsociadas(id);
             db.Sesiones.Remove(BuscarSesion(id));
             db.SaveChanges();
@@ -89,6 +101,7 @@ namespace UniCine_Veronica
 
         public void ModificarSesion(Sesion sesionModificado)
         {
+            UniCineContext db = new UniCineContext();
             //Lanzamos excepcion de negocio
             ExcepcionTiempoSesionMayorPeli(sesionModificado);
             Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
@@ -105,11 +118,13 @@ namespace UniCine_Veronica
         // METODOS PARA LAS PROYECCIONES
         public Proyeccion[] obtenerProyecciones()
         {
+            UniCineContext db = new UniCineContext();
             return db.Proyecciones.ToArray();
         }
 
         public void CrearProyeccion(Proyeccion proyeccion)
         {
+            UniCineContext db = new UniCineContext();
             ExcepcionDuracionPeliMenorSesion(proyeccion);
             ExcepcionProyeccionSolapada(proyeccion);
             ExcepcionFechasIncorrectas(proyeccion);
@@ -119,12 +134,14 @@ namespace UniCine_Veronica
 
         public Proyeccion BuscarProyeccion(int idPelicula, int idSesion, DateTime fecha)
         {
+            UniCineContext db = new UniCineContext();
             return db.Proyecciones.FirstOrDefault(x => x.PeliculaId == idPelicula && x.SesionId == idSesion && x.Inicio == fecha);
         }
 
 
         public void BorrarProyeccion(int idPelicula, int idSesion, DateTime fecha)
         {
+            UniCineContext db = new UniCineContext();
             db.Proyecciones.Remove(BuscarProyeccion(idPelicula, idSesion, fecha));
             db.SaveChanges();
         }
@@ -133,6 +150,7 @@ namespace UniCine_Veronica
 
         public void ModificarProyeccion(Proyeccion proyeccionModificada)
         {
+            UniCineContext db = new UniCineContext();
             ExcepcionDuracionPeliMenorSesion(proyeccionModificada);
             ExcepcionFechasIncorrectas(proyeccionModificada);
             Proyeccion proyeccionDB = db.Proyecciones.FirstOrDefault(x => x.PeliculaId == proyeccionModificada.SesionId
@@ -163,6 +181,7 @@ namespace UniCine_Veronica
 
         public void ExcepcionDuracionNecesaria(Pelicula pelicula)
         {
+            UniCineContext db = new UniCineContext();
             List<Sesion> listaSesionesAsociadas = Herramientas.SesionesAsociadasAPelicula(pelicula);
             // List<string> salas = new List<string>();
             int num = 0;
@@ -235,6 +254,7 @@ namespace UniCine_Veronica
 
         public void ExcepcionProyeccionSolapada(Proyeccion proyeccion)
         {
+            UniCineContext db = new UniCineContext();
             if (db.Proyecciones.Any(p => p.SesionId == proyeccion.SesionId && p.Inicio == proyeccion.Inicio))
             {
                 throw new VeronicaException($"Ya existe una proyeccion son la misma sesion y fecha");

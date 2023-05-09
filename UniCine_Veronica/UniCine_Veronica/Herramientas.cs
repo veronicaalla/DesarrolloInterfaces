@@ -8,8 +8,13 @@ namespace UniCine_Veronica
 {
     internal class Herramientas
     {
-        static UniCineContext db = new UniCineContext();
+         UniCineContext db = new UniCineContext();
         static Negocio negocio = new Negocio();
+
+        public Herramientas(UniCineContext db)
+        {
+            this.db = db;
+        }
         public static string[] ObtenerSalas()
         {
             var query = from s in db.Sesiones
@@ -21,7 +26,7 @@ namespace UniCine_Veronica
 
         public static List<Sesion> SesionesAsociadasAPelicula(Pelicula pelicula)
         {
-
+            UniCineContext db = new UniCineContext();
 
             List<Proyeccion> proyeccionesAsociadas = db.Proyecciones.Where(p => p.PeliculaId == pelicula.PeliculaId).ToList();
 
@@ -33,6 +38,7 @@ namespace UniCine_Veronica
 
         public static List<Pelicula> PeliculasAsociadasASesion(Sesion sesion)
         {
+            UniCineContext db = new UniCineContext();
             List<Proyeccion> proyeccionesAsociadas = db.Proyecciones.Where(p => p.SesionId == sesion.SesionId).ToList();
 
             List<Pelicula> peliculasAsociadas = new List<Pelicula>();
@@ -43,7 +49,7 @@ namespace UniCine_Veronica
 
         public static List<Sesion> ObtenerSesionesFiltrado(string filtroDia, string filtroSala)
         {
-
+            UniCineContext db = new UniCineContext();
             if (filtroDia.Equals("TODOS") && filtroSala.Equals("TODAS"))
             {
                 return db.Sesiones.ToList();
@@ -65,6 +71,7 @@ namespace UniCine_Veronica
 
         internal static List<Pelicula> ObtenerPeliculasFiltradas(string genero, string categoria)
         {
+            UniCineContext db = new UniCineContext();
             if (genero.Equals("Todos") && categoria.Equals("Todas"))
             {
                 return db.Peliculas.ToList();
