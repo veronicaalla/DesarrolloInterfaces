@@ -1,0 +1,12 @@
+ foreach (Form form in Application.OpenForms)
+            {
+                if (typeof(DatosDesarrolladorFrm) == form.GetType())
+                {
+                    form.Activate(); //Nos muestra por formulario 
+                    return;
+                }
+            }
+
+            DatosDesarrolladorFrm infoDesarrollador = new DatosDesarrolladorFrm();
+            infoDesarrollador.MdiParent = this;
+            infoDesarrollador.Show();

@@ -1,0 +1,5 @@
+Asiganamos un valor por defecto para evitar posibles errores -> cmbSituacion.SelectedIndex = 0;
+
+Para seleccionar el valor de cmb una vez ha sido pasado el valor de un Objeto -> cmbSituacion.SelectedIndex = cmbSituacion.FindString("_____");
+
+Pasar el texto del cmb -> cmbSituacion.Text

@@ -1,0 +1,19 @@
+ private void BtnNumeros_Click(object sender, EventArgs e)
+        {
+            if (txtVisor.Text == "0")
+            {
+                txtVisor.Text = string.Empty;
+                txtVisor.Text = ((Button)sender).Tag.ToString();
+                _calculadora.Visor = float.Parse(txtVisor.Text);
+                return;
+            }
+
+            txtVisor.Text += ((Button)sender).Tag.ToString();
+            _calculadora.Visor = float.Parse(txtVisor.Text);
+        }
+
+
+-----------------------------------------------------------------------------------
+
+Seleccionamos todos y pedimos el método Click
+Almacenamos en el Tag los valores de botones 

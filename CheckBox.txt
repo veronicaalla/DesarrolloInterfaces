@@ -1,0 +1,1 @@
+GroupBox, dentro añadimos el CheckBox

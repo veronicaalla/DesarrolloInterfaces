@@ -164,6 +164,7 @@
             this.chkOtros.Text = "Otros";
             this.chkOtros.UseVisualStyleBackColor = true;
             this.chkOtros.CheckedChanged += new System.EventHandler(this.chkOtros_CheckedChanged);
+            this.chkOtros.EnabledChanged += new System.EventHandler(this.chkOtros_EnabledChanged);
             // 
             // chkLectura
             // 
@@ -175,6 +176,7 @@
             this.chkLectura.Tag = "Lectura";
             this.chkLectura.Text = "Lectura";
             this.chkLectura.UseVisualStyleBackColor = true;
+            this.chkLectura.EnabledChanged += new System.EventHandler(this.chkOtros_EnabledChanged);
             // 
             // chkMusica
             // 
@@ -186,6 +188,7 @@
             this.chkMusica.Tag = "Musica";
             this.chkMusica.Text = "Musica";
             this.chkMusica.UseVisualStyleBackColor = true;
+            this.chkMusica.EnabledChanged += new System.EventHandler(this.chkOtros_EnabledChanged);
             // 
             // chkDeportes
             // 
@@ -197,6 +200,7 @@
             this.chkDeportes.Tag = "Deportes";
             this.chkDeportes.Text = "Deportes";
             this.chkDeportes.UseVisualStyleBackColor = true;
+            this.chkDeportes.EnabledChanged += new System.EventHandler(this.chkOtros_EnabledChanged);
             // 
             // label4
             // 
@@ -245,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 403);
+            this.ClientSize = new System.Drawing.Size(386, 527);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.cmbSituacion);

@@ -22,6 +22,9 @@ namespace UT2E2_Veronica
             InitializeComponent();
             socio = new Socio();
             txtAficciones.Enabled = false;
+            //Le damos al cmb un valor por defecto 
+            cmbSituacion.SelectedIndex = 0;
+
         }
 
         //Vaciamos todos los campos
@@ -32,7 +35,8 @@ namespace UT2E2_Veronica
             txtAficciones.Text = string.Empty;
             VaciarAficines();
             ReiniciarSexo();
-            //Como hago para el comboBox
+            //Le volvemos asignar el valor por defecto
+            cmbSituacion.SelectedIndex = 0;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -43,7 +47,7 @@ namespace UT2E2_Veronica
                 socio.FechaNacimiento = dtpNacimiento.Value;
                 socio.Sexo = sexo;
                 socio.Aficiones = aficiones;
-                socio.OtrasAficiones = txtAficciones.Text;
+                 txtAficciones.Text = socio.OtrasAficiones =
                 socio.Situación = cmbSituacion.Text;
 
                 Resumen resumen = new Resumen(socio);
@@ -68,7 +72,7 @@ namespace UT2E2_Veronica
             }
             if (string.IsNullOrWhiteSpace(cmbSituacion.Text))
             {
-                MessageBox.Show("La situacion no puede estar vacia", "ERROR" ,MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La situacion no puede estar vacia", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbSituacion.Focus();
                 return false;
             }
@@ -77,7 +81,7 @@ namespace UT2E2_Veronica
 
         private void rbSexo_CheckedChanged(object sender, EventArgs e)
         {
-           RadioButton rb = (RadioButton)sender;
+            RadioButton rb = (RadioButton)sender;
             sexo = rb.Text;
         }
 
@@ -108,5 +112,14 @@ namespace UT2E2_Veronica
             rbOtros.Checked = false;
         }
 
+        private void chkOtros_EnabledChanged(object sender, EventArgs e)
+        {
+           if (!chkOtros.Checked)
+            {
+                txtAficciones.Text = string.Empty;
+                txtAficciones.Enabled = false;
+            }
+        }
+       
     }
 }
