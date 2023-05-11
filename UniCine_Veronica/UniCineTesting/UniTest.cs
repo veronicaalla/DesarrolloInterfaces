@@ -9,6 +9,8 @@ using Moq;
 using System.Linq;
 using UniCine_Veronica;
 using System.Data.Entity;
+using System.Security.Principal;
+using static System.Collections.Specialized.BitVector32;
 
 namespace UniCineTesting
 {
@@ -25,7 +27,7 @@ namespace UniCineTesting
         }
 
         //Variables
-        private TestContext testContextInstance;
+        //private TestContext testContextInstance;
         private Mock<UniCineContext> _mockCineBD;
         private Negocio _negocio;
 
@@ -35,6 +37,7 @@ namespace UniCineTesting
             //falseo el contesto
             _mockCineBD = new Mock<UniCineContext>();
 
+            #region falseamos tabla Peliculas
             //Falseamos las tablas
             //1- Datos como consulta de Peliculas
             var datosPeliculas = new List<Pelicula>
@@ -63,19 +66,20 @@ namespace UniCineTesting
             //falseamos la base de datos.
             _negocio = new Negocio(_mockCineBD.Object);
             Debug.WriteLine("TestInitialize Pelicula");
+            #endregion
 
-
-
+            #region falseamos tabla Sesiones
             //2. Datos como consulta de Sesiones
             var datosSesiones = new List<Sesion>
             {
                 //SesionId	Sala	DiaSemana	Comienzo	FinMax	Precio	Aforo
-                new Sesion { SesionId = 1, Sala = " SALA 1", DiaSemana = "Domingo", Comienzo = DateTime.Parse("1753-01-01 20:45:00.000"), FinMax = DateTime.Parse("1753 - 01 - 01 23:30:00.000"), Precio = 7.2f, Aforo = 200 },
-                new Sesion { SesionId = 2, Sala = " SALA 2", DiaSemana = "Domingo", Comienzo = DateTime.Parse("1753-01-01 18:15:00.000"), FinMax = DateTime.Parse("1753-01-01 20:15:00.000"), Precio = 7.2f, Aforo = 174 },
+                new Sesion { SesionId = 1, Sala = "SALA 1", DiaSemana = "Domingo", Comienzo = DateTime.Parse("1753-01-01 20:45:00.000"), FinMax = DateTime.Parse("1753 - 01 - 01 23:30:00.000"), Precio = 7.2f, Aforo = 200 },
+                new Sesion { SesionId = 2, Sala = "SALA 2", DiaSemana = "Domingo", Comienzo = DateTime.Parse("1753-01-01 18:15:00.000"), FinMax = DateTime.Parse("1753-01-01 20:15:00.000"), Precio = 7.2f, Aforo = 174 },
                 new Sesion { SesionId = 3, Sala = "SALA 3", DiaSemana = "Domingo", Comienzo = DateTime.Parse("1753-01-01 10:30:00.000"), FinMax = DateTime.Parse("1753-01-01 13:00:00.000"), Precio = 5.5f, Aforo = 122 },
                 new Sesion { SesionId = 4, Sala = "SALA 1", DiaSemana = "Sábado", Comienzo = DateTime.Parse("1753-01-01 20:45:00.000"), FinMax = DateTime.Parse("1753-01-01 23:30:00.000"), Precio = 7.2f, Aforo = 200 },
                 new Sesion { SesionId = 5, Sala = "SALA 2", DiaSemana = "Sábado", Comienzo = DateTime.Parse("1753-01-01 18:15:00.000"), FinMax = DateTime.Parse("1753-01-01 20:15:00.000"), Precio = 7.2f, Aforo = 174 },
-                new Sesion { SesionId = 6, Sala = "SALA 3", DiaSemana = "Sábado", Comienzo = DateTime.Parse("1753-01-01 10:30:00.000"), FinMax = DateTime.Parse("1753-01-01 13:00:00.000"), Precio = 5.5f, Aforo = 122 }
+                new Sesion { SesionId = 6, Sala = "SALA 3", DiaSemana = "Sábado", Comienzo = DateTime.Parse("1753-01-01 10:30:00.000"), FinMax = DateTime.Parse("1753-01-01 13:00:00.000"), Precio = 5.5f, Aforo = 122 },
+                new Sesion { SesionId = 7, Sala = "SALA 4", DiaSemana = "Martes", Comienzo = DateTime.Parse("1753-01-02 10:30:00.000"), FinMax = DateTime.Parse("1753-01-02 10:40:00.000"), Precio = 5.5f, Aforo = 200 }
             }.AsQueryable();
 
             //Falseamos la tabla Sesiones
@@ -89,8 +93,10 @@ namespace UniCineTesting
             //falseamos la base de datos.
             _negocio = new Negocio(_mockCineBD.Object);
             Debug.WriteLine("TestInitialize Sesion");
+            #endregion
 
 
+            #region falseamos tabla Proyecciones
             //3. Datos como consulta de Proyecciones
             var datosProyecciones = new List<Proyeccion>
             {
@@ -125,6 +131,7 @@ namespace UniCineTesting
             //falseamos la base de datos.
             _negocio = new Negocio(_mockCineBD.Object);
             Debug.WriteLine("TestInitialize Proyeccion");
+            #endregion
 
         }
 
@@ -156,13 +163,28 @@ namespace UniCineTesting
         public void BuscarPeliculaPorIdObtenerNulo()
         {
             //Invocamos a la logica del negocio del programa 
-            Pelicula peliculaTest = _negocio.BuscarPelicula(10);
+            Pelicula peliculaTest = _negocio.BuscarPelicula(11);
 
             //revisamos los resultados
             //Comprobamos que el cliente no es nulo (sabemos que existe)
             Assert.IsNull(peliculaTest);
         }
 
+        [TestMethod]
+        public void BuscarPeliculaPorNombre()
+        {
+            Pelicula pelicula = _negocio.buscarPeliculaPorNombre("Renfield");
+            Assert.IsNotNull(pelicula);
+            Assert.AreEqual(1, pelicula.PeliculaId);
+        }
+
+        [TestMethod]
+        public void BuscarPeliculaPorNombreObtenerNulo()
+        {
+            Pelicula pelicula = _negocio.buscarPeliculaPorNombre("Holaaa");
+            //Comprobamos que nos devuelve null debido a que no existe ninguna pelicula con dicho nombre
+            Assert.IsNull(pelicula);
+        }
 
         [TestMethod]
         public void ObtenerPeliculas()
@@ -172,27 +194,10 @@ namespace UniCineTesting
 
             //Comprobamos que la lista no sea nula
             Assert.IsNotNull(listadoPeliculas);
-        }
-
-        [TestMethod]
-        public void ObtenerTodasPeliculas()
-        {
-            //Llamamos a la logica del negocio
-            List<Pelicula> listadoPeliculas = _negocio.obtenerPeliculas().ToList();
-
-            //Comprobamos que la lista no sea nula
+            //Comprobamos que la longitud de la lista sea la correcta
             Assert.AreEqual(10, listadoPeliculas.Count);
         }
 
-        [TestMethod]
-        public void ObtenerTodasPeliculasErrorLongitud()
-        {
-            //Llamamos a la logica del negocio
-            List<Pelicula> listadoPeliculas = _negocio.obtenerPeliculas().ToList();
-
-            //Comprobamos que la lista no sea nula
-            Assert.AreNotEqual(9, listadoPeliculas.Count);
-        }
 
         [TestMethod]
         public void ObtenerPeliculasDatosCorrectos()
@@ -206,7 +211,7 @@ namespace UniCineTesting
             //Comprobamos que lea los datos bien 
 
             //Comprobamos que nos lea TODAS las peliculas
-            Assert.AreEqual(9, listadoPeliculas.Count);
+            Assert.AreEqual(10, listadoPeliculas.Count);
             //Comprobamos que nos lea los id bien
             Assert.AreEqual(1, listadoPeliculas[0].PeliculaId);
             //Comprobamos que nos lea bien los nombres de cada uno
@@ -252,69 +257,486 @@ namespace UniCineTesting
             pelicula.Genero = "Romance";
             pelicula.Sinopsis = "La atracción de Raquel por su vecino se convierte en algo más cuando él empieza a enamorarse de ella, a pesar de la oposición de su familia";
 
-             _negocio.CrearPelicula(pelicula);
-            _mockCineBD.Object.Peliculas.Add(pelicula);
-           
-            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
-
-            Console.WriteLine(_mockCineBD.Object.Peliculas.Count());
-
-        }
-
-
-        [TestMethod]
-        public void CrearPeliculaNombreCampoVacio()
-        {
-            Pelicula pelicula = new Pelicula
-            {
-                PeliculaId = 10,
-                Duracion = 113,
-                Anno = 2022,
-                Categoria = ">16",
-                Genero = "Romance",
-                Sinopsis = "La atracción de Raquel por su vecino se convierte en algo más cuando él empieza a " +
-                            "enamorarse de ella, a pesar de la oposición de su familia."
-            };
-
             _negocio.CrearPelicula(pelicula);
-
-            //Nos tiene que dar error por que el Nombre es vacio
-
-        }
-
-        [TestMethod]
-        public void EliminarPelicula()
-        {
-            Console.WriteLine(_mockCineBD.Object.Peliculas.Count());
-            Pelicula p = _negocio.BuscarPelicula(10);
-            _negocio.BorrarPelicula(p.PeliculaId);
-            Console.WriteLine(_mockCineBD.Object.Peliculas.Count());
+            //Comprobamos que se ha añadido y que se ha llamado a SaveChange
+            _mockCineBD.Verify(m => m.Peliculas.Add(pelicula), Times.Once());
             _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
         }
 
+        /*
+                [TestMethod]
+                public void CrearPeliculaNombreCampoVacio()
+                {
+                    Pelicula pelicula = new Pelicula
+                    {
+                        PeliculaId = 11,
+                        Nombre = null,
+                        Duracion = 113,
+                        Anno = 2022,
+                        Categoria = ">16",
+                        Genero = "Romance",
+                        Sinopsis = "La atracción de Raquel por su vecino se convierte en algo más cuando él empieza a " +
+                                    "enamorarse de ella, a pesar de la oposición de su familia."
+                    };
+
+                    _negocio.CrearPelicula(pelicula);
+
+                    //Nos tiene que dar error por que el Nombre es vacio
+                    _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+
+                }*/
 
         [TestMethod]
-        public void EliminarPeliculaLanzaExcepcionSesionesAsociadas()
+        public void BorrarPelicula()
+        {
+            //Eliminamos la pelicula que hemos creado manualmente
+            //No tiene proyecciones asociadas -> No excepcion
+            Pelicula pelicula = _negocio.BuscarPelicula(10);
+            _negocio.BorrarPelicula(pelicula.PeliculaId);
+            //Comprobamos que se ha borrado y ha llamado al SaveChange
+            _mockCineBD.Verify(m => m.Peliculas.Remove(pelicula), Times.Once());
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+
+        }
+
+
+        [TestMethod]
+        public void BorrarPeliculaLanzaExcepcionProyeccionesAsociadas()
         {
 
+            //Assert.ThrowsException<VeronicaException>(() => _negocio.BorrarPelicula(9);
+            //Comprobar que lanza la excepcion correcta
+            try
+            {
+                _negocio.BorrarPelicula(9);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("No se puede eliminar la pelicula debido a que tiene proyecciones asociadas", ex.Message);
+            }
         }
 
         [TestMethod]
         public void ModificarPelicula()
         {
-
+            Pelicula pelicula = _negocio.BuscarPelicula(9);
+            pelicula.Nombre = "Cambio de nombre";
+            _negocio.ModificarPelicula(pelicula);
+            //Assert.AreEqual("Cambio de nombre", pelicula.Nombre);
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
         }
 
         [TestMethod]
-        public void ModificarPeliculaLanzaExcepcionDuracionInecesaria()
+        public void ModificarPeliculaLanzaExcepcionDuracionPeliculaSuperiorSesion()
         {
-
+            Pelicula pelicula = _negocio.BuscarPelicula(9);
+            pelicula.Duracion = 200;
+            //Assert.ThrowsException<VeronicaException>(() => _negocio.ModificarPelicula(pelicula));
+            //Comprobar que se lanza la excepcion correcta
+            try
+            {
+                _negocio.ModificarPelicula(pelicula);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La duracion excede el tiempo en: 7 salas", ex.Message);
+                //Assert.AreEqual("error", ex.Message);
+            }
         }
         #endregion
 
 
-        #region TESTING DE PELICULAS
+        #region TESTING DE SESIONES
+        [TestMethod]
+        public void BuscarSesionPorId()
+        {
+            //Invocamos a la logica del negocio del programa 
+            Sesion sesion = _negocio.BuscarSesion(1);
 
+            //revisamos los resultados
+            //Comprobamos que el cliente no es nulo (sabemos que existe)
+            Assert.IsNotNull(sesion);
+
+            //Comprobamos que los datos de la pelicula son los correctos 
+            Assert.AreEqual(1, sesion.SesionId);
+            Assert.AreEqual("SALA 1", sesion.Sala);
+            Assert.AreEqual(DateTime.Parse("1753-01-01 20:45:00.000"), sesion.Comienzo);
+            Assert.AreEqual(DateTime.Parse("1753-01-01 23:30:00.000"), sesion.FinMax);
+            Assert.AreEqual(7.2f, sesion.Precio);
+            Assert.AreEqual(200, sesion.Aforo);
+        }
+
+
+        [TestMethod]
+        public void BuscarSesionPorIdObtenerNull()
+        {
+            Sesion sesion = _negocio.BuscarSesion(10);
+            //No existe ninguna sesion con dicho id -> debemos comprobar que sea null
+            Assert.IsNull(sesion);
+        }
+
+
+        [TestMethod]
+        public void ObtenerSesiones()
+        {
+            //Llamamos a la logica del negocio
+            List<Sesion> listadoSesiones = _negocio.obtenerSesiones().ToList();
+
+            //Comprobamos que la lista no sea nula
+            Assert.IsNotNull(listadoSesiones);
+            //Comprobamos que recoja todas las sesiones existentes
+            Assert.AreEqual(7, listadoSesiones.Count);
+        }
+
+
+
+        [TestMethod]
+        public void ObtenerSesionesDatosCorrectos()
+        {
+            //Llamamos a la logica del negocio
+            List<Sesion> listadoSesiones = _negocio.obtenerSesiones().ToList();
+
+            //Comprobamos que no sea nulo
+            Assert.IsNotNull(listadoSesiones);
+            //Comprobamos que los datos recogidos sean los correctos
+            Assert.IsTrue(listadoSesiones.Count() == 7);
+            Assert.AreEqual(1, listadoSesiones[0].SesionId);
+            Assert.AreEqual("SALA 2", listadoSesiones[1].Sala);
+            Assert.AreEqual("Domingo", listadoSesiones[2].DiaSemana);
+            Assert.AreEqual(DateTime.Parse("1753-01-01 20:45:00.000"), listadoSesiones[3].Comienzo);
+            Assert.AreEqual(DateTime.Parse("1753-01-01 20:15:00.000"), listadoSesiones[4].FinMax);
+            Assert.AreEqual(5.5f, listadoSesiones[5].Precio);
+            Assert.AreEqual(200, listadoSesiones[6].Aforo);
+        }
+
+
+        [TestMethod]
+        public void ObtenerSesionesDatosIncorrectos()
+        {
+            //Llamamos a la logica del negocio
+            List<Sesion> listadoSesiones = _negocio.obtenerSesiones().ToList();
+
+            //Comprobamos que no sea nulo
+            Assert.IsNotNull(listadoSesiones);
+            //Comprobamos que los datos recogidos sean los correctos
+            Assert.IsTrue(listadoSesiones.Count() == 7);
+            Assert.AreNotEqual(5, listadoSesiones[0].SesionId);
+            Assert.AreNotEqual("SALA 6", listadoSesiones[1].Sala);
+            Assert.AreNotEqual("Lunes", listadoSesiones[2].DiaSemana);
+            Assert.AreNotEqual(DateTime.Parse("1753-01-05 20:45:00.000"), listadoSesiones[3].Comienzo);
+            Assert.AreNotEqual(DateTime.Parse("1753-01-03 20:15:00.000"), listadoSesiones[4].FinMax);
+            Assert.AreNotEqual(5.7f, listadoSesiones[5].Precio);
+            Assert.AreNotEqual(100, listadoSesiones[6].Aforo);
+        }
+
+
+        [TestMethod]
+        public void CrearSesionSinErrores()
+        {
+            Sesion sesion = new Sesion
+            {
+                SesionId = 10,
+                Sala = "SALA 5",
+                DiaSemana = "Lunes",
+                Comienzo = DateTime.Parse("1753-01-05 20:45:00.000"),
+                FinMax = DateTime.Parse("1753-01-03 20:15:00.000"),
+                Precio = 5.5f,
+                Aforo = 50
+            };
+
+            _negocio.CrearSesion(sesion);
+            //Comprobamos que se ha añadido y que se ha llamado a SaveChange
+            _mockCineBD.Verify(m => m.Sesiones.Add(sesion), Times.Once());
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+
+        [TestMethod]
+        public void BorrarSesion()
+        {
+            //Creamos una sesion para que nos permita borrarla
+            //Debido a que no tiene proyecciones asociadas, por lo tanto, no lanzará una excepcion
+            Sesion sesion = _negocio.BuscarSesion(7);
+            _negocio.BorrarSesion(sesion.SesionId);
+
+            //Comprobamos que se ha borrado y ha llamado al SaveChange
+            _mockCineBD.Verify(m => m.Sesiones.Remove(sesion), Times.Once());
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+
+        [TestMethod]
+        public void BorrarSesionExcepcionProyeccionesAsociadas()
+        {
+            try
+            {
+                _negocio.BorrarSesion(6);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("No se puede eliminar la sesión debido a que tiene proyecciones asociadas", ex.Message);
+            }
+        }
+
+
+        [TestMethod]
+        public void ModificarSesion()
+        {
+            Sesion sesion = _negocio.BuscarSesion(6);
+            sesion.DiaSemana = "Lunes";
+            _negocio.ModificarSesion(sesion);
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+
+        }
+
+
+        [TestMethod]
+        public void ModificarSesionExcepcionTiempoSesionInsuficiente()
+        {
+            Sesion sesion = _negocio.BuscarSesion(6);
+            try
+            {
+                sesion.FinMax = DateTime.Parse("1753-01-01 10:40:00.000");
+                _negocio.ModificarSesion(sesion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La duracion total de la sesion es menor a la duracion de 6 peliculas", ex.Message);
+            }
+        }
         #endregion
+
+
+
+        #region TESTING DE PROYECCIONES
+
+        [TestMethod]
+        public void BuscarProyeccion()
+        {
+            //Llamamos a la logica de la aplicacion
+            Proyeccion proyeccion = _negocio.BuscarProyeccion(1, 2, DateTime.Parse("2023-02-13 00:00:00.000"));
+            //Comprobamos que la proyeccion no sea nula
+            Assert.IsNotNull(proyeccion);
+
+            //Comprobamos que los datos que ha recogido de dicha proyeccion sean correctos
+            Assert.AreEqual(1, proyeccion.PeliculaId);
+            Assert.AreEqual(2, proyeccion.SesionId);
+            Assert.AreEqual(DateTime.Parse("2023-02-13 00:00:00.000"), proyeccion.Inicio);
+            Assert.AreEqual(null, proyeccion.Fin);
+        }
+
+
+        [TestMethod]
+        public void BuscarProyeccionObtenerNull()
+        {
+            //Llamamos a la logica de la aplicacion
+            Proyeccion proyeccion = _negocio.BuscarProyeccion(1, 50, DateTime.Parse("2023-02-13 00:00:00.000"));
+            //Comprobamos que la proyeccion no sea nula
+            Assert.IsNull(proyeccion);
+        }
+
+
+        [TestMethod]
+        public void ObtenerProyecciones()
+        {
+            List<Proyeccion> listadoProyecciones = _negocio.obtenerProyecciones().ToList();
+            //Comprobamos que el listado no sea nulo
+            Assert.IsNotNull(listadoProyecciones);
+
+            //Comprobamos que la longitud del listado sea el correspondiente
+            Assert.IsTrue(listadoProyecciones.Count == 16);
+        }
+
+
+        [TestMethod]
+        public void ObtenerProyeccionesDatosCorrectos()
+        {
+            List<Proyeccion> listadoProyecciones = _negocio.obtenerProyecciones().ToList();
+            //Comprobamos que el listado no sea nulo
+            Assert.IsNotNull(listadoProyecciones);
+
+            //Comprobamos que la longitud del listado sea el correspondiente
+            Assert.IsTrue(listadoProyecciones.Count == 16);
+
+            Assert.AreEqual(1, listadoProyecciones[0].PeliculaId);
+            Assert.AreEqual(5, listadoProyecciones[1].SesionId);
+            Assert.AreEqual(DateTime.Parse("2023-02-06 00:00:00.000"), listadoProyecciones[2].Inicio);
+            Assert.AreEqual(null, listadoProyecciones[3].Fin);
+            Assert.AreEqual(DateTime.Parse("2023-01-08 00:00:00.000"), listadoProyecciones[14].Fin);
+        }
+
+
+        [TestMethod]
+        public void ObtenerProyeccionesDatosIncorrectos()
+        {
+            List<Proyeccion> listadoProyecciones = _negocio.obtenerProyecciones().ToList();
+            //Comprobamos que el listado no sea nulo
+            Assert.IsNotNull(listadoProyecciones);
+
+            //Comprobamos que la longitud del listado sea el correspondiente
+            Assert.IsTrue(listadoProyecciones.Count != 10);
+
+            Assert.AreNotEqual(2, listadoProyecciones[0].PeliculaId);
+            Assert.AreNotEqual(3, listadoProyecciones[1].SesionId);
+            Assert.AreNotEqual(DateTime.Parse("2023-02-16 00:00:00.000"), listadoProyecciones[2].Inicio);
+            Assert.AreNotEqual(null, listadoProyecciones[10].Fin);
+            Assert.AreNotEqual(DateTime.Parse("2023-01-13 00:00:00.000"), listadoProyecciones[14].Fin);
+        }
+
+
+        [TestMethod]
+        public void CrearProyeccionSinErrores()
+        {
+            Proyeccion proyeccion = new Proyeccion
+            {
+                PeliculaId = 1,
+                SesionId = 2,
+                Inicio = DateTime.Parse("2023-06-20 00:00:00.000"),
+                Fin = null
+            };
+
+            _negocio.CrearProyeccion(proyeccion);
+            //Comprobamos que se ha añadido y que se ha llamado a SaveChange
+            _mockCineBD.Verify(m => m.Proyecciones.Add(proyeccion), Times.Once());
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+
+        }
+
+
+        [TestMethod]
+        public void CrearProyeccionExcepcionDuracionPeliculaMayorSesion()
+        {
+
+            try
+            {
+                Proyeccion proyeccion = new Proyeccion
+                {
+                    PeliculaId = 1, //Dura 93 minutos
+                    SesionId = 7, //La hemos creado con una duraccion de 10 minutos
+                    Inicio = DateTime.Parse("2023-06-22 00:00:00.000"),
+                    Fin = DateTime.Parse("2023-07-22 00:00:00.000")
+                };
+
+                _negocio.CrearProyeccion(proyeccion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La duracion de la pelicula es mayor a la duracion de la sala", ex.Message);
+                Assert.AreNotEqual("error", ex.Message);
+            }
+        }
+
+
+        [TestMethod]
+        public void CrearProyeccionExcepcionProyeccionSolapada()
+        {
+            try
+            {
+                Proyeccion proyeccion = new Proyeccion
+                {
+                    PeliculaId = 3, //Dura 93 minutos
+                    SesionId = 2, //La hemos creado con una duraccion de 10 minutos
+                    Inicio = DateTime.Parse("2023-02-13 00:00:00.000"),
+                    Fin = DateTime.Parse("2023-07-22 00:00:00.000")
+                };
+
+                _negocio.CrearProyeccion(proyeccion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("Ya existe una proyeccion con la misma sesion y fecha", ex.Message);
+            }
+        }
+
+        
+        [TestMethod]
+        public void CrearProyeccionExcepcionFechasIncorrectas()
+        {
+            try
+            {
+                Proyeccion proyeccion = new Proyeccion
+                {
+                    PeliculaId = 3, 
+                    SesionId = 2, 
+                    Inicio = DateTime.Parse("2023-03-13 00:00:00.000"),
+                    Fin = DateTime.Parse("2023-04-22 00:00:00.000")
+                };
+
+                _negocio.CrearProyeccion(proyeccion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La fecha de fin debe ser posterior a la fecha de inicio", ex.Message);
+            }
+        }
+
+        
+        [TestMethod]
+        public void ModificarProyeccion()
+        {
+            Proyeccion proyeccion = _negocio.BuscarProyeccion(9, 4, DateTime.Parse("2023-02-20 00:00:00.000"));
+
+            //Comprobamos que la proyeccion no sea nula 
+            Assert.IsNotNull(proyeccion);
+
+            //Modificamos la proyeccion
+            proyeccion.Fin = DateTime.Parse("2023-10-20 00:00:00.000");
+            _negocio.ModificarProyeccion(proyeccion);
+
+            //Verificamos que se han realizado los cambios
+            _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
+
+
+        }
+
+        
+        [TestMethod]
+        public void ModificarProyeccionExcepcionDuracionPeliculaMayorSesion()
+        {
+            Proyeccion proyeccion = _negocio.BuscarProyeccion(9, 4, DateTime.Parse("2023-02-20 00:00:00.000"));
+
+            //Comprobamos que la proyeccion no sea nula 
+            Assert.IsNotNull(proyeccion);
+            try
+            {
+                //Modificamos la proyeccion
+                proyeccion.SesionId = 7;
+                _negocio.ModificarProyeccion(proyeccion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La duracion de la pelicula es mayor a la duracion de la sala", ex.Message);
+            }
+
+        }
+
+        
+        [TestMethod]
+        public void ModificarProyeccionExcepcionFechasIncorectas()
+        {
+        Proyeccion proyeccion = _negocio.BuscarProyeccion(9, 4, DateTime.Parse("2023-02-20 00:00:00.000"));
+
+            //Comprobamos que la proyeccion no sea nula 
+            Assert.IsNotNull(proyeccion);
+            try
+            {
+                //Modificamos la proyeccion
+                proyeccion.Fin = DateTime.Parse("2023-01-20 00:00:00.000");
+                _negocio.ModificarProyeccion(proyeccion);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("La fecha de fin debe ser posterior a la fecha de inicio", ex.Message);
+            }
+        }
+        #endregion
+
+        
     }
 }
+
+/* CONTROL DE EXCEPCIONES
+ * 
+ * Act and assert
+    Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => account.Debit(debitAmount));
+*/

@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace UniCine_Veronica
 {
-    public class Herramientas
+    static class Herramientas
     {
-        UniCineContext db = new UniCineContext();
+       
         static Negocio negocio = new Negocio();
 
-        public Herramientas(UniCineContext db)
-        {
-            this.db = db;
-        }
+       
+      
 
         public static string[] ObtenerSalas()
         {

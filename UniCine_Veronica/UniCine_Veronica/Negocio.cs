@@ -58,7 +58,7 @@ namespace UniCine_Veronica
 
         public void ModificarPelicula(Pelicula pelicula)
         {
-            ExcepcionDuracionNecesaria(pelicula);
+            ExcepcionDuracionPeliculaSuperiorSesion(pelicula);
 
             Pelicula peliculaBD = db.Peliculas.FirstOrDefault(x => x.PeliculaId == pelicula.PeliculaId);
             if (peliculaBD != null)
@@ -96,7 +96,7 @@ namespace UniCine_Veronica
         public void ModificarSesion(Sesion sesionModificado)
         {
             //Lanzamos excepcion de negocio
-            ExcepcionTiempoSesionMayorPeli(sesionModificado);
+            ExcepcionTiempoSesionInsuficiente(sesionModificado);
             Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
             if (libroBD != null)
             {
@@ -116,7 +116,7 @@ namespace UniCine_Veronica
 
         public void CrearProyeccion(Proyeccion proyeccion)
         {
-            ExcepcionDuracionPeliMenorSesion(proyeccion);
+            ExcepcionDuracionPeliMayorSesion(proyeccion);
             ExcepcionProyeccionSolapada(proyeccion);
             ExcepcionFechasIncorrectas(proyeccion);
 
@@ -140,7 +140,7 @@ namespace UniCine_Veronica
 
         public void ModificarProyeccion(Proyeccion proyeccionModificada)
         {
-            ExcepcionDuracionPeliMenorSesion(proyeccionModificada);
+            ExcepcionDuracionPeliMayorSesion(proyeccionModificada);
             ExcepcionFechasIncorrectas(proyeccionModificada);
             Proyeccion proyeccionDB = db.Proyecciones.FirstOrDefault(x => x.PeliculaId == proyeccionModificada.SesionId
                                                         && x.SesionId == proyeccionModificada.SesionId
@@ -157,7 +157,8 @@ namespace UniCine_Veronica
         #region EXCEPCIONES DE NEGOCIO
 
 
-        //Reglas negocio Peliculas
+        #region EXCEPCIONES DE PELICULAS
+
         public void ExcepcionPeliculaProyeccionAsociadas(int peliculaId)
         {
             //Si devuelve true, significa que la pelicula tiene proyecciones asociadas
@@ -167,7 +168,7 @@ namespace UniCine_Veronica
             }
         }
 
-        public void ExcepcionDuracionNecesaria(Pelicula pelicula)
+        public void ExcepcionDuracionPeliculaSuperiorSesion(Pelicula pelicula)
         {
             List<Sesion> listaSesionesAsociadas = Herramientas.SesionesAsociadasAPelicula(pelicula);
             // List<string> salas = new List<string>();
@@ -183,22 +184,17 @@ namespace UniCine_Veronica
                 }
             });
 
-            /*if (salas.Count > 0)
-            {
-                throw new VeronicaException($"La duracion excede el tiempo en las salas" );
-                + "\n\t ");
-            }*/
-
             if (num != 0)
             {
                 throw new VeronicaException($"La duracion excede el tiempo en: {num} salas");
             }
         }
 
+        #endregion
 
 
-        //Reglas negocio Sesiones
-
+        #region EXCEPCIONES DE SESIONES
+       
         public void ExcepcionSesionProyeccionesAsociadas(int sesionId)
         {
             //Si devuelve true, significa que la pelicula tiene proyecciones asociadas
@@ -208,7 +204,7 @@ namespace UniCine_Veronica
             }
         }
 
-        public void ExcepcionTiempoSesionMayorPeli(Sesion sesion)
+        public void ExcepcionTiempoSesionInsuficiente(Sesion sesion)
         {
             List<Pelicula> listaPeliculasAsociadas = Herramientas.PeliculasAsociadasASesion(sesion);
             int num = 0;
@@ -225,16 +221,20 @@ namespace UniCine_Veronica
             }
         }
 
+        #endregion
+
+
+        #region EXCEPCIONES DE PROYECCIONES
 
         //Reglas negocio Proyecciones
-        public void ExcepcionDuracionPeliMenorSesion(Proyeccion proyeccion)
+        public void ExcepcionDuracionPeliMayorSesion(Proyeccion proyeccion)
         {
             Sesion sesion = BuscarSesion(proyeccion.SesionId);
             Pelicula pelicula = BuscarPelicula(proyeccion.PeliculaId);
 
             if ((sesion.FinMax.Subtract(sesion.Comienzo).TotalMinutes) < pelicula.Duracion)
             {
-                throw new VeronicaException($"La duracion de la pelicula es mayor a la duracion de la sala");
+                throw new VeronicaException("La duracion de la pelicula es mayor a la duracion de la sala");
             }
         }
 
@@ -242,7 +242,7 @@ namespace UniCine_Veronica
         {
             if (db.Proyecciones.Any(p => p.SesionId == proyeccion.SesionId && p.Inicio == proyeccion.Inicio))
             {
-                throw new VeronicaException($"Ya existe una proyeccion son la misma sesion y fecha");
+                throw new VeronicaException("Ya existe una proyeccion con la misma sesion y fecha");
             }
         }
 
@@ -250,9 +250,11 @@ namespace UniCine_Veronica
         {
             if (proyeccion.Inicio > proyeccion.Fin)
             {
-                throw new VeronicaException($"La fecha de fin debe ser posterior a la fecha de inicio");
+                throw new VeronicaException("La fecha de fin debe ser posterior a la fecha de inicio");
             }
         }
+        #endregion
+
         #endregion
     }
 }
