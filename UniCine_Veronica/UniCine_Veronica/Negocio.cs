@@ -31,7 +31,6 @@ namespace UniCine_Veronica
 
         public void CrearPelicula(Pelicula pelicula)
         {
-
             db.Peliculas.Add(pelicula);
             db.SaveChanges();
         }
