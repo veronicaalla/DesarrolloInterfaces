@@ -320,9 +320,9 @@ namespace UniCineTesting
         public void ModificarPelicula()
         {
             Pelicula pelicula = _negocio.BuscarPelicula(9);
-            pelicula.Nombre = "Cambio de nombre";
+            pelicula.Duracion = 1;
             _negocio.ModificarPelicula(pelicula);
-            //Assert.AreEqual("Cambio de nombre", pelicula.Nombre);
+            
             _mockCineBD.Verify(m => m.SaveChanges(), Times.Once());
         }
 

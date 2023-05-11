@@ -21,7 +21,7 @@ namespace UniCine_Veronica
             this.db = db;
         }
 
-        // MÉTODOS PARA LAS PELICULAS
+        #region METODOS PARA LAS PELICULAS
         public Pelicula[] obtenerPeliculas()
         {
 
@@ -67,9 +67,11 @@ namespace UniCine_Veronica
                 db.SaveChanges();
             }
         }
+        #endregion
 
 
-        // METODOS PARA LAS SESIONES
+        #region METODOS PARA LAS SESIONES
+
         public Sesion[] obtenerSesiones()
         {
             return db.Sesiones.ToArray();
@@ -97,6 +99,7 @@ namespace UniCine_Veronica
         {
             //Lanzamos excepcion de negocio
             ExcepcionTiempoSesionInsuficiente(sesionModificado);
+
             Sesion libroBD = db.Sesiones.FirstOrDefault(x => x.SesionId == sesionModificado.SesionId);
             if (libroBD != null)
             {
@@ -106,9 +109,9 @@ namespace UniCine_Veronica
 
         }
 
+        #endregion
 
-
-        // METODOS PARA LAS PROYECCIONES
+        #region METODOS DE PROYECCIONES
         public Proyeccion[] obtenerProyecciones()
         {
             return db.Proyecciones.ToArray();
@@ -153,9 +156,10 @@ namespace UniCine_Veronica
             }
         }
 
+        #endregion
+
 
         #region EXCEPCIONES DE NEGOCIO
-
 
         #region EXCEPCIONES DE PELICULAS
 
