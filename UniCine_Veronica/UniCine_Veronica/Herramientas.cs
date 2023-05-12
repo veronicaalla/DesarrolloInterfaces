@@ -11,9 +11,6 @@ namespace UniCine_Veronica
        
         static Negocio negocio = new Negocio();
 
-       
-      
-
         public static string[] ObtenerSalas()
         {
             UniCineContext db = new UniCineContext();
