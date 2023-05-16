@@ -10,3 +10,8 @@
             DatosDesarrolladorFrm infoDesarrollador = new DatosDesarrolladorFrm();
             infoDesarrollador.MdiParent = this;
             infoDesarrollador.Show();
+
+
+
+
+(localdb)\MSSQLLocalDB

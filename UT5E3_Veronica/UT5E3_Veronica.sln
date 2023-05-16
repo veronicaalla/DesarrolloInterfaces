@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT5E3_Veronica", "UT5E3_Veronica\UT5E3_Veronica.csproj", "{5EBC52A7-F2B7-4535-B76B-CAA1E72B46F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EBC52A7-F2B7-4535-B76B-CAA1E72B46F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBC52A7-F2B7-4535-B76B-CAA1E72B46F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBC52A7-F2B7-4535-B76B-CAA1E72B46F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBC52A7-F2B7-4535-B76B-CAA1E72B46F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {097B4381-F5C3-410C-ADA0-F428CE9ECFA3}
+	EndGlobalSection
+EndGlobal
