@@ -1,0 +1,11 @@
+
+ACTIVAR AUTORRECTOR AUTOMATICO
+------------------------------------
+SpellCheck.isEnabled="True"
+
+
+AJUSTE MULTILINEA
+--------------------------
+TextWrapping="Wrap" -> El texto se ajusta a una nueva linea cuadno se alcanza el borde 
+AcceptsReturn="True" -> Inserta nueva linea cuadno se presiona tecla de retorno
+VerticalScrollBarVisibility="Visible" -> Agrega barra de desplazamiento
