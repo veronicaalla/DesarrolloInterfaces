@@ -1,0 +1,16 @@
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\bin\Debug\UT501_VeronicaAlvarez.exe.config
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\bin\Debug\UT501_VeronicaAlvarez.exe
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\bin\Debug\UT501_VeronicaAlvarez.pdb
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.csproj.AssemblyReference.cache
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.csproj.SuggestedBindingRedirects.cache
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\MainWindow.g.cs
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\App.g.cs
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez_MarkupCompile.cache
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez_MarkupCompile.lref
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\MainWindow.baml
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.g.resources
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.Properties.Resources.resources
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.csproj.GenerateResource.cache
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.csproj.CoreCompileInputs.cache
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.exe
+C:\codigo\UT501_VeronicaAlvarez\UT501_VeronicaAlvarez\obj\Debug\UT501_VeronicaAlvarez.pdb

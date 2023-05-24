@@ -1,0 +1,12 @@
+NoResize. El usuario no puede cambiar el tamaño de la ventana. No se muestran los cuadros 
+Maximizar y Minimizar.
+
+CanMinimize: El usuario solo puede minimizar la ventana y restaurarla desde la barra de 
+tareas. Se muestran los cuadros Minimizar y Maximizar, pero sólo está habilitado el cuadro Minimizar.
+
+CanResize. El usuario tiene la capacidad completa de cambiar el tamaño de la ventana, 
+utilizando los cuadros Minimizar y Maximizar, y un contorno arrastrable alrededor de la 
+ventana. Los cuadros Minimizar y Maximizar se muestran y habilitan. (Valor predeterminado).
+
+CanResizeWithGrip. Esta opción tiene la misma funcionalidad que CanResize, pero agrega un 
+"agarre de cambio de tamaño" en la esquina inferior derecha de la ventana.

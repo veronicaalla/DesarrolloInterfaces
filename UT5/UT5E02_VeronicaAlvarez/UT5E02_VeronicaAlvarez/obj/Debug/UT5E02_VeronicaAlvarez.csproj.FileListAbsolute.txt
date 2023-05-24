@@ -1,0 +1,16 @@
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\bin\Debug\UT5E02_VeronicaAlvarez.exe.config
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\bin\Debug\UT5E02_VeronicaAlvarez.exe
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\bin\Debug\UT5E02_VeronicaAlvarez.pdb
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.csproj.AssemblyReference.cache
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.csproj.SuggestedBindingRedirects.cache
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\MainWindow.g.cs
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\App.g.cs
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez_MarkupCompile.cache
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez_MarkupCompile.lref
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\MainWindow.baml
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.g.resources
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.Properties.Resources.resources
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.csproj.GenerateResource.cache
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.csproj.CoreCompileInputs.cache
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.exe
+C:\codigo\UT5E02_VeronicaAlvarez\UT5E02_VeronicaAlvarez\obj\Debug\UT5E02_VeronicaAlvarez.pdb

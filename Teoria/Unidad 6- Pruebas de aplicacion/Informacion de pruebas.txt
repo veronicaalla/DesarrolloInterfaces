@@ -1,0 +1,6 @@
+Los UnitTesting
+
+Para altas, bajas modificaciones 
+Crear, modificar, borrar
+
+Hay que comprobar que captura todas las posibles excepciones 

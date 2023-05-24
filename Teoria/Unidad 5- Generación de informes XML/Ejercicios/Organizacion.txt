@@ -1,0 +1,9 @@
+Teoria -> 1,2,3
+Ejercicios -> Primeros pasos 
+	   -> Visor de imagenes
+Teoria -> 4
+Ejercicios -> Maquetado y estilos
+Teoria -> 5,6,7
+Ejercicios -> Listas, mascaras y conversores
+	   -> Aplicacion de gestión
+

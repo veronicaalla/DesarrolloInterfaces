@@ -1,0 +1,1 @@
+COn el list view item, usamos el binging (2º ejemplo)

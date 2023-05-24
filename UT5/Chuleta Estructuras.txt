@@ -1,0 +1,93 @@
+Grid -> establecer filas y columnas 
+<Grid  VerticalAlignment="Top" Margin="0,10,0,0"  >
+      <!-- Definimos las filas y columnas -->
+      <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="*"/>
+           <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+           <RowDefinition Height="*" MaxHeight="30" />
+           <RowDefinition Height="*" MaxHeight="30" />
+      </Grid.RowDefinitions>
+
+//Luego para determinar en que fila y columna se encuentra se usa 
+Grid.Column= // Grid.Row=
+</Grid>
+
+
+
+//------- Imagenes ----------
+BitmapImage _______ = new BitmapImage (new Uri ("/Resource/________", UriKind._______));  
+	2)Tipo de ruta -> Relative - Absolute - RelativeOrAbsolute 
+  //Valor que define como se ajusta la imagen
+	.Strech  -> Uniform - None - Fill - UniformToFill
+
+
+
+//---- Conseguir el valor de un ComboBox --------
+String aux= string.Empty();
+private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            aux = comboBox.Text;
+        }
+
+Si no lo realiza bien...
+ string [] aux = ((ComboBoxItem)(comboBox.SelectedItem)).ToString().Split(' ');
+                ev.Promotor = aux[1];
+
+
+//-------- Conseguir valor de un RadioButton -----
+
+variable aux --> private TipoEventoEnum tipoEvento = TipoEventoEnum.TODOS; 
+//Método de selección 
+private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+
+            switch (rb.Tag)
+            {
+                case "10":
+                    tipoEvento = TipoEventoEnum.MENORES_DIEZ;
+                    break;
+                case ">16":
+                    tipoEvento = TipoEventoEnum.MAYORES_DIECISEIS;
+                    break;
+                case ">18":
+                    tipoEvento = TipoEventoEnum.MAYORES_DIECIOCHO;
+                    break;
+                default:
+                    tipoEvento = TipoEventoEnum.TODOS;
+                    break;
+            }
+        }
+
+//Definir 
+(ev es una clase)
+ev.Tipo = tipoEvento;
+
+
+//-------------------- Controlar una hora -----------------------
+private void txtHora_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key[] teclas = { Key.D0, Key.NumPad0, Key.D1, Key.NumPad1, Key.D2, Key.NumPad2, Key.D3, Key.NumPad3, Key.D4, Key.NumPad4,
+            Key.D5, Key.NumPad5, Key.D6, Key.NumPad6, Key.D7, Key.NumPad7, Key.D8, Key.NumPad8, Key.D9, Key.NumPad9,
+            Key.Delete, Key.Return };
+
+            if (!teclas.Contains(e.Key))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            TextBox control = (TextBox)sender;
+            if (!string.IsNullOrEmpty((string)control.Tag) && control.Text.Length == 2)
+            {
+                control.Text += ":";
+                control.Select(control.Text.Length + 1, control.Text.Length + 1);
+            }
+
+            if (control.Text.Length == 5)
+            {
+                e.Handled = true;
+            }
+        }

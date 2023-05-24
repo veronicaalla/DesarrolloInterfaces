@@ -1,0 +1,18 @@
+x:Name 
+SelectionMode=
+	"Single" -> Solo se puede seleccionar una 
+	"Extended" -> Mas de una 
+SelectionUnit=
+	"Cell" -> Selecciona una columna
+	"FullRow" -> Selecciona la fila completa
+
+ScrollViewer.VerticalScrollBarVisibility= 
+	"visible"
+	"Hidden"
+	""
+	""
+
+
+
+//Leer pag 
+https://dotnetpattern.com/wpf-datagrid-selectionmode 

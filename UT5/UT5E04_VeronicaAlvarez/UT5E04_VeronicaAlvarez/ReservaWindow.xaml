@@ -1,0 +1,31 @@
+﻿<Window x:Class="UT5E04_VeronicaAlvarez.ReservaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UT5E04_VeronicaAlvarez"
+        mc:Ignorable="d"
+        Title="Crear Reserva" Height="280" Width="520" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Nombre:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,415,207"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,209" Width="360"/>
+
+        <Label Content="Teléfono:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,185,177"/>
+        <TextBox x:Name="txtTelefono" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,179" Width="140" KeyDown="Numerico_KeyDown"/>
+
+        <Label Content="Fecha:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,415,177"/>
+        <DatePicker x:Name="dtpFecha" HorizontalAlignment="Right" VerticalAlignment="Bottom" SelectedDateFormat="Short" Width="140" Margin="0,0,260,177"/>
+
+        <Label Content="Asiste:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,185,147"/>
+        <CheckBox x:Name="cbAsiste" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,165,150"/>
+
+        <Label Content="Comensales:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,415,147"/>
+        <TextBox x:Name="txtComensales" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,260,149" Width="140" KeyDown="Numerico_KeyDown"/>
+
+        <Label Content="Observaciones:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,390,100"/>
+        <TextBox x:Name="txtObservaciones" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,45" Width="470" Height="50"/>
+
+        <Button Content="Cancelar" IsCancel="True" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20" Width="70" Margin="0,0,15,15"/>
+        <Button Content="Aceptar" IsDefault="True" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20" Width="70" Margin="0,0,100,15" Click="BtnAceptar_Click"/>
+    </Grid>
+</Window>
