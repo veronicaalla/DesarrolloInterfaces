@@ -1,0 +1,6 @@
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\UT5E4_Veronica.csproj.AssemblyReference.cache
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\UT5E4_Veronica.csproj.SuggestedBindingRedirects.cache
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\MainWindow.g.cs
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\App.g.cs
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\UT5E4_Veronica_MarkupCompile.cache
+C:\codigo\UT5E4_Veronica\UT5E4_Veronica\obj\Debug\UT5E4_Veronica_MarkupCompile.lref
