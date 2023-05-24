@@ -1,0 +1,4 @@
+HitTesterResult r = VisualTreeHelper.HintTest(this, e.getPosition(this));
+if (r.VisualHit.GetType()!=typeof(ListBoxItem)){
+	listView1.UnselectAll();
+}

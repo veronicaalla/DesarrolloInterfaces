@@ -27,7 +27,7 @@
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Left">
             <TextBox x:Name="txtFiltrado" Width="400" />
             <Button x:Name="btnFiltrar" Content="Filtrar" Click="btnFiltrar_Click" Style="{StaticResource TamañoButtons}"/>
-            <Button x:Name="btnNuevaReserva" Content="Nueva" Click="btnNuevaReserva_Click" Style="{StaticResource TamañoButtons}" />
+            <Button x:Name="btnNuevaReserva" Content="Nueva" Click="btnNuevaReserva_Click" Style="{StaticResource TamañoButtons}" Margin="18,0,0,0"/>
         </WrapPanel>
 
 

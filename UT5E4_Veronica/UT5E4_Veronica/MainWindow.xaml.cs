@@ -20,9 +20,13 @@ namespace UT5E4_Veronica
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Negocio negocio;
         public MainWindow()
         {
             InitializeComponent();
+            negocio = new Negocio();
+            CargarReservas();
         }
 
         private void btnFiltrar_Click(object sender, RoutedEventArgs e)
@@ -42,13 +46,20 @@ namespace UT5E4_Veronica
 
         private void lvReservas_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
+            cmsVer.IsEnabled = false;
+            cmsEliminar.IsEnabled = false;
+            cmsConfirmar.IsEnabled = false;
 
+            if (lvReservas.SelectedItem != null)
+            {
+                cmsVer.IsEnabled = true;
+                cmsEliminar.IsEnabled = true;
+                cmsConfirmar.IsEnabled = true;
+                cmsConfirmar.IsChecked = ((Reserva)lvReservas.SelectedItem).Asiste;
+            }
         }
 
-        private void cmiNueva_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private void cmsNueva_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +68,10 @@ namespace UT5E4_Veronica
 
         private void cmsVer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (new ReservaWindow((Reserva)lvReservas.SelectedItem).ShowDialog().Value)
+            {
+                CargarReservas();
+            }
         }
 
         private void cmsEliminar_Click(object sender, RoutedEventArgs e)
@@ -77,6 +91,15 @@ namespace UT5E4_Veronica
 
         }
 
-       
+
+        private void CargarReservas()
+        {
+            lvReservas.Items.Clear();
+            foreach (Reserva r in negocio.ObtenerReservas())
+            {
+                lvReservas.Items.Add(r);
+            }
+        }
+
     }
 }

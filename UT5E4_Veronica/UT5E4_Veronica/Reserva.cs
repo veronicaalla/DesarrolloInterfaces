@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UT5E4_Veronica
 {
-    internal class Reserva
+    public class Reserva
     {
         public bool Asiste { get; set; }
         public int Comensales { get; set; }
