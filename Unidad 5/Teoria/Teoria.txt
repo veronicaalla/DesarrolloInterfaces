@@ -1,9 +1,0 @@
------- Botonoes ------
-x:Name
-Margin
-IsCancel = true --> esc
-IsDefault = true --> Intro
-
-
-
-ResizeMode="CanResizeWithGrip" -> redimensionar

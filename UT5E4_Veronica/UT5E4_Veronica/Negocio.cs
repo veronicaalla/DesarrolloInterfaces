@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UT5E4_Veronica
 {
-    internal class Negocio
+    public class Negocio
     {
 
         private int _reservaId;
@@ -20,7 +20,9 @@ namespace UT5E4_Veronica
 
         private int SiguienteReservaId()
         {
-            return _reservaId++;
+            //++_reservaId -> suma y despues devuelve resultado
+            //_reservaId++ -> devuelve el resultado y despues suma
+            return ++_reservaId;
         }
 
         public Reserva[] ObtenerReservas()

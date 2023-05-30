@@ -38,6 +38,7 @@ namespace UT5E4_Veronica
             //Le asignamos los datos 
             txtNombre.Text = reserva.Nombre;
             //Fecha
+            dpFecha.Text= reserva.Fecha.ToShortDateString();
 
             txtTelefono.Text = reserva.Telefono;
             txtComensales.Text = reserva.Comensales.ToString();
@@ -51,22 +52,46 @@ namespace UT5E4_Veronica
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidarDatos())
+            {
+                this.reserva.Nombre = txtNombre.Text;
+                this.reserva.Fecha = dpFecha.SelectedDate.Value;
+                this.reserva.Telefono = txtTelefono.Text;
+                this.reserva.Comensales = Int32.Parse(txtComensales.Text);
+                this.reserva.Asiste = chkAsiste.IsChecked.Value;
+                this.reserva.Observaciones = txtObservaciones.Text;
 
+                DialogResult = true;
+            }
         }
 
         private void txtComensales_KeyDown(object sender, KeyEventArgs e)
         {
+            Key[] teclas = { Key.Tab, Key.Back, Key.Delete };
 
+            if (!(e.Key >= Key.D0 && e.Key <= Key.D9)
+                && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                && !teclas.Contains(e.Key))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtTelefono_KeyDown(object sender, KeyEventArgs e)
         {
+            Key[] teclas = { Key.Tab, Key.Back, Key.Delete };
 
+            if (!(e.Key >= Key.D0 && e.Key <= Key.D9)
+                && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                && !teclas.Contains(e.Key))
+            {
+                e.Handled = true;
+            }
         }
 
         private bool ValidarDatos()
@@ -77,9 +102,9 @@ namespace UT5E4_Veronica
                 MessageBox.Show("El campo nombre no puede estar vacio ", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if (string.IsNullOrEmpty(dtpFecha.Text))
+            if (string.IsNullOrEmpty(dpFecha.Text))
             {
-                dtpFecha.Focus();
+                dpFecha.Focus();
                 MessageBox.Show("El campo fecha no puede estar vacio ", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -97,6 +122,12 @@ namespace UT5E4_Veronica
             }
 
             return true;
+        }
+
+        //Lo usamos para definir que la menor fecha a introducir es la actual
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dpFecha.DisplayDateStart = DateTime.Now;
         }
     }
 }
