@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPF_VeronicaAlvarez.ListaDesarrolladoresWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_VeronicaAlvarez"
+        mc:Ignorable="d"
+        Title="Mantenimiento de Desarrolladores" Height="450" Width="800" ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <!-- Creamos la lista -->
+        <ListView x:Name="lvDesarrolladores" Margin="6,10,10,10" AllowDrop="True" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ContextMenuOpening="lvDesarrolladores_ContextMenuOpening">
+            <!-- Añadimos el menú contextual -->
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="cmsNueva" Header="Nueva" Click="cmsNueva_Click"/>
+                    <MenuItem x:Name="cmsVer" Header="Ver" Click="cmsVer_Click"/>
+                    <MenuItem x:Name="cmsEliminar" Header="Eliminar" Click="cmsEliminar_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <!-- Creamos las columnas del listView -->
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="colCodigo" Width="100"  DisplayMemberBinding="{Binding Codigo}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Content="Codigo"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="400" DisplayMemberBinding="{Binding Nombre}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Content="Nombre"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Categoria}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Content="Categoria"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
