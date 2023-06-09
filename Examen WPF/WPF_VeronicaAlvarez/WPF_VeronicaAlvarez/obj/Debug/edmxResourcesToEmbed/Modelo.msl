@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Parcial2StoreContainer" CdmEntityContainer="Parcial2Context">
+    <EntitySetMapping Name="Desarrolladores">
+      <EntityTypeMapping TypeName="Parcial2.Desarrollador">
+        <MappingFragment StoreEntitySet="Desarrolladores">
+          <ScalarProperty Name="DesarrolladorId" ColumnName="DesarrolladorId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tareas">
+      <EntityTypeMapping TypeName="Parcial2.Tarea">
+        <MappingFragment StoreEntitySet="Tareas">
+          <ScalarProperty Name="TareaId" ColumnName="TareaId" />
+          <ScalarProperty Name="DesarrolladorId" ColumnName="DesarrolladorId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Proyecto" ColumnName="Proyecto" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Estimado" ColumnName="Estimado" />
+          <ScalarProperty Name="Asignacion" ColumnName="Asignacion" />
+          <ScalarProperty Name="Cerrada" ColumnName="Cerrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

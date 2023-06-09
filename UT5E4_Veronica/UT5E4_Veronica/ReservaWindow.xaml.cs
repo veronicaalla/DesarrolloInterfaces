@@ -26,7 +26,7 @@ namespace UT5E4_Veronica
             InitializeComponent();
         }
 
-        
+
         public ReservaWindow(Reserva reserva) : this()
         {
             this.reserva = reserva;
@@ -38,7 +38,7 @@ namespace UT5E4_Veronica
             //Le asignamos los datos 
             txtNombre.Text = reserva.Nombre;
             //Fecha
-            dpFecha.Text= reserva.Fecha.ToShortDateString();
+            dpFecha.Text = reserva.Fecha.ToShortDateString();
 
             txtTelefono.Text = reserva.Telefono;
             txtComensales.Text = reserva.Comensales.ToString();
@@ -128,6 +128,52 @@ namespace UT5E4_Veronica
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dpFecha.DisplayDateStart = DateTime.Now;
+        }
+
+        private void txtObservaciones_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtDni_KeyDown(object sender, KeyEventArgs e)
+        {
+
+           /* // Obtener el texto actual y el carácter que se está ingresando
+            string currentText = txtDni.Text;
+            char newChar = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+
+            // Validar que el carácter ingresado sea un número o una letra
+            if (!char.IsDigit(newChar) && !char.IsLetter(newChar))
+            {
+                e.Handled = true; // Ignorar el carácter no válido
+                return;
+            }
+
+            // Validar que los primeros 8 caracteres sean números y el noveno sea una letra
+            if (currentText.Length < 8 && !char.IsDigit(newChar))
+            {
+                e.Handled = true; // Ignorar si aún no se ingresaron los 8 primeros dígitos
+                return;
+            }
+
+            if (currentText.Length == 8 && !char.IsLetter(newChar))
+            {
+                e.Handled = true; // Ignorar si no se ingresó una letra como noveno carácter
+                return;
+            }
+
+            // Concatenar el nuevo carácter al texto actual
+            string newText = currentText + newChar;
+
+            // Actualizar el texto del TextBox
+            txtDni.Text = newText;
+
+            e.Handled = true; // Marcar el evento como manejado
+           */
+
+            
+            if (txtDni.)
+
         }
     }
 }

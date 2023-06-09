@@ -57,6 +57,7 @@
 
         <Label Content="Observaciones: "/>
         <TextBox x:Name="txtObservaciones"  Height="80" Width="674" AcceptsReturn="True" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtDni"  Margin="10" KeyDown="txtDni_KeyDown" MaxLength="9"/>
 
         <WrapPanel  HorizontalAlignment="Right">
             <Button x:Name="btnAceptar"     Content="Aceptar"    Style="{StaticResource TamañoButtons}"     Click="btnAceptar_Click"     IsDefault="True" Margin="5,5"  />

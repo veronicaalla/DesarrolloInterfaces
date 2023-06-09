@@ -1,0 +1,8 @@
+ Key[] teclas = { Key.Tab, Key.Back, Key.Delete };
+
+            if (!(e.Key >= Key.D0 && e.Key <= Key.D9)
+                && !(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                && !teclas.Contains(e.Key))
+            {
+                e.Handled = true;
+            }

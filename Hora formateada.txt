@@ -1,0 +1,19 @@
+private void txtNombre_KeyDown(object sender, KeyEventArgs e){
+
+	var length = txtNombre. Text. Length;
+	var keys = new[] { Key. D1, Key. D2, Key. D3, Key. D4, Key. D5, Key. D6,
+	Key. D7, Key. D8, Key. D9, Key. DO, Key. NumPad, Key. NumPad1, Key. NumPad2, 
+	Key. NumPad3, Key. NumPad4, Key. NumPad5, Key NumPad6, Key. NumPad7, Key. NumPad8,
+	 Key. NumPad9, Key. Delete, Key .Back};
+
+	if(length == 2 && !txtNombre.Text.Substring(length -1).Equals(': '))
+	{
+		txtNombre.Text += ':';
+		txtNombre.Select(length+1, 0);
+	}
+
+	if(!keys.Contains(e.Key) || (length == 5 && (e.Key != Key.Back || e.Key != Key Delete)))
+	{
+		e. Handled = true;
+	}
+}

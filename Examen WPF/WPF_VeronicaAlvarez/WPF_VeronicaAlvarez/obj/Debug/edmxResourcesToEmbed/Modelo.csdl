@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Parcial2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Desarrollador">
+    <Key>
+      <PropertyRef Name="DesarrolladorId" />
+    </Key>
+    <Property Name="DesarrolladorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Categoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tareas" Relationship="Self.FK_DesarrolladorTarea" FromRole="Desarrolladores" ToRole="Tareas" />
+  </EntityType>
+  <EntityType Name="Tarea">
+    <Key>
+      <PropertyRef Name="TareaId" />
+    </Key>
+    <Property Name="TareaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesarrolladorId" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Proyecto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prioridad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estimado" Type="Int32" Nullable="false" />
+    <Property Name="Asignacion" Type="DateTime" Precision="3" />
+    <Property Name="Cerrada" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Desarrolladore" Relationship="Self.FK_DesarrolladorTarea" FromRole="Tareas" ToRole="Desarrolladores" />
+  </EntityType>
+  <Association Name="FK_DesarrolladorTarea">
+    <End Role="Desarrolladores" Type="Parcial2.Desarrollador" Multiplicity="0..1" />
+    <End Role="Tareas" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desarrolladores">
+        <PropertyRef Name="DesarrolladorId" />
+      </Principal>
+      <Dependent Role="Tareas">
+        <PropertyRef Name="DesarrolladorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Parcial2Context" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Desarrolladores" EntityType="Parcial2.Desarrollador" />
+    <EntitySet Name="Tareas" EntityType="Self.Tarea" />
+    <AssociationSet Name="FK_DesarrolladorTarea" Association="Self.FK_DesarrolladorTarea">
+      <End Role="Desarrolladores" EntitySet="Desarrolladores" />
+      <End Role="Tareas" EntitySet="Tareas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

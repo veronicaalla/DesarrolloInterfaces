@@ -1,0 +1,29 @@
+private void txtNombre_KeyDown (object sender, KeyEventArgs e)
+{
+	var length = txtNombre. Text. Length;
+
+	var keys = new[] { Key. D1, Key. D2, Key. D3, Key. D4, Key. D5, Key. D6,
+	Key. D7, Key. D8, Key. D9, Key. DO, Key. NumPad, Key. NumPad1, Key. NumPad2, 
+	Key. NumPad3, Key. NumPad4, Key. NumPad5, Key NumPad6, Key. NumPad7, Key. NumPad8,
+	 Key. NumPad9, Key. Delete, Key .Back};
+
+	var letters = new[] { Key. Q, Key.W, Key.E, Key.R, Key. T, Key.Y, Key.U, Key.I, Key.O,
+	Key.P, Key.A, Key. S, Key.D, Key.F, Key.G, Key.H, Key.J, Key.K, Key.L,
+	Key.Z, Key.X,Key.C, Key.V, Key.B, Key.N, Key.M};
+
+	if (Length == 9){
+		e. Handled = true;
+	}
+	if (length < 8 && Ikeys. Contains (e. Key)){
+		e. Handled = true;
+	}
+	if (length >= 8 && !letters. Contains (e. Key)){
+		e. Handled = true;
+	}
+	if(letters.Contains(e.Key) && Length < 9){
+		e. Handled = true;
+		var letter = e. Key. ToString();
+		txtNombre. Text += letter. ToUpper();
+		txtNombre. Select (length+ 1, 0);
+	}
+}

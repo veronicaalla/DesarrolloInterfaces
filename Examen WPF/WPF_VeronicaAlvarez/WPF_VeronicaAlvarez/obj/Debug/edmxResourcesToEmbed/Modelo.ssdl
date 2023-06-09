@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Parcial2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Desarrolladores">
+    <Key>
+      <PropertyRef Name="DesarrolladorId" />
+    </Key>
+    <Property Name="DesarrolladorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Categoria" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tareas">
+    <Key>
+      <PropertyRef Name="TareaId" />
+    </Key>
+    <Property Name="TareaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesarrolladorId" Type="int" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Proyecto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prioridad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estimado" Type="int" Nullable="false" />
+    <Property Name="Asignacion" Type="datetime" />
+    <Property Name="Cerrada" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DesarrolladorTarea">
+    <End Role="Desarrolladores" Type="Self.Desarrolladores" Multiplicity="0..1" />
+    <End Role="Tareas" Type="Self.Tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desarrolladores">
+        <PropertyRef Name="DesarrolladorId" />
+      </Principal>
+      <Dependent Role="Tareas">
+        <PropertyRef Name="DesarrolladorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Parcial2StoreContainer">
+    <EntitySet Name="Desarrolladores" EntityType="Self.Desarrolladores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DesarrolladorTarea" Association="Self.FK_DesarrolladorTarea">
+      <End Role="Desarrolladores" EntitySet="Desarrolladores" />
+      <End Role="Tareas" EntitySet="Tareas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
